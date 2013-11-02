@@ -10,14 +10,12 @@
 
 Chunk::Chunk(sf::Vector3i position) : _pos(position)
 {
-    //load();
 }
 
 Chunk::Chunk(){}
 
 Chunk::~Chunk()
 {
-    //save();
 }
 
 Block& Chunk::getBlock(sf::Vector3i position)

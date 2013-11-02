@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/39249803/Chunk.o \
 	${OBJECTDIR}/_ext/39249803/MapGenerator.o \
 	${OBJECTDIR}/_ext/39249803/MapModel.o \
+	${OBJECTDIR}/_ext/39249803/MapNoise.o \
 	${OBJECTDIR}/_ext/39249803/SimplexNoise.o \
 	${OBJECTDIR}/_ext/2027516724/EventMessagingSystem.o \
 	${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o \
@@ -90,6 +91,11 @@ ${OBJECTDIR}/_ext/39249803/MapModel.o: /D/_school/s5/BP/GreenBerry/src/model/Map
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
 	${RM} $@.d
 	$(COMPILE.cc) -g -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/MapModel.o /D/_school/s5/BP/GreenBerry/src/model/MapModel.cpp
+
+${OBJECTDIR}/_ext/39249803/MapNoise.o: /D/_school/s5/BP/GreenBerry/src/model/MapNoise.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
+	${RM} $@.d
+	$(COMPILE.cc) -g -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -std=c++11 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/MapNoise.o /D/_school/s5/BP/GreenBerry/src/model/MapNoise.cpp
 
 ${OBJECTDIR}/_ext/39249803/SimplexNoise.o: /D/_school/s5/BP/GreenBerry/src/model/SimplexNoise.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
@@ -202,6 +208,19 @@ ${OBJECTDIR}/_ext/39249803/MapModel_nomain.o: ${OBJECTDIR}/_ext/39249803/MapMode
 	    $(COMPILE.cc) -g -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -std=c++11 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/MapModel_nomain.o /D/_school/s5/BP/GreenBerry/src/model/MapModel.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/39249803/MapModel.o ${OBJECTDIR}/_ext/39249803/MapModel_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/39249803/MapNoise_nomain.o: ${OBJECTDIR}/_ext/39249803/MapNoise.o /D/_school/s5/BP/GreenBerry/src/model/MapNoise.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/39249803/MapNoise.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -g -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -std=c++11 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/MapNoise_nomain.o /D/_school/s5/BP/GreenBerry/src/model/MapNoise.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/39249803/MapNoise.o ${OBJECTDIR}/_ext/39249803/MapNoise_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/39249803/SimplexNoise_nomain.o: ${OBJECTDIR}/_ext/39249803/SimplexNoise.o /D/_school/s5/BP/GreenBerry/src/model/SimplexNoise.cpp 

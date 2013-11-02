@@ -19,6 +19,8 @@
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapGenerator.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapModel.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapModel.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapNoise.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapNoise.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.h</itemPath>
       </logicalFolder>
@@ -131,6 +133,16 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/MapModel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapNoise.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapNoise.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -313,6 +325,16 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/MapModel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapNoise.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapNoise.h"
             ex="false"
             tool="3"
             flavor2="0">
