@@ -1,4 +1,5 @@
 # Netbeans private folder
+.dep.inc
 nbproject/private/
 nbproject/Makefile-Debug.mk
 nbproject/Makefile-Release.mk
