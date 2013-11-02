@@ -51,7 +51,8 @@ TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
 TESTFILES= \
 	${TESTDIR}/TestFiles/f3 \
 	${TESTDIR}/TestFiles/f2 \
-	${TESTDIR}/TestFiles/f1
+	${TESTDIR}/TestFiles/f1 \
+	${TESTDIR}/TestFiles/f4
 
 # C Compiler Flags
 CFLAGS=
@@ -134,6 +135,10 @@ ${TESTDIR}/TestFiles/f1: ${TESTDIR}/_ext/1262165778/newtestclass.o ${TESTDIR}/_e
 	${MKDIR} -p ${TESTDIR}/TestFiles
 	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
 
+${TESTDIR}/TestFiles/f4: ${TESTDIR}/_ext/1262165778/TestMapNoiseClass.o ${TESTDIR}/_ext/1262165778/TestMapNoiseTtrunner.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f4 $^ ${LDLIBSOPTIONS} `cppunit-config --libs`   
+
 
 ${TESTDIR}/_ext/1262165778/TestBoostSerializeClass.o: /D/_school/s5/BP/GreenBerry/tests/TestBoostSerializeClass.cpp 
 	${MKDIR} -p ${TESTDIR}/_ext/1262165778
@@ -169,6 +174,18 @@ ${TESTDIR}/_ext/1262165778/newtestrunner.o: /D/_school/s5/BP/GreenBerry/tests/ne
 	${MKDIR} -p ${TESTDIR}/_ext/1262165778
 	${RM} $@.d
 	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/_ext/1262165778/newtestrunner.o /D/_school/s5/BP/GreenBerry/tests/newtestrunner.cpp
+
+
+${TESTDIR}/_ext/1262165778/TestMapNoiseClass.o: /D/_school/s5/BP/GreenBerry/tests/TestMapNoiseClass.cpp 
+	${MKDIR} -p ${TESTDIR}/_ext/1262165778
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/_ext/1262165778/TestMapNoiseClass.o /D/_school/s5/BP/GreenBerry/tests/TestMapNoiseClass.cpp
+
+
+${TESTDIR}/_ext/1262165778/TestMapNoiseTtrunner.o: /D/_school/s5/BP/GreenBerry/tests/TestMapNoiseTtrunner.cpp 
+	${MKDIR} -p ${TESTDIR}/_ext/1262165778
+	${RM} $@.d
+	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/_ext/1262165778/TestMapNoiseTtrunner.o /D/_school/s5/BP/GreenBerry/tests/TestMapNoiseTtrunner.cpp
 
 
 ${OBJECTDIR}/_ext/39249803/Chunk_nomain.o: ${OBJECTDIR}/_ext/39249803/Chunk.o /D/_school/s5/BP/GreenBerry/src/model/Chunk.cpp 
@@ -282,6 +299,7 @@ ${OBJECTDIR}/src/main_nomain.o: ${OBJECTDIR}/src/main.o src/main.cpp
 	    ${TESTDIR}/TestFiles/f3 || true; \
 	    ${TESTDIR}/TestFiles/f2 || true; \
 	    ${TESTDIR}/TestFiles/f1 || true; \
+	    ${TESTDIR}/TestFiles/f4 || true; \
 	else  \
 	    ./${TEST} || true; \
 	fi

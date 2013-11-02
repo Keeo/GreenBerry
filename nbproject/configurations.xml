@@ -60,6 +60,14 @@
         <itemPath>D:/_school/s5/BP/GreenBerry/tests/newtestclass.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/tests/newtestrunner.cpp</itemPath>
       </logicalFolder>
+      <logicalFolder name="f4"
+                     displayName="TestMapNoise"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>D:/_school/s5/BP/GreenBerry/tests/TestMapNoiseClass.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/tests/TestMapNoiseClass.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/tests/TestMapNoiseTtrunner.cpp</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -192,6 +200,21 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/TestMapNoiseClass.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/TestMapNoiseClass.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/TestMapNoiseTtrunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
       <item path="D:/_school/s5/BP/GreenBerry/tests/newtestclass.cpp"
             ex="false"
             tool="1"
@@ -271,6 +294,20 @@
         </ccTool>
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>
@@ -384,6 +421,21 @@
             tool="1"
             flavor2="0">
       </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/TestMapNoiseClass.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/TestMapNoiseClass.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/TestMapNoiseTtrunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
       <item path="D:/_school/s5/BP/GreenBerry/tests/newtestclass.cpp"
             ex="false"
             tool="1"
@@ -451,6 +503,20 @@
         </ccTool>
         <linkerTool>
           <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
           <linkerLibItems>
             <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
           </linkerLibItems>

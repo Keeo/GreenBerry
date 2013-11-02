@@ -16,10 +16,10 @@ int MapNoise::getHeight(int x, int y)
 
 int* MapNoise::getHeightField(int x, int y)
 {
-    int *array = new int[x * y];
-    for (int i=0;i<x;++i)
-        for (int j=0;i<y;++y)
-            array[i + j * x] = getHeight(x,y);
+    int *array = new int[32 * 32];
+    for (int i=0;i<32;++i)
+        for (int j=0;j<32;++j)
+            array[i + j * 32] = getHeight(i+(x*32), j+(y*32));
     return array;
 }
 
