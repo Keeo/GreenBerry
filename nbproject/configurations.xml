@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="90">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="model" displayName="model" projectFiles="true">
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Chunk.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Chunk.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapGenerator.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapGenerator.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapModel.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapModel.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="observer" displayName="observer" projectFiles="true">
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.h</itemPath>
+      </logicalFolder>
+      <itemPath>src/main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f3"
+                     displayName="TestBoostSerialize"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>D:/_school/s5/BP/GreenBerry/tests/TestBoostSerializeClass.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/tests/TestBoostSerializeClass.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/tests/TestBoostSerializeTrunner.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2"
+                     displayName="TestChunk"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>D:/_school/s5/BP/GreenBerry/tests/testChunkClass.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/tests/testChunkClass.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/tests/testChunkRunner1.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1"
+                     displayName="TestEventMessagingSystem"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>D:/_school/s5/BP/GreenBerry/tests/newtestclass.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/tests/newtestclass.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/tests/newtestrunner.cpp</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>D:\_school\s5\BP\GreenBerry\src</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <standard>8</standard>
+          <incDir>
+            <pElem>C:/Frameworks/SFML/include</pElem>
+            <pElem>C:/Frameworks/boost/include/boost-1_54</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>SFML_STATIC</Elem>
+          </preprocessorList>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>C:/Frameworks/SFML/lib</pElem>
+            <pElem>C:/Frameworks/boost/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>sfml-graphics-s-d</linkerLibLibItem>
+            <linkerLibLibItem>sfml-window-s-d</linkerLibLibItem>
+            <linkerLibLibItem>sfml-system-s-d</linkerLibLibItem>
+            <linkerLibLibItem>sfml-audio-s-d</linkerLibLibItem>
+            <linkerLibLibItem>sfml-main-d</linkerLibLibItem>
+            <linkerLibLibItem>sfml-network-s-d</linkerLibLibItem>
+            <linkerLibLibItem>boost_serialization-mgw47-mt-1_54</linkerLibLibItem>
+            <linkerLibLibItem>boost_serialization-mgw47-mt-d-1_54</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/Chunk.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/Chunk.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapGenerator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapGenerator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapModel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapModel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/TestBoostSerializeClass.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/TestBoostSerializeClass.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/TestBoostSerializeTrunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/newtestclass.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/newtestclass.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/newtestrunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/testChunkClass.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/testChunkClass.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/testChunkRunner1.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <folder path="TestFiles">
+        <ccTool>
+          <incDir>
+            <pElem>C:/MinGW/msys/1.0/local/include</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>C:/MinGW/lib/libcppunit.a</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/Chunk.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/Chunk.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapGenerator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapGenerator.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapModel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapModel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/TestBoostSerializeClass.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/TestBoostSerializeClass.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/TestBoostSerializeTrunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/newtestclass.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/newtestclass.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/newtestrunner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/testChunkClass.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/testChunkClass.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/tests/testChunkRunner1.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </cTool>
+        <ccTool>
+          <commandLine>`cppunit-config --cflags`</commandLine>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+          <linkerLibItems>
+            <linkerOptionItem>`cppunit-config --libs`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
