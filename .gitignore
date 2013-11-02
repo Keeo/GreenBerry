@@ -1,5 +1,7 @@
 # Netbeans private folder
 nbproject/private/
+nbproject/Makefile-Debug.mk
+nbproject/Makefile-Release.mk
 build/
 
 # Compiled Object files

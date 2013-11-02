@@ -13,13 +13,23 @@
 #include "../observer/IEventMessagingSystem.h"
 #include "MapNoise.h"
 #include "Chunk.h"
+#include "Map.h"
 
 class MapGenerator : IEventMessagingSystem
 {
 public:
     MapGenerator(std::string seed);
-
-    Chunk generateChunk(sf::Vector3i postition);
+    
+    Map* generateMap          (sf::Vector3i position);
+    Chunk* generateChunk        (sf::Vector3i postition);
+    
+    /**
+     * Connect chunk to his neightbours
+     * Will not check for edges, please use it only for guts
+     * @param Map
+     * @param Position of chunk in Map.grid
+     */
+    void connectChunk(Map*, sf::Vector3i);
 private:
     
     MapNoise _mn;

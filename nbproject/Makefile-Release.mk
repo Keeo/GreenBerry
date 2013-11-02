@@ -36,10 +36,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/39249803/Chunk.o \
+	${OBJECTDIR}/_ext/39249803/Map.o \
 	${OBJECTDIR}/_ext/39249803/MapGenerator.o \
 	${OBJECTDIR}/_ext/39249803/MapModel.o \
 	${OBJECTDIR}/_ext/39249803/MapNoise.o \
 	${OBJECTDIR}/_ext/39249803/SimplexNoise.o \
+	${OBJECTDIR}/_ext/39249803/World.o \
 	${OBJECTDIR}/_ext/2027516724/EventMessagingSystem.o \
 	${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o \
 	${OBJECTDIR}/src/main.o
@@ -83,6 +85,11 @@ ${OBJECTDIR}/_ext/39249803/Chunk.o: /D/_school/s5/BP/GreenBerry/src/model/Chunk.
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/Chunk.o /D/_school/s5/BP/GreenBerry/src/model/Chunk.cpp
 
+${OBJECTDIR}/_ext/39249803/Map.o: /D/_school/s5/BP/GreenBerry/src/model/Map.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/Map.o /D/_school/s5/BP/GreenBerry/src/model/Map.cpp
+
 ${OBJECTDIR}/_ext/39249803/MapGenerator.o: /D/_school/s5/BP/GreenBerry/src/model/MapGenerator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
 	${RM} $@.d
@@ -102,6 +109,11 @@ ${OBJECTDIR}/_ext/39249803/SimplexNoise.o: /D/_school/s5/BP/GreenBerry/src/model
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/SimplexNoise.o /D/_school/s5/BP/GreenBerry/src/model/SimplexNoise.cpp
+
+${OBJECTDIR}/_ext/39249803/World.o: /D/_school/s5/BP/GreenBerry/src/model/World.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/World.o /D/_school/s5/BP/GreenBerry/src/model/World.cpp
 
 ${OBJECTDIR}/_ext/2027516724/EventMessagingSystem.o: /D/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2027516724
@@ -201,6 +213,19 @@ ${OBJECTDIR}/_ext/39249803/Chunk_nomain.o: ${OBJECTDIR}/_ext/39249803/Chunk.o /D
 	    ${CP} ${OBJECTDIR}/_ext/39249803/Chunk.o ${OBJECTDIR}/_ext/39249803/Chunk_nomain.o;\
 	fi
 
+${OBJECTDIR}/_ext/39249803/Map_nomain.o: ${OBJECTDIR}/_ext/39249803/Map.o /D/_school/s5/BP/GreenBerry/src/model/Map.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/39249803/Map.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/Map_nomain.o /D/_school/s5/BP/GreenBerry/src/model/Map.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/39249803/Map.o ${OBJECTDIR}/_ext/39249803/Map_nomain.o;\
+	fi
+
 ${OBJECTDIR}/_ext/39249803/MapGenerator_nomain.o: ${OBJECTDIR}/_ext/39249803/MapGenerator.o /D/_school/s5/BP/GreenBerry/src/model/MapGenerator.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
 	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/39249803/MapGenerator.o`; \
@@ -251,6 +276,19 @@ ${OBJECTDIR}/_ext/39249803/SimplexNoise_nomain.o: ${OBJECTDIR}/_ext/39249803/Sim
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/SimplexNoise_nomain.o /D/_school/s5/BP/GreenBerry/src/model/SimplexNoise.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/39249803/SimplexNoise.o ${OBJECTDIR}/_ext/39249803/SimplexNoise_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/39249803/World_nomain.o: ${OBJECTDIR}/_ext/39249803/World.o /D/_school/s5/BP/GreenBerry/src/model/World.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/39249803/World.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/World_nomain.o /D/_school/s5/BP/GreenBerry/src/model/World.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/39249803/World.o ${OBJECTDIR}/_ext/39249803/World_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/2027516724/EventMessagingSystem_nomain.o: ${OBJECTDIR}/_ext/2027516724/EventMessagingSystem.o /D/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.cpp 

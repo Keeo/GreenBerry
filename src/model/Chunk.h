@@ -10,6 +10,8 @@
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
+#include "Block.h"
+#include <iostream>
 #include "../observer/IEventMessagingSystem.h"
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
@@ -17,11 +19,7 @@
 #include <string>
 #include <sstream>
 
-enum Block : unsigned short
-{
-    AIR = 0,
-    GRASS,
-};
+
 
 class Chunk : IEventMessagingSystem
 {
@@ -43,7 +41,15 @@ public:
     // Populate chunk with air and grass blocks
     void dummyGenerate          ();
     
-    const sf::Vector3i& getPosition    ();
+    const sf::Vector3i& getPosition();
+    
+    // surounding chunks
+    Chunk* u = 0;
+    Chunk* d = 0;
+    Chunk* n = 0;
+    Chunk* w = 0;
+    Chunk* e = 0;
+    Chunk* s = 0;
     
     static std::string getChunkName(sf::Vector3i&);
 private:
