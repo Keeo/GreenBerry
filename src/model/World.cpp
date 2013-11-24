@@ -7,7 +7,6 @@
 
 #include "World.h"
 
-World::World() : _mg("zasxecrdftvbgyhjnmk")
+World::World() : _map(sf::Vector3i(0,0,0))
 {
-    _map = _mg.generateMap(sf::Vector3i(0,0,0));
 }

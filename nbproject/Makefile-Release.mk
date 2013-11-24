@@ -38,7 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/39249803/Chunk.o \
 	${OBJECTDIR}/_ext/39249803/ChunkModel.o \
 	${OBJECTDIR}/_ext/39249803/Map.o \
-	${OBJECTDIR}/_ext/39249803/MapGenerator.o \
 	${OBJECTDIR}/_ext/39249803/World.o \
 	${OBJECTDIR}/_ext/40178556/MapNoise.o \
 	${OBJECTDIR}/_ext/40178556/SimplexNoise.o \
@@ -94,11 +93,6 @@ ${OBJECTDIR}/_ext/39249803/Map.o: /D/_school/s5/BP/GreenBerry/src/model/Map.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/Map.o /D/_school/s5/BP/GreenBerry/src/model/Map.cpp
-
-${OBJECTDIR}/_ext/39249803/MapGenerator.o: /D/_school/s5/BP/GreenBerry/src/model/MapGenerator.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/MapGenerator.o /D/_school/s5/BP/GreenBerry/src/model/MapGenerator.cpp
 
 ${OBJECTDIR}/_ext/39249803/World.o: /D/_school/s5/BP/GreenBerry/src/model/World.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
@@ -237,19 +231,6 @@ ${OBJECTDIR}/_ext/39249803/Map_nomain.o: ${OBJECTDIR}/_ext/39249803/Map.o /D/_sc
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/Map_nomain.o /D/_school/s5/BP/GreenBerry/src/model/Map.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/39249803/Map.o ${OBJECTDIR}/_ext/39249803/Map_nomain.o;\
-	fi
-
-${OBJECTDIR}/_ext/39249803/MapGenerator_nomain.o: ${OBJECTDIR}/_ext/39249803/MapGenerator.o /D/_school/s5/BP/GreenBerry/src/model/MapGenerator.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/39249803/MapGenerator.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} $@.d;\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/39249803/MapGenerator_nomain.o /D/_school/s5/BP/GreenBerry/src/model/MapGenerator.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/_ext/39249803/MapGenerator.o ${OBJECTDIR}/_ext/39249803/MapGenerator_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/39249803/World_nomain.o: ${OBJECTDIR}/_ext/39249803/World.o /D/_school/s5/BP/GreenBerry/src/model/World.cpp 

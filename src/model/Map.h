@@ -10,10 +10,12 @@
 
 #include "boost/multi_array.hpp"
 #include "Chunk.h"
+#include "../noise/MapNoise.h"
 #include <iostream>
-struct Map
+class Map
 {
-    Map();
+public:
+    Map(sf::Vector3i position);
     
     typedef boost::multi_array<Chunk*, 3> array_type;
     typedef array_type::index index;
@@ -21,7 +23,12 @@ struct Map
     
     Chunk* core;
     
+    
+private:
+    Chunk* generateChunk(sf::Vector3i position);
+    void connectChunk(sf::Vector3i pos);
+    
+    MapNoise _mn;
 };
 
 #endif	/* MAP_H */
-

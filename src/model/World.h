@@ -8,7 +8,6 @@
 #ifndef WORLD_H
 #define	WORLD_H
 
-#include "MapGenerator.h"
 #include "Map.h"
 
 class World
@@ -17,11 +16,7 @@ public:
     World();
 private:
     
-    
-    
-    MapGenerator _mg;
-    
-    Map* _map;
+    Map _map;
 };
 
 #endif	/* WORLD_H */

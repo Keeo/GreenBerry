@@ -9,15 +9,15 @@
 #include <iostream>
 
 #include "noise/MapNoise.h"
-#include "model/MapGenerator.h"
+#include "model/Map.h"
 
 /*
  * 
  */
 int main(int argc, char** argv)
 {
-    MapGenerator mg("efvgybuhnjmk");
-    mg.generateMap(sf::Vector3i(1,0,0));
+    Map map(sf::Vector3i(0,0,0));
+    
 
     
     
