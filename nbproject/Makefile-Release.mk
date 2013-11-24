@@ -35,6 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/883158912/ADrawable.o \
+	${OBJECTDIR}/_ext/1211055809/Game.o \
 	${OBJECTDIR}/_ext/39249803/Chunk.o \
 	${OBJECTDIR}/_ext/39249803/ChunkModel.o \
 	${OBJECTDIR}/_ext/39249803/Map.o \
@@ -43,6 +45,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/40178556/SimplexNoise.o \
 	${OBJECTDIR}/_ext/2027516724/EventMessagingSystem.o \
 	${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o \
+	${OBJECTDIR}/_ext/1941191171/Window.o \
 	${OBJECTDIR}/src/main.o
 
 # Test Directory
@@ -78,6 +81,16 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/greenberry.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/greenberry ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/_ext/883158912/ADrawable.o: /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/883158912
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/883158912/ADrawable.o /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp
+
+${OBJECTDIR}/_ext/1211055809/Game.o: /D/_school/s5/BP/GreenBerry/src/control/Game.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1211055809
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1211055809/Game.o /D/_school/s5/BP/GreenBerry/src/control/Game.cpp
 
 ${OBJECTDIR}/_ext/39249803/Chunk.o: /D/_school/s5/BP/GreenBerry/src/model/Chunk.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
@@ -118,6 +131,11 @@ ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o: /D/_school/s5/BP/GreenBerr
 	${MKDIR} -p ${OBJECTDIR}/_ext/2027516724
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o /D/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp
+
+${OBJECTDIR}/_ext/1941191171/Window.o: /D/_school/s5/BP/GreenBerry/src/view/Window.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941191171
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1941191171/Window.o /D/_school/s5/BP/GreenBerry/src/view/Window.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -193,6 +211,32 @@ ${TESTDIR}/_ext/1262165778/TestMapNoiseTtrunner.o: /D/_school/s5/BP/GreenBerry/t
 	${RM} $@.d
 	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF $@.d -o ${TESTDIR}/_ext/1262165778/TestMapNoiseTtrunner.o /D/_school/s5/BP/GreenBerry/tests/TestMapNoiseTtrunner.cpp
 
+
+${OBJECTDIR}/_ext/883158912/ADrawable_nomain.o: ${OBJECTDIR}/_ext/883158912/ADrawable.o /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/883158912
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/883158912/ADrawable.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/883158912/ADrawable_nomain.o /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/883158912/ADrawable.o ${OBJECTDIR}/_ext/883158912/ADrawable_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1211055809/Game_nomain.o: ${OBJECTDIR}/_ext/1211055809/Game.o /D/_school/s5/BP/GreenBerry/src/control/Game.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1211055809
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1211055809/Game.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1211055809/Game_nomain.o /D/_school/s5/BP/GreenBerry/src/control/Game.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1211055809/Game.o ${OBJECTDIR}/_ext/1211055809/Game_nomain.o;\
+	fi
 
 ${OBJECTDIR}/_ext/39249803/Chunk_nomain.o: ${OBJECTDIR}/_ext/39249803/Chunk.o /D/_school/s5/BP/GreenBerry/src/model/Chunk.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
@@ -296,6 +340,19 @@ ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem_nomain.o: ${OBJECTDIR}/_ext/2
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem_nomain.o /D/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1941191171/Window_nomain.o: ${OBJECTDIR}/_ext/1941191171/Window.o /D/_school/s5/BP/GreenBerry/src/view/Window.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941191171
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1941191171/Window.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1941191171/Window_nomain.o /D/_school/s5/BP/GreenBerry/src/view/Window.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1941191171/Window.o ${OBJECTDIR}/_ext/1941191171/Window_nomain.o;\
 	fi
 
 ${OBJECTDIR}/src/main_nomain.o: ${OBJECTDIR}/src/main.o src/main.cpp 

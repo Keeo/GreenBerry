@@ -12,6 +12,14 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="abstract" displayName="abstract" projectFiles="true">
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/abstract/ADrawable.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="control" displayName="control" projectFiles="true">
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Game.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Game.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="model" displayName="model" projectFiles="true">
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Chunk.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Chunk.h</itemPath>
@@ -19,18 +27,24 @@
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/ChunkModel.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Map.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Map.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/World.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/World.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="noise" displayName="noise" projectFiles="true">
         <itemPath>D:/_school/s5/BP/GreenBerry/src/noise/MapNoise.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/noise/MapNoise.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/noise/SimplexNoise.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/noise/SimplexNoise.h</itemPath>
-        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/World.cpp</itemPath>
-        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/World.h</itemPath>
       </logicalFolder>
       <logicalFolder name="observer" displayName="observer" projectFiles="true">
         <itemPath>D:/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="view" displayName="view" projectFiles="true">
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/view/Window.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/view/Window.h</itemPath>
       </logicalFolder>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
@@ -97,6 +111,7 @@
             <pElem>C:/Frameworks/boost/include/boost-1_54</pElem>
           </incDir>
           <preprocessorList>
+            <Elem>GLEW_STATIC</Elem>
             <Elem>SFML_STATIC</Elem>
           </preprocessorList>
         </ccTool>
@@ -104,6 +119,7 @@
           <linkerAddLib>
             <pElem>C:/Frameworks/SFML/lib</pElem>
             <pElem>C:/Frameworks/boost/lib</pElem>
+            <pElem>C:/Frameworks/glew/glew-1.10.0/lib/Release/Win32</pElem>
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>sfml-graphics-s-d</linkerLibLibItem>
@@ -116,6 +132,26 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="D:/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/abstract/ADrawable.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/Game.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/Game.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/Chunk.cpp"
             ex="false"
             tool="1"
@@ -192,6 +228,16 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/view/Window.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/view/Window.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -347,6 +393,26 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="D:/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/abstract/ADrawable.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/Game.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/Game.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/Chunk.cpp"
             ex="false"
             tool="1"
@@ -423,6 +489,16 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/view/Window.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/view/Window.h"
             ex="false"
             tool="3"
             flavor2="0">

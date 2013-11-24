@@ -7,17 +7,20 @@
 
 #include <cstdlib>
 #include <iostream>
-
+#include <GL/glew.h>
 #include "noise/MapNoise.h"
 #include "model/Map.h"
+#include "view/Window.h"
+#include "control/Game.h"
 
 /*
  * 
  */
 int main(int argc, char** argv)
 {
-    Map map(sf::Vector3i(0,0,0));
-    
+    //Map map(sf::Vector3i(0,0,0));
+    Game g;
+    g.run();
 
     
     

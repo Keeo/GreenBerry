@@ -17,14 +17,17 @@ class Map
 public:
     Map(sf::Vector3i position);
     
+
+    
+    
+private:
+    
     typedef boost::multi_array<Chunk*, 3> array_type;
     typedef array_type::index index;
     array_type grid;
     
     Chunk* core;
     
-    
-private:
     Chunk* generateChunk(sf::Vector3i position);
     void connectChunk(sf::Vector3i pos);
     
