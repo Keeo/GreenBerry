@@ -10,5 +10,4 @@
 World::World() : _mg("zasxecrdftvbgyhjnmk")
 {
     _map = _mg.generateMap(sf::Vector3i(0,0,0));
-    
 }

@@ -11,7 +11,7 @@
 #include <string>
 
 #include "../observer/IEventMessagingSystem.h"
-#include "MapNoise.h"
+#include "../noise/MapNoise.h"
 #include "Chunk.h"
 #include "Map.h"
 

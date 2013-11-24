@@ -5,15 +5,15 @@
  * Created on 26. říjen 2013, 21:11
  */
 
-#ifndef MAPMODEL_H
-#define	MAPMODEL_H
+#ifndef CHUNKMODEL_H
+#define	CHUNKMODEL_H
 
 #include "Chunk.h"
 
-class MapModel : IEventMessagingSystem
+class ChunkModel : IEventMessagingSystem
 {
 public:
-    MapModel(sf::Vector3i worldOffset);
+    ChunkModel(sf::Vector3i worldOffset);
     
     // loads chunk from disk and returns its pointer
     Chunk* loadChunk(sf::Vector3i pos);
@@ -29,5 +29,5 @@ private:
     
 };
 
-#endif	/* MAPMODEL_H */
+#endif	/* CHUNKMODEL_H */
 

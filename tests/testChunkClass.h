@@ -9,7 +9,7 @@
 #define	TESTCHUNKCLASS_H
 
 #include <cppunit/extensions/HelperMacros.h>
-#include "../src/model/Chunk.h"
+#include "../src/model/ChunkEntity.h"
 
 class testChunkClass : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(testChunkClass);

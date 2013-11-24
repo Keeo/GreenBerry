@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "model/MapNoise.h"
+#include "noise/MapNoise.h"
 #include "model/MapGenerator.h"
 
 /*
@@ -18,7 +18,7 @@ int main(int argc, char** argv)
 {
     MapGenerator mg("efvgybuhnjmk");
     mg.generateMap(sf::Vector3i(1,0,0));
-    
+
     
     
     return 0;

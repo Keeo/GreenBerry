@@ -15,16 +15,16 @@
       <logicalFolder name="model" displayName="model" projectFiles="true">
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Chunk.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Chunk.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/ChunkModel.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/ChunkModel.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Map.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Map.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapGenerator.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapGenerator.h</itemPath>
-        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapModel.cpp</itemPath>
-        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapModel.h</itemPath>
-        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapNoise.cpp</itemPath>
-        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/MapNoise.h</itemPath>
-        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.cpp</itemPath>
-        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/noise/MapNoise.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/noise/MapNoise.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/noise/SimplexNoise.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/noise/SimplexNoise.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/World.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/World.h</itemPath>
       </logicalFolder>
@@ -128,6 +128,16 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/ChunkModel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/ChunkModel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/Map.cpp"
             ex="false"
             tool="1"
@@ -148,42 +158,32 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapModel.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapModel.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapNoise.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapNoise.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/World.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/World.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/noise/MapNoise.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/noise/MapNoise.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/noise/SimplexNoise.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/noise/SimplexNoise.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -369,6 +369,16 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/ChunkModel.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/ChunkModel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/Map.cpp"
             ex="false"
             tool="1"
@@ -389,42 +399,32 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapModel.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapModel.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapNoise.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/model/MapNoise.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/model/SimplexNoise.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/World.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/World.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/noise/MapNoise.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/noise/MapNoise.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/noise/SimplexNoise.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/noise/SimplexNoise.h"
             ex="false"
             tool="3"
             flavor2="0">
