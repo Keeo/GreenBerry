@@ -22,8 +22,13 @@ public:
     Window(const Window& orig);
     virtual ~Window();
     void draw();
+    void update();
 private:
+
+    void initShader();
     sf::RenderWindow _window;
+    sf::Shader _shader;
+    ADrawable _adrawable;
 };
 
 #endif	/* WINDOW_H */

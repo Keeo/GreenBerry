@@ -17,6 +17,8 @@
         <itemPath>D:/_school/s5/BP/GreenBerry/src/abstract/ADrawable.h</itemPath>
       </logicalFolder>
       <logicalFolder name="control" displayName="control" projectFiles="true">
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Camera.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Camera.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Game.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Game.h</itemPath>
       </logicalFolder>
@@ -109,6 +111,7 @@
           <incDir>
             <pElem>C:/Frameworks/SFML/include</pElem>
             <pElem>C:/Frameworks/boost/include/boost-1_54</pElem>
+            <pElem>C:/Frameworks/glm</pElem>
           </incDir>
           <preprocessorList>
             <Elem>GLEW_STATIC</Elem>
@@ -138,6 +141,16 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/abstract/ADrawable.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/Camera.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/Camera.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -399,6 +412,16 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/abstract/ADrawable.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/Camera.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/Camera.h"
             ex="false"
             tool="3"
             flavor2="0">

@@ -14,7 +14,12 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-class ADrawable {
+#include <glm/glm.hpp>
+#include <glm/ext.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
+class ADrawable 
+{
 public:
     ADrawable();
     ADrawable(const ADrawable& orig);
@@ -22,12 +27,13 @@ public:
     
     void setVAO();
     void setVB();
-    
+
     void draw();
 private:
     
-    GLuint VertexArrayID;
-    GLuint vertexbuffer;
+    
+    GLuint _vertexArrayID = -1;
+    GLuint _vertexBufferID = -1;
     
     GLfloat g_vertex_buffer_data[9] = {
         -1.0f, -1.0f, 0.0f,

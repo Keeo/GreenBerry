@@ -9,6 +9,7 @@
 #define	GAME_H
 
 #include "../view/Window.h"
+#include "Camera.h"
 
 class Game
 {
@@ -22,6 +23,7 @@ public:
     
 private:
     Window _window;
+    //Camera _camera;
 };
 
 #endif	/* GAME_H */

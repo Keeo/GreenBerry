@@ -23,6 +23,7 @@ void Game::run()
 {
     while (true)
     {
+        _window.update();
         _window.draw();
     }
 }
