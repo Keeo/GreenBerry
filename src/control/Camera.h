@@ -22,6 +22,7 @@ public:
     Camera(const Camera& orig);
     virtual ~Camera();
     
+    void init();
     void update();
     glm::mat4 getVP();
     

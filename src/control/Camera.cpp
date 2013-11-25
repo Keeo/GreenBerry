@@ -9,8 +9,6 @@
 
 Camera::Camera()
 {
-    _projection = glm::perspective(90.f, float(800) / float(600), 1.f, 100.f);
-    _view = glm::lookAt(_position, _position + _direction, glm::vec3(0, 1, 0));
 }
 
 void Camera::update()
@@ -21,11 +19,22 @@ void Camera::update()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) _position.z-=0.005f;
     
     rotate();
+    std::cout<<"Position:"<<" ";
+    std::cout<<_position.x<<" ";
+    std::cout<<_position.y<<" ";
+    std::cout<<_position.z<<std::endl;
+    
+    std::cout<<"Directioin:"<<" ";
+    std::cout<<_direction.x<<" ";
+    std::cout<<_direction.y<<" ";
+    std::cout<<_direction.z<<std::endl;
+    
+    std::cout<<std::endl;
 }
 
 glm::mat4 Camera::getVP()
 {
-    return _view * _projection;
+    return _projection * _view * glm::mat4();
 }
 
 void Camera::rotate()
@@ -59,6 +68,12 @@ void Camera::updateDirection()
 	_up = glm::cross(_right, _direction);
 }
 
+void Camera::init()
+{
+    _position = glm::vec3(0);
+    _projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
+    _view = glm::lookAt(glm::vec3(4,3,-3), glm::vec3(0,0,0), glm::vec3(0,1,0));
+}
 
 Camera::Camera(const Camera& orig)
 {

@@ -23,7 +23,7 @@ public:
     
 private:
     Window _window;
-    //Camera _camera;
+    Camera _camera;
 };
 
 #endif	/* GAME_H */

@@ -1,13 +1,17 @@
 #version 330 core
-//#extension GL_ARB_explicit_uniform_location : require
+#extension GL_ARB_explicit_attrib_location : require
+#extension GL_ARB_explicit_uniform_location : require
 
-// Input vertex data, different for all executions of this shader.
 layout(location = 0) in vec3 vertexPosition_modelspace;
+layout(location = 1) in vec3 vertexColor;
+layout(location = 2) uniform mat4 MVP;
 
-void main(){
+out vec3 fragmentColor;
 
-    gl_Position.xyz = vertexPosition_modelspace;
-    gl_Position.w = 1.0;
-
+void main()
+{
+    gl_Position =  MVP * vec4(vertexPosition_modelspace,1);
+    //gl_Position =  vec4(vertexPosition_modelspace, 1);
+    fragmentColor = vertexColor;
 }
 

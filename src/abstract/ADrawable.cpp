@@ -40,6 +40,14 @@ void ADrawable::setVB()
     if (_vertexBufferID == -1) std::cout<<"_vertexBufferID still -1?"<<std::endl;
 }
 
+void ADrawable::setColor()
+{
+    glGenBuffers(1, &_colorbuffer);
+    glBindBuffer(GL_ARRAY_BUFFER, _colorbuffer);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(g_color_buffer_data), g_color_buffer_data, GL_STATIC_DRAW);
+    if (_colorbuffer == -1) std::cout<<"_colorbuffer still -1?"<<std::endl;
+}
+
 void ADrawable::draw()
 {
     // 1rst attribute buffer : vertices
@@ -53,12 +61,26 @@ void ADrawable::draw()
        0,                  // stride
        (void*)0            // array buffer offset
     );
+    
+    glEnableVertexAttribArray(1);
+    glBindBuffer(GL_ARRAY_BUFFER, _colorbuffer);
+    glVertexAttribPointer(
+        1,                                // attribute. No particular reason for 1, but must match the layout in the shader.
+        3,                                // size
+        GL_FLOAT,                         // type
+        GL_FALSE,                         // normalized?
+        0,                                // stride
+        (void*)0                          // array buffer offset
+    );
 
-    //glUniformMatrix4fv(10, 1, GL_FALSE, glm::value_ptr(glm::vec3(1.f,0.f,1.f)));
+
+    
+    //glUniform3fv(10, 1, glm::value_ptr(glm::vec3(1.f,0.f,1.f)));
     
     
     // Draw the triangle !
-    glDrawArrays(GL_TRIANGLES, 0, 3); // Starting from vertex 0; 3 vertices total -> 1 triangle
+    glDrawArrays(GL_TRIANGLES, 0, 12*3); // Starting from vertex 0; 3 vertices total -> 1 triangle
 
     glDisableVertexAttribArray(0);
+    glDisableVertexAttribArray(1);
 }

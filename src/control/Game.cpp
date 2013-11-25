@@ -21,8 +21,10 @@ Game::~Game()
 
 void Game::run()
 {
+    //_camera.init();
     while (true)
     {
+        //_camera.update();
         _window.update();
         _window.draw();
     }
