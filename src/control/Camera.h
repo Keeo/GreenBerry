@@ -8,6 +8,10 @@
 #ifndef CAMERA_H
 #define	CAMERA_H
 
+#include <gl/glew.h>
+#include <SFML/Window.hpp>
+#include <SFML/OpenGL.hpp>
+#include <SFML/Graphics.hpp>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -24,7 +28,7 @@ public:
     
     void init();
     void update();
-    glm::mat4 getVP();
+    void draw();
     
 private:
     glm::mat4 _projection;

@@ -21,11 +21,12 @@ Game::~Game()
 
 void Game::run()
 {
-    //_camera.init();
+    _camera.init();
     while (true)
     {
-        //_camera.update();
+        _camera.update();
         _window.update();
+        _camera.draw();
         _window.draw();
     }
 }
