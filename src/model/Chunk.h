@@ -10,18 +10,22 @@
 
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
-#include "Block.h"
-#include <iostream>
-#include "../observer/IEventMessagingSystem.h"
+
 #include <boost/archive/binary_oarchive.hpp>
 #include <boost/archive/binary_iarchive.hpp>
+
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
 
+#include "../abstract/ADrawable.h"
+#include "../observer/IEventMessagingSystem.h"
+#include "Block.h"
+#include "Direction.h"
 
 
-class Chunk : IEventMessagingSystem
+class Chunk : IEventMessagingSystem, public ADrawable
 {
     
 public:
@@ -51,12 +55,15 @@ public:
     Chunk* e = 0;
     Chunk* s = 0;
     
+    void buildMesh();
+    void buildCube(int, int, int);
+    void buildSquare(float, float, float, Direction);
+    void prebuildSquare();
+    
     static std::string getChunkName(sf::Vector3i&);
 private:
 
 
-    
-    
     
     sf::Vector3i _pos;
     

@@ -20,34 +20,33 @@ ADrawable::~ADrawable()
 }
 
 
-void ADrawable::setVAO()
+void ADrawable::loadVAO()
 {
     glGenVertexArrays(1, &_vertexArrayID);
     glBindVertexArray(_vertexArrayID);
     
-    if (_vertexArrayID == -1) std::cout<<"_vertexArrayID still -1?"<<std::endl;
+    assert(_vertexArrayID != -1);
 }
 
-void ADrawable::setVB()
+void ADrawable::loadVB()
 {
     glGenBuffers(1, &_vertexBufferID);
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBufferID);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
-    
-    if (_vertexBufferID == -1) std::cout<<"_vertexBufferID still -1?"<<std::endl;
+
+    assert(_vertexBufferID != -1);
 }
 
-void ADrawable::setColor()
+void ADrawable::VBDToGpu()
 {
-    glGenBuffers(1, &_colorbuffer);
-    glBindBuffer(GL_ARRAY_BUFFER, _colorbuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(g_color_buffer_data), g_color_buffer_data, GL_STATIC_DRAW);
-    if (_colorbuffer == -1) std::cout<<"_colorbuffer still -1?"<<std::endl;
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * gvbd_pointer, g_vertex_buffer_data, GL_STATIC_DRAW);
 }
 
 void ADrawable::draw()
 {
     glEnableVertexAttribArray(0);
+    
+    assert(_vertexBufferID!=-1);
+    //printVBD();
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBufferID);
     glVertexAttribPointer(
        0,
@@ -57,25 +56,26 @@ void ADrawable::draw()
        0,
        (void*)0
     );
-    
-    glEnableVertexAttribArray(1);
-    glBindBuffer(GL_ARRAY_BUFFER, _colorbuffer);
-    glVertexAttribPointer(
-        1,
-        3,
-        GL_FLOAT,
-        GL_FALSE,
-        0,
-        (void*)0
-    );
-
-
-    
+        
     //glUniform3fv(10, 1, glm::value_ptr(glm::vec3(1.f,0.f,1.f)));
     
     
-    glDrawArrays(GL_TRIANGLES, 0, 12*3);
+    glDrawArrays(GL_TRIANGLES, 0, gvbd_pointer / 3);
+    //glDrawArrays(GL_LINES, 0, gvbd_pointer / 3);
 
     glDisableVertexAttribArray(0);
-    glDisableVertexAttribArray(1);
+}
+
+void ADrawable::init()
+{
+    loadVAO();
+    loadVB();
+}
+
+void ADrawable::printVBD()
+{
+    std::cout<<"VBDPrint: ";
+    for (int i=0;i<gvbd_pointer;++i)
+        std::cout<<g_vertex_buffer_data[i]<<' ';
+    std::cout<<"__end"<<std::endl;
 }

@@ -12,9 +12,12 @@
 #include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
 #include <SFML/Graphics.hpp>
+
 #include <iostream>
+
 #include "../abstract/ADrawable.h"
-#include <iostream>
+#include "../model/Direction.h"
+#include "../model/Chunk.h"
 
 class Window {
 public:
@@ -28,7 +31,8 @@ private:
     void initShader();
     sf::RenderWindow _window;
     sf::Shader _shader;
-    ADrawable _adrawable;
+    
+    Chunk _chunk;
 };
 
 #endif	/* WINDOW_H */

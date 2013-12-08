@@ -39,9 +39,21 @@ Window::Window()
     initShader();
     _shader.bind();
     
-    _adrawable.setVAO();
-    _adrawable.setVB();
-    _adrawable.setColor();
+    _chunk.init();
+    _chunk.prebuildSquare();
+    _chunk.dummyGenerate();
+    _chunk.buildMesh();
+    
+    /*_chunk.buildSquare(0, 0, 0, UP);
+    _chunk.buildSquare(0, 0, 0, DOWN);
+    
+    _chunk.buildSquare(0, 0, 0, LEFT);
+    _chunk.buildSquare(0, 0, 0, RIGHT);
+        
+    _chunk.buildSquare(0, 0, 0, FORWARD);
+    _chunk.buildSquare(0, 0, 0, BACKWARD);*/
+    
+    _chunk.VBDToGpu();
 }
 
 Window::Window(const Window& orig)
@@ -58,10 +70,9 @@ void Window::draw()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     
-    
-    _adrawable.draw();
-    
-    std::cout<<glGetError();
+    _chunk.draw();
+
+    std::cout<<"GLError"<<glGetError()<<std::endl;
     _window.display();
 }
 
@@ -79,5 +90,5 @@ void Window::update()
 void Window::initShader()
 {
     bool ret = _shader.loadFromFile("D:/_school/s5/BP/GreenBerry/src/shaders/vertex.shader", "D:/_school/s5/BP/GreenBerry/src/shaders/fragment.shader");
-    if (!ret) std::cout<<"Cannot load shaders."<<std::endl;
+    assert(ret);
 }
