@@ -33,6 +33,7 @@ private:
     sf::Shader _shader;
     
     Chunk _chunk;
+    Chunk _chunk2;
 };
 
 #endif	/* WINDOW_H */

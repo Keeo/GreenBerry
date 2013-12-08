@@ -23,7 +23,8 @@ void Camera::update()
 
 void Camera::draw()
 {
-    glUniformMatrix4fv(2,  1, GL_FALSE, glm::value_ptr(_projection * _view));
+    glUniformMatrix4fv(3, 1, GL_FALSE, glm::value_ptr(_view));
+    glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(_projection));
 }
 
 void Camera::rotate()

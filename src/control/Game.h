@@ -24,6 +24,7 @@ public:
 private:
     Window _window;
     Camera _camera;
+    //World _world;
 };
 
 #endif	/* GAME_H */

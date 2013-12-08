@@ -7,6 +7,11 @@
 
 #include "ADrawable.h"
 
+ADrawable::ADrawable(sf::Vector3i pos)
+{
+    _model = glm::translate(pos.x, pos.y, pos.z);
+}
+
 ADrawable::ADrawable()
 {
 }
@@ -19,26 +24,13 @@ ADrawable::~ADrawable()
 {
 }
 
-
-void ADrawable::loadVAO()
+void ADrawable::moveToGpu()
 {
-    glGenVertexArrays(1, &_vertexArrayID);
     glBindVertexArray(_vertexArrayID);
-    
-    assert(_vertexArrayID != -1);
-}
-
-void ADrawable::loadVB()
-{
-    glGenBuffers(1, &_vertexBufferID);
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBufferID);
-
-    assert(_vertexBufferID != -1);
-}
-
-void ADrawable::VBDToGpu()
-{
+    
     glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * gvbd_pointer, g_vertex_buffer_data, GL_STATIC_DRAW);
+    glDisableVertexAttribArray(0);
 }
 
 void ADrawable::draw()
@@ -59,7 +51,7 @@ void ADrawable::draw()
         
     //glUniform3fv(10, 1, glm::value_ptr(glm::vec3(1.f,0.f,1.f)));
     
-    
+    glUniformMatrix4fv(2, 1, GL_FALSE, glm::value_ptr(_model));
     glDrawArrays(GL_TRIANGLES, 0, gvbd_pointer / 3);
     //glDrawArrays(GL_LINES, 0, gvbd_pointer / 3);
 
@@ -68,8 +60,11 @@ void ADrawable::draw()
 
 void ADrawable::init()
 {
-    loadVAO();
-    loadVB();
+    glGenVertexArrays(1, &_vertexArrayID);
+    assert(_vertexArrayID != -1);
+    
+    glGenBuffers(1, &_vertexBufferID);
+    assert(_vertexBufferID != -1);
 }
 
 void ADrawable::printVBD()

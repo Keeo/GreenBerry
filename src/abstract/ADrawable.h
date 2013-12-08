@@ -21,12 +21,13 @@
 class ADrawable 
 {
 public:
+    ADrawable(sf::Vector3i);
     ADrawable();
     ADrawable(const ADrawable& orig);
     virtual ~ADrawable();
     
     void init();
-    void VBDToGpu();
+    void moveToGpu();
     void printVBD();
     
     void draw();
@@ -37,9 +38,8 @@ protected:
     GLfloat* g_vertex_buffer_data = 0;
     
 private:
-    
-    void loadVAO();
-    void loadVB();
+
+    glm::mat4 _model;
     
     GLuint _vertexArrayID = -1;
     GLuint _vertexBufferID = -1;

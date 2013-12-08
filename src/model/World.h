@@ -12,8 +12,10 @@
 
 class World
 {
+
 public:
     World();
+
 private:
     
     Map _map;

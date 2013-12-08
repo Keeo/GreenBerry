@@ -7,7 +7,7 @@
 
 #include "Window.h"
 
-Window::Window()
+Window::Window() : _chunk(sf::Vector3i(0,-1,0)), _chunk2(sf::Vector3i(2,0,2))
 {
     sf::ContextSettings settings;
     settings.depthBits = 24;
@@ -39,21 +39,23 @@ Window::Window()
     initShader();
     _shader.bind();
     
-    _chunk.init();
+    
     _chunk.prebuildSquare();
     _chunk.dummyGenerate();
     _chunk.buildMesh();
     
-    /*_chunk.buildSquare(0, 0, 0, UP);
-    _chunk.buildSquare(0, 0, 0, DOWN);
+    _chunk.init();
+    _chunk.moveToGpu();
     
-    _chunk.buildSquare(0, 0, 0, LEFT);
-    _chunk.buildSquare(0, 0, 0, RIGHT);
-        
-    _chunk.buildSquare(0, 0, 0, FORWARD);
-    _chunk.buildSquare(0, 0, 0, BACKWARD);*/
     
-    _chunk.VBDToGpu();
+    _chunk2.prebuildSquare();
+    _chunk2.dummyGenerate();
+    _chunk2.buildMesh();
+    
+    _chunk2.init();
+    _chunk2.moveToGpu();
+    
+
 }
 
 Window::Window(const Window& orig)
@@ -69,10 +71,10 @@ void Window::draw()
     //_window.clear();
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    
     _chunk.draw();
-
-    std::cout<<"GLError"<<glGetError()<<std::endl;
+    _chunk2.draw();
+    
+    std::cout<<"GLError: "<<glGetError()<<std::endl;
     _window.display();
 }
 

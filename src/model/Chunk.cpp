@@ -8,7 +8,7 @@
 
 #include "Chunk.h"
 
-Chunk::Chunk(sf::Vector3i position) : _pos(position)
+Chunk::Chunk(sf::Vector3i position) : _pos(position), ADrawable(position * 32)
 {
 }
 
@@ -27,9 +27,15 @@ Block& Chunk::getBlock(sf::Vector3i position)
 void Chunk::dummyGenerate()
 {
     for (int i=0; i<32; ++i )
+    {
         for (int j=0; j<32; ++j )
-                for (int k=0; k<32; ++k )
-                    _data[i][j][k] = j < 16 ? GRASS : AIR;
+        {
+            for (int k=0; k<32; ++k )
+            {
+                _data[i][j][k] = j < 16 ? GRASS : AIR;
+            }
+        }
+    }
 }
 
 Block Chunk::placeBlock(sf::Vector3i position, Block replacement)
