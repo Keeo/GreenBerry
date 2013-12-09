@@ -36,6 +36,9 @@ protected:
     
     unsigned int gvbd_pointer = 0;
     GLfloat* g_vertex_buffer_data = 0;
+
+    unsigned int guvd_pointer = 0;
+    GLfloat* g_uv_buffer_data = 0;
     
 private:
 
@@ -43,6 +46,7 @@ private:
     
     GLuint _vertexArrayID = -1;
     GLuint _vertexBufferID = -1;
+    GLuint _uvBufferID = -1;
     
     
 };

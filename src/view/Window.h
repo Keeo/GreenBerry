@@ -32,8 +32,10 @@ private:
     sf::RenderWindow _window;
     sf::Shader _shader;
     
+    sf::Image _img;
+    sf::Texture _tex;
+    
     Chunk _chunk;
-    Chunk _chunk2;
 };
 
 #endif	/* WINDOW_H */

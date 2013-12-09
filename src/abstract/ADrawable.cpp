@@ -36,25 +36,36 @@ void ADrawable::moveToGpu()
 void ADrawable::draw()
 {
     glEnableVertexAttribArray(0);
-    
+    glEnableVertexAttribArray(1);
     assert(_vertexBufferID!=-1);
-    //printVBD();
+
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBufferID);
     glVertexAttribPointer(
        0,
        3,
        GL_FLOAT,
        GL_FALSE,
-       0,
+       5 * sizeof(GLfloat),
        (void*)0
     );
-        
+
+    glVertexAttribPointer(
+        1,                 // attribute
+        2,                 // number of elements per vertex
+        GL_FLOAT,          // the type of each element
+        GL_FALSE,          // take our values as-is
+        5 * sizeof(GLfloat),// no extra data between each position
+        (GLvoid*)(3*sizeof(GLfloat))// offset of first element
+    );
+    
+    
     //glUniform3fv(10, 1, glm::value_ptr(glm::vec3(1.f,0.f,1.f)));
     
     glUniformMatrix4fv(2, 1, GL_FALSE, glm::value_ptr(_model));
     glDrawArrays(GL_TRIANGLES, 0, gvbd_pointer / 3);
-    //glDrawArrays(GL_LINES, 0, gvbd_pointer / 3);
+    //glDrawArrays(GL_LINES, 0, gvbd_pointer / 3 );
 
+    glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(0);
 }
 

@@ -13,10 +13,10 @@ Camera::Camera()
 
 void Camera::update()
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) _position += _direction * 0.01f;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) _position -= _direction * 0.01f;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) _position += _right * 0.01f;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) _position -= _right * 0.01f;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) _position += _direction * 0.1f;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) _position -= _direction * 0.1f;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) _position += _right * 0.1f;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) _position -= _right * 0.1f;
     
     rotate();
 }

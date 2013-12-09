@@ -8,7 +8,7 @@
 
 #include "Chunk.h"
 
-Chunk::Chunk(sf::Vector3i position) : _pos(position), ADrawable(position * 32)
+Chunk::Chunk(sf::Vector3i position) : _pos(position), ADrawable(position * SIZE)
 {
 }
 
@@ -26,13 +26,27 @@ Block& Chunk::getBlock(sf::Vector3i position)
 
 void Chunk::dummyGenerate()
 {
-    for (int i=0; i<32; ++i )
+    for (int i=0; i<SIZE; ++i )
     {
-        for (int j=0; j<32; ++j )
+        for (int j=0; j<SIZE; ++j )
         {
-            for (int k=0; k<32; ++k )
+            for (int k=0; k<SIZE; ++k )
             {
-                _data[i][j][k] = j < 16 ? GRASS : AIR;
+                _data[i][j][k] = i + j + k < 16 ? GRASS : AIR;
+            }
+        }
+    }
+}
+
+void Chunk::randGenerate()
+{
+    for (int i=0; i<SIZE; ++i )
+    {
+        for (int j=0; j<SIZE; ++j )
+        {
+            for (int k=0; k<SIZE; ++k )
+            {
+                _data[i][j][k] = static_cast<Block>(rand() % 2);
             }
         }
     }
@@ -66,11 +80,11 @@ std::string Chunk::getChunkName(sf::Vector3i& pos)
 void Chunk::buildMesh()
 {
     const int edge = 1;
-    for (int i = 0 + edge; i < 32 - edge; ++i )
+    for (int i = 0 + edge; i < SIZE - edge; ++i )
     {
-        for (int j = 0 + edge; j < 32 - edge; ++j )
+        for (int j = 0 + edge; j < SIZE - edge; ++j )
         {
-            for (int k = 0 + edge; k < 32 - edge; ++k )
+            for (int k = 0 + edge; k < SIZE - edge; ++k )
             {
                 buildCube(i,j,k);
             }
@@ -80,33 +94,40 @@ void Chunk::buildMesh()
 
 void Chunk::buildCube(int x, int y, int z)
 {
+    std::cout<<_data[x][y][z]<<std::endl;
     if (_data[x][y][z] == AIR) return;
     
+    std::cout<<_data[x][y+1][z]<<std::endl;
     if (_data[x][y+1][z] == AIR)
     {
         buildSquare(x, y, z, UP);
     }
     
+    std::cout<<_data[x][y-1][z]<<std::endl;
     if (_data[x][y-1][z] == AIR)
     {
         buildSquare(x, y, z, DOWN);
     }
     
+    std::cout<<_data[x-1][y][z]<<std::endl;
     if (_data[x-1][y][z] == AIR)
     {
         buildSquare(x, y, z, LEFT);
     }
     
+    std::cout<<_data[x+1][y][z]<<std::endl;
     if (_data[x+1][y][z] == AIR)
     {
         buildSquare(x, y, z, RIGHT);
     }
     
+    std::cout<<_data[x][y][z+1]<<std::endl;
     if (_data[x][y][z+1] == AIR)
     {
         buildSquare(x, y, z, FORWARD);
     }
     
+    std::cout<<_data[x][y][z-1]<<std::endl;
     if (_data[x][y][z-1] == AIR)
     {
         buildSquare(x, y, z, BACKWARD);
@@ -115,16 +136,15 @@ void Chunk::buildCube(int x, int y, int z)
 
 void Chunk::prebuildSquare()
 {
-    const int meshLength = 3 * 3 * 2 * 6 * 32 * 32 * 32 / 2;
+    // float * triangle * square * cube * chunk * chunk * chunk / max number of akceptable cubes * uv floats
+    const int meshLength = 3 * 3 * 2 * 6 * SIZE * SIZE * SIZE / 2 * 2;
     g_vertex_buffer_data = new GLfloat[meshLength];    
 }
 
-
 void Chunk::buildSquare(float x, float y, float z, Direction d)
 {
-    const float m = 1;
-    const float cm = 0.9f;
-    int pStart = gvbd_pointer;
+    const float cm = 1.0f;
+
     switch (d)
     {
         case UP:
@@ -132,26 +152,44 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
+            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
+            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+                
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            
             
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
-            
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 1;
             
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data[gvbd_pointer++] = 1;
             
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
             break;
         
         case DOWN:
@@ -159,26 +197,44 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
             
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
             break;
             
         case LEFT:
@@ -186,26 +242,44 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
             
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
             break;
             
         case RIGHT:
@@ -213,26 +287,44 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
             
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
             break;
             
         case FORWARD:
@@ -240,26 +332,44 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
             
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
             break;
             
         case BACKWARD:
@@ -267,29 +377,44 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
             
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
             
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
             g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
             g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data[gvbd_pointer++] = 0;
             break;
     }
-    
-    for (int i = pStart; i<gvbd_pointer;++i)
-        g_vertex_buffer_data[i]*=m;
 }

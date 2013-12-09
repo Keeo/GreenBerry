@@ -24,6 +24,7 @@
 #include "Block.h"
 #include "Direction.h"
 
+#define SIZE 32
 
 class Chunk : IEventMessagingSystem, public ADrawable
 {
@@ -44,6 +45,7 @@ public:
     
     // Populate chunk with air and grass blocks
     void dummyGenerate          ();
+    void randGenerate           ();
     
     const sf::Vector3i& getPosition();
     
@@ -64,10 +66,9 @@ public:
 private:
 
 
-    
     sf::Vector3i _pos;
     
-    Block _data[32][32][32];
+    Block _data[SIZE][SIZE][SIZE];
 
     
     

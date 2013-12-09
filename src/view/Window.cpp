@@ -7,7 +7,7 @@
 
 #include "Window.h"
 
-Window::Window() : _chunk(sf::Vector3i(0,-1,0)), _chunk2(sf::Vector3i(2,0,2))
+Window::Window() : _chunk(sf::Vector3i(0,-1,0))
 {
     sf::ContextSettings settings;
     settings.depthBits = 24;
@@ -37,23 +37,32 @@ Window::Window() : _chunk(sf::Vector3i(0,-1,0)), _chunk2(sf::Vector3i(2,0,2))
     //glEnable(GL_DEPTH_TEST);
     
     initShader();
+    
+
+    _img.loadFromFile("D:\\_school\\s5\\BP\\GreenBerry\\cubes.png");
+    _tex.loadFromImage(_img);
+    _shader.setParameter("sampler", _tex);
     _shader.bind();
     
-    
     _chunk.prebuildSquare();
-    _chunk.dummyGenerate();
-    _chunk.buildMesh();
+    //_chunk.dummyGenerate();
+    //_chunk.randGenerate();
+    _chunk.placeBlock(sf::Vector3i(1,0,1),AIR);
+    _chunk.placeBlock(sf::Vector3i(1,2,1),AIR);
+    
+    _chunk.placeBlock(sf::Vector3i(0,1,1),AIR);
+    _chunk.placeBlock(sf::Vector3i(2,1,1),AIR);
+    
+    _chunk.placeBlock(sf::Vector3i(1,1,0),AIR);
+    _chunk.placeBlock(sf::Vector3i(1,1,2),AIR);
+    
+    _chunk.placeBlock(sf::Vector3i(1,1,1),GRASS);
+    //_chunk.buildCube(1, 1, 1);
+    _chunk.buildSquare(0, 0, 0, UP);
+    //_chunk.buildMesh();
     
     _chunk.init();
     _chunk.moveToGpu();
-    
-    
-    _chunk2.prebuildSquare();
-    _chunk2.dummyGenerate();
-    _chunk2.buildMesh();
-    
-    _chunk2.init();
-    _chunk2.moveToGpu();
     
 
 }
@@ -72,7 +81,6 @@ void Window::draw()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     _chunk.draw();
-    _chunk2.draw();
     
     std::cout<<"GLError: "<<glGetError()<<std::endl;
     _window.display();
