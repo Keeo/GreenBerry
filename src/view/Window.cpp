@@ -46,20 +46,21 @@ Window::Window() : _chunk(sf::Vector3i(0,-1,0))
     
     _chunk.prebuildSquare();
     //_chunk.dummyGenerate();
-    //_chunk.randGenerate();
+    _chunk.randGenerate();
+    /*
     _chunk.placeBlock(sf::Vector3i(1,0,1),AIR);
     _chunk.placeBlock(sf::Vector3i(1,2,1),AIR);
-    
+
     _chunk.placeBlock(sf::Vector3i(0,1,1),AIR);
     _chunk.placeBlock(sf::Vector3i(2,1,1),AIR);
-    
+
     _chunk.placeBlock(sf::Vector3i(1,1,0),AIR);
     _chunk.placeBlock(sf::Vector3i(1,1,2),AIR);
+
+    _chunk.placeBlock(sf::Vector3i(1,1,1),GRASS);*/
+    //_chunk.buildSquare(0, 0, 0, UP);
     
-    _chunk.placeBlock(sf::Vector3i(1,1,1),GRASS);
-    //_chunk.buildCube(1, 1, 1);
-    _chunk.buildSquare(0, 0, 0, UP);
-    //_chunk.buildMesh();
+    _chunk.buildMesh();
     
     _chunk.init();
     _chunk.moveToGpu();

@@ -23,6 +23,7 @@ void Camera::update()
 
 void Camera::draw()
 {
+    //std::cout<<"Cam:"<<_position.x<<" "<<_position.y<<" "<<_position.z<<std::endl;
     glUniformMatrix4fv(3, 1, GL_FALSE, glm::value_ptr(_view));
     glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(_projection));
 }
