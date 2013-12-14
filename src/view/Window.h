@@ -34,8 +34,6 @@ private:
     
     sf::Image _img;
     sf::Texture _tex;
-    
-    Chunk _chunk;
 };
 
 #endif	/* WINDOW_H */

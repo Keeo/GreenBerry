@@ -7,6 +7,11 @@
 
 #include "ADrawable.h"
 
+ADrawable::ADrawable(sf::Vector3i pos, int size) : g_vertex_buffer_data(size)
+{
+    _model = glm::translate(pos.x, pos.y, pos.z);
+}
+
 ADrawable::ADrawable(sf::Vector3i pos)
 {
     _model = glm::translate(pos.x, pos.y, pos.z);
@@ -29,7 +34,7 @@ void ADrawable::moveToGpu()
     glBindVertexArray(_vertexArrayID);
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBufferID);
     
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * gvbd_pointer, g_vertex_buffer_data, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * g_vertex_buffer_data.size(), g_vertex_buffer_data.data(), GL_STATIC_DRAW);
     glDisableVertexAttribArray(0);
 }
 
@@ -62,9 +67,11 @@ void ADrawable::draw()
     //glUniform3fv(10, 1, glm::value_ptr(glm::vec3(1.f,0.f,1.f)));
     
     glUniformMatrix4fv(2, 1, GL_FALSE, glm::value_ptr(_model));
-    glDrawArrays(GL_TRIANGLES, 0, gvbd_pointer / 3);
-    //glDrawArrays(GL_LINES, 0, gvbd_pointer / 3 );
-
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
+        glDrawArrays(GL_TRIANGLES, 0, g_vertex_buffer_data.size() / 3);
+    } else {
+        glDrawArrays(GL_LINES, 0, g_vertex_buffer_data.size() / 3 );
+    }
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(0);
 }
@@ -81,7 +88,7 @@ void ADrawable::init()
 void ADrawable::printVBD()
 {
     std::cout<<"VBDPrint: ";
-    for (int i=0;i<gvbd_pointer;++i)
+    for (int i=0;i<g_vertex_buffer_data.size();++i)
         std::cout<<g_vertex_buffer_data[i]<<' ';
     std::cout<<"__end"<<std::endl;
 }

@@ -60,7 +60,6 @@ public:
     void buildMesh();
     void buildCube(int, int, int);
     void buildSquare(float, float, float, Direction);
-    void prebuildSquare();
     
     static std::string getChunkName(sf::Vector3i&);
 private:

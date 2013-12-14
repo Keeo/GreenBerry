@@ -39,7 +39,8 @@ private:
     glm::vec3 _right;
     glm::vec3 _up;
     
-    float _horizontalAngle, _verticalAngle;
+    float _horizontalAngle = 0;
+    float _verticalAngle = 0;
     
     void rotate();
     void updateDirection();

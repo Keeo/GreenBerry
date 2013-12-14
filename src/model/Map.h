@@ -17,7 +17,7 @@ class Map
 public:
     Map(sf::Vector3i position);
     
-
+    void draw();
     
     
 private:

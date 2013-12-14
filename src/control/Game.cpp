@@ -27,6 +27,8 @@ void Game::run()
         _camera.update();
         _window.update();
         _camera.draw();
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        _world.draw();
         _window.draw();
     }
 }

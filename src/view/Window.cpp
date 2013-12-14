@@ -7,7 +7,7 @@
 
 #include "Window.h"
 
-Window::Window() : _chunk(sf::Vector3i(0,-1,0))
+Window::Window()
 {
     sf::ContextSettings settings;
     settings.depthBits = 24;
@@ -43,29 +43,6 @@ Window::Window() : _chunk(sf::Vector3i(0,-1,0))
     _tex.loadFromImage(_img);
     _shader.setParameter("sampler", _tex);
     _shader.bind();
-    
-    _chunk.prebuildSquare();
-    //_chunk.dummyGenerate();
-    _chunk.randGenerate();
-    /*
-    _chunk.placeBlock(sf::Vector3i(1,0,1),AIR);
-    _chunk.placeBlock(sf::Vector3i(1,2,1),AIR);
-
-    _chunk.placeBlock(sf::Vector3i(0,1,1),AIR);
-    _chunk.placeBlock(sf::Vector3i(2,1,1),AIR);
-
-    _chunk.placeBlock(sf::Vector3i(1,1,0),AIR);
-    _chunk.placeBlock(sf::Vector3i(1,1,2),AIR);
-
-    _chunk.placeBlock(sf::Vector3i(1,1,1),GRASS);*/
-    //_chunk.buildSquare(0, 0, 0, UP);
-    
-    _chunk.buildMesh();
-    
-    _chunk.init();
-    _chunk.moveToGpu();
-    
-
 }
 
 Window::Window(const Window& orig)
@@ -79,11 +56,11 @@ Window::~Window()
 void Window::draw()
 {
     //_window.clear();
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    _chunk.draw();
-    
-    std::cout<<"GLError: "<<glGetError()<<std::endl;
+    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    int err = glGetError();
+    if (err) {
+        std::cout<<"GLError: "<<err<<std::endl;
+    }
     _window.display();
 }
 

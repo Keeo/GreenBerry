@@ -16,7 +16,6 @@ Chunk::Chunk(){}
 
 Chunk::~Chunk()
 {
-    delete [] g_vertex_buffer_data;
 }
 
 Block& Chunk::getBlock(sf::Vector3i position)
@@ -79,22 +78,22 @@ std::string Chunk::getChunkName(sf::Vector3i& pos)
 
 void Chunk::buildMesh()
 {
-    const int edge = 1;
-    for (int i = 0 + edge; i < SIZE - edge; ++i )
+    #define EDGE 1
+    for (int i = 0 + EDGE; i < SIZE - EDGE; ++i)
     {
-        for (int j = 0 + edge; j < SIZE - edge; ++j )
+        for (int j = 0 + EDGE; j < SIZE - EDGE; ++j)
         {
-            for (int k = 0 + edge; k < SIZE - edge; ++k )
+            for (int k = 0 + EDGE; k < SIZE - EDGE; ++k)
             {
                 buildCube(i,j,k);
             }
         }
     }
+    std::cout<<"MeshContains:"<<g_vertex_buffer_data.size()<<"f"<<std::endl;
 }
 
 void Chunk::buildCube(int x, int y, int z)
 {
-    std::cout<<_data[x][y][z]<<std::endl;
     if (_data[x][y][z] == AIR) return;
     
     if (_data[x][y+1][z] == AIR)
@@ -128,13 +127,6 @@ void Chunk::buildCube(int x, int y, int z)
     }
 }
 
-void Chunk::prebuildSquare()
-{
-    // float * triangle * square * cube * chunk * chunk * chunk / max number of akceptable cubes * uv floats
-    const int meshLength = 3 * 3 * 2 * 6 * SIZE * SIZE * SIZE / 2 * 2;
-    g_vertex_buffer_data = new GLfloat[meshLength];    
-}
-
 void Chunk::buildSquare(float x, float y, float z, Direction d)
 {
     const float cm = 1.0f;
@@ -142,273 +134,273 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
     switch (d)
     {
         case UP:
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 0 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
                 
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 1 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             break;
         
         case DOWN:
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 0 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 1 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             break;
             
         case LEFT:
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 0 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 1 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             break;
             
         case RIGHT:
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 0 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 1 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             break;
             
         case FORWARD:
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 0 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 1 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             break;
             
         case BACKWARD:
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 0 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 1 );
             
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + x;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * -0.5 + y;
-            g_vertex_buffer_data[gvbd_pointer++] = cm * +0.5 + z;
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
-            g_vertex_buffer_data[gvbd_pointer++] = 1;
-            g_vertex_buffer_data[gvbd_pointer++] = 0;
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             break;
     }
 }

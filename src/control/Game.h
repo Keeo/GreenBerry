@@ -10,6 +10,7 @@
 
 #include "../view/Window.h"
 #include "Camera.h"
+#include "../model/World.h"
 
 class Game
 {
@@ -24,7 +25,7 @@ public:
 private:
     Window _window;
     Camera _camera;
-    //World _world;
+    World _world;
 };
 
 #endif	/* GAME_H */

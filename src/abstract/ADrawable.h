@@ -13,6 +13,7 @@
 #include <SFML/OpenGL.hpp>
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
 
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
@@ -21,6 +22,7 @@
 class ADrawable 
 {
 public:
+    ADrawable(sf::Vector3i, int);
     ADrawable(sf::Vector3i);
     ADrawable();
     ADrawable(const ADrawable& orig);
@@ -34,19 +36,14 @@ public:
 
 protected:
     
-    unsigned int gvbd_pointer = 0;
-    GLfloat* g_vertex_buffer_data = 0;
+    std::vector<GLfloat> g_vertex_buffer_data;
 
-    unsigned int guvd_pointer = 0;
-    GLfloat* g_uv_buffer_data = 0;
-    
 private:
 
     glm::mat4 _model;
     
     GLuint _vertexArrayID = -1;
     GLuint _vertexBufferID = -1;
-    GLuint _uvBufferID = -1;
     
     
 };

@@ -15,7 +15,9 @@ class World
 
 public:
     World();
-
+    
+    void draw();
+    
 private:
     
     Map _map;

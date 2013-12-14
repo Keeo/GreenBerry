@@ -10,3 +10,8 @@
 World::World() : _map(sf::Vector3i(0,0,0))
 {
 }
+
+void World::draw()
+{
+    _map.draw();
+}
