@@ -25,7 +25,7 @@ int* MapNoise::getHeightField(int x, int y)
 
 void MapNoise::setScale(double scale)
 {
-    _scale = scale;
+    //_scale = scale;
 }
 
 

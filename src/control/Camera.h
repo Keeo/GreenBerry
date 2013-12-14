@@ -27,7 +27,7 @@ public:
     virtual ~Camera();
     
     void init();
-    void update();
+    void update(const sf::Time&);
     void draw();
     
 private:
@@ -42,7 +42,7 @@ private:
     float _horizontalAngle = 0;
     float _verticalAngle = 0;
     
-    void rotate();
+    void rotate(float&);
     void updateDirection();
 };
 

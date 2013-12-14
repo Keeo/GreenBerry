@@ -136,10 +136,10 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
         case UP:
             g_vertex_buffer_data.push_back( cm * -0.5 + x );
             g_vertex_buffer_data.push_back( cm * +0.5 + y );
-            g_vertex_buffer_data.push_back( cm * -0.5 + z );
-            
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
+                
             g_vertex_buffer_data.push_back( 0 );
-            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
             g_vertex_buffer_data.push_back( cm * +0.5 + x );
             g_vertex_buffer_data.push_back( cm * +0.5 + y );
@@ -150,10 +150,10 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
             
             g_vertex_buffer_data.push_back( cm * -0.5 + x );
             g_vertex_buffer_data.push_back( cm * +0.5 + y );
-            g_vertex_buffer_data.push_back( cm * +0.5 + z );
-                
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
+            
             g_vertex_buffer_data.push_back( 0 );
-            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             
             
             g_vertex_buffer_data.push_back( cm * -0.5 + x );
@@ -201,35 +201,35 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
             g_vertex_buffer_data.push_back( 1 );
             
             
-            g_vertex_buffer_data.push_back( cm * -0.5 + x );
-            g_vertex_buffer_data.push_back( cm * -0.5 + y );
-            g_vertex_buffer_data.push_back( cm * +0.5 + z );
-            
-            g_vertex_buffer_data.push_back( 0 );
-            g_vertex_buffer_data.push_back( 1 );
-            
-            g_vertex_buffer_data.push_back( cm * +0.5 + x );
-            g_vertex_buffer_data.push_back( cm * -0.5 + y );
-            g_vertex_buffer_data.push_back( cm * +0.5 + z );
-            
-            g_vertex_buffer_data.push_back( 1 );
-            g_vertex_buffer_data.push_back( 1 );
-            
             g_vertex_buffer_data.push_back( cm * +0.5 + x );
             g_vertex_buffer_data.push_back( cm * -0.5 + y );
             g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
             g_vertex_buffer_data.push_back( 1 );
             g_vertex_buffer_data.push_back( 0 );
+            
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
+            
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 1 );
+            
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
+            
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             break;
             
         case LEFT:
             g_vertex_buffer_data.push_back( cm * -0.5 + x );
             g_vertex_buffer_data.push_back( cm * -0.5 + y );
-            g_vertex_buffer_data.push_back( cm * -0.5 + z );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
             g_vertex_buffer_data.push_back( 0 );
-            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
             g_vertex_buffer_data.push_back( cm * -0.5 + x );
             g_vertex_buffer_data.push_back( cm * +0.5 + y );
@@ -240,10 +240,10 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
             
             g_vertex_buffer_data.push_back( cm * -0.5 + x );
             g_vertex_buffer_data.push_back( cm * -0.5 + y );
-            g_vertex_buffer_data.push_back( cm * +0.5 + z );
+            g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
             g_vertex_buffer_data.push_back( 0 );
-            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             
             
             g_vertex_buffer_data.push_back( cm * -0.5 + x );
@@ -292,34 +292,34 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
             
             
             g_vertex_buffer_data.push_back( cm * +0.5 + x );
-            g_vertex_buffer_data.push_back( cm * -0.5 + y );
-            g_vertex_buffer_data.push_back( cm * +0.5 + z );
-            
-            g_vertex_buffer_data.push_back( 0 );
-            g_vertex_buffer_data.push_back( 1 );
-            
-            g_vertex_buffer_data.push_back( cm * +0.5 + x );
-            g_vertex_buffer_data.push_back( cm * +0.5 + y );
-            g_vertex_buffer_data.push_back( cm * +0.5 + z );
-            
-            g_vertex_buffer_data.push_back( 1 );
-            g_vertex_buffer_data.push_back( 1 );
-            
-            g_vertex_buffer_data.push_back( cm * +0.5 + x );
             g_vertex_buffer_data.push_back( cm * +0.5 + y );
             g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
             g_vertex_buffer_data.push_back( 1 );
             g_vertex_buffer_data.push_back( 0 );
+            
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
+            
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 1 );
+            
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
+            
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             break;
             
         case FORWARD:
             g_vertex_buffer_data.push_back( cm * -0.5 + x );
-            g_vertex_buffer_data.push_back( cm * -0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
             g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
             g_vertex_buffer_data.push_back( 0 );
-            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             
             g_vertex_buffer_data.push_back( cm * +0.5 + x );
             g_vertex_buffer_data.push_back( cm * -0.5 + y );
@@ -327,13 +327,13 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
             
             g_vertex_buffer_data.push_back( 1 );
             g_vertex_buffer_data.push_back( 0 );
-            
+
             g_vertex_buffer_data.push_back( cm * -0.5 + x );
-            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * -0.5 + y );
             g_vertex_buffer_data.push_back( cm * -0.5 + z );
             
             g_vertex_buffer_data.push_back( 0 );
-            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 0 );
             
             
             g_vertex_buffer_data.push_back( cm * -0.5 + x );
@@ -381,26 +381,26 @@ void Chunk::buildSquare(float x, float y, float z, Direction d)
             g_vertex_buffer_data.push_back( 1 );
             
             
-            g_vertex_buffer_data.push_back( cm * -0.5 + x );
-            g_vertex_buffer_data.push_back( cm * +0.5 + y );
-            g_vertex_buffer_data.push_back( cm * +0.5 + z );
-            
-            g_vertex_buffer_data.push_back( 0 );
-            g_vertex_buffer_data.push_back( 1 );
-            
-            g_vertex_buffer_data.push_back( cm * +0.5 + x );
-            g_vertex_buffer_data.push_back( cm * +0.5 + y );
-            g_vertex_buffer_data.push_back( cm * +0.5 + z );
-            
-            g_vertex_buffer_data.push_back( 1 );
-            g_vertex_buffer_data.push_back( 1 );
-            
             g_vertex_buffer_data.push_back( cm * +0.5 + x );
             g_vertex_buffer_data.push_back( cm * -0.5 + y );
             g_vertex_buffer_data.push_back( cm * +0.5 + z );
             
             g_vertex_buffer_data.push_back( 1 );
             g_vertex_buffer_data.push_back( 0 );
+            
+            g_vertex_buffer_data.push_back( cm * +0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
+            
+            g_vertex_buffer_data.push_back( 1 );
+            g_vertex_buffer_data.push_back( 1 );
+            
+            g_vertex_buffer_data.push_back( cm * -0.5 + x );
+            g_vertex_buffer_data.push_back( cm * +0.5 + y );
+            g_vertex_buffer_data.push_back( cm * +0.5 + z );
+            
+            g_vertex_buffer_data.push_back( 0 );
+            g_vertex_buffer_data.push_back( 1 );
             break;
     }
 }

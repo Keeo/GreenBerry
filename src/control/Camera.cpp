@@ -11,14 +11,16 @@ Camera::Camera()
 {
 }
 
-void Camera::update()
+void Camera::update(const sf::Time& time)
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) _position += _direction * 0.1f;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) _position -= _direction * 0.1f;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) _position += _right * 0.1f;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) _position -= _right * 0.1f;
+    float delta = time.asSeconds();
+    float move_speed = 10.0f;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) _position += _direction * move_speed * delta;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) _position -= _direction * move_speed * delta;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) _position += _right * move_speed * delta;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) _position -= _right * move_speed * delta;
     
-    rotate();
+    rotate(delta);
 }
 
 void Camera::draw()
@@ -28,7 +30,7 @@ void Camera::draw()
     glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(_projection));
 }
 
-void Camera::rotate()
+void Camera::rotate(float& delta)
 {
     
     static sf::Vector2i pos;
@@ -37,8 +39,9 @@ void Camera::rotate()
     float y = pos.y - sf::Mouse::getPosition().y;
     pos = sf::Mouse::getPosition();
     
-    _horizontalAngle += x * 0.01f;
-    _verticalAngle += y * 0.01f;
+    float mouse_speed = 0.5f;
+    _horizontalAngle += x * mouse_speed * delta;
+    _verticalAngle += y * mouse_speed * delta;
     updateDirection();
     
     _view = glm::lookAt(_position, _position + _direction, glm::vec3(0,1,0));
@@ -65,7 +68,7 @@ void Camera::init()
 {
     _position = glm::vec3(4,3,-3);
     _direction = glm::vec3(0,0,0);
-    _projection = glm::perspective(45.0f, 4.0f / 3.0f, 0.1f, 100.0f);
+    _projection = glm::perspective(60.0f, 4.0f / 3.0f, 0.1f, 100.0f);
     _view = glm::lookAt(_position, _direction, glm::vec3(0,1,0));
 }
 

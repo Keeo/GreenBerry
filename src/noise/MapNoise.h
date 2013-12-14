@@ -21,7 +21,7 @@ public:
     int getHeight(int x,int y);
     int* getHeightField(int x,int y);
 private:
-    double _scale = 256;
+    double _scale = 16;
 };
 
 #endif	/* MAPNOISE_H */

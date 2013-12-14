@@ -21,10 +21,12 @@ Game::~Game()
 
 void Game::run()
 {
+    sf::Clock clock;
     _camera.init();
     while (true)
     {
-        _camera.update();
+        sf::Time elapsed = clock.restart();
+        _camera.update(elapsed);
         _window.update();
         _camera.draw();
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

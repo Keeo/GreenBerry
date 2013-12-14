@@ -40,7 +40,7 @@ Map::Map(sf::Vector3i position) : grid(boost::extents[9][9][9])
 Chunk* Map::generateChunk(sf::Vector3i position)
 {
     Chunk* chunk = new Chunk(position);
-    int* field = _mn.getHeightField(position.x, position.y);
+    int* field = _mn.getHeightField(position.x, position.z);
     
     for (int i=0; i<32; ++i) //x
     {
@@ -48,7 +48,7 @@ Chunk* Map::generateChunk(sf::Vector3i position)
         {
             for(int k=0; k<32; ++k) //y
             {
-                Block b = k<field[i + j*32] ? Block::GRASS : Block::AIR;
+                Block b = k + position.y * SIZE < field[i + j*32] ? Block::GRASS : Block::AIR;
                 sf::Vector3i p = sf::Vector3i(i,k,j);
                 chunk->placeBlock(p, b);
             }
