@@ -8,7 +8,7 @@
 
 #include "Chunk.h"
 
-Chunk::Chunk(sf::Vector3i position) : _pos(position), ADrawable(position * SIZE)
+Chunk::Chunk(sf::Vector3i position) : _pos(position), ADrawable(position * SIZE, 100000)
 {
 }
 
@@ -78,6 +78,7 @@ std::string Chunk::getChunkName(sf::Vector3i& pos)
 
 void Chunk::buildMesh()
 {
+    sf::Clock clock;
     #define EDGE 1
     for (int i = 0 + EDGE; i < SIZE - EDGE; ++i)
     {
@@ -89,7 +90,92 @@ void Chunk::buildMesh()
             }
         }
     }
-    std::cout<<"MeshContains:"<<g_vertex_buffer_data.size()<<"f"<<std::endl;
+    
+    for (int i = 0; i < SIZE; ++i)
+    {
+        for (int j = 0; j < SIZE; ++j)
+        {
+            for (int k = 0; k < SIZE; )
+            {
+                buildCubeOnEdge(i,j,k);
+                if (i == 0 || i == SIZE-1 ||  j ==0 || j == SIZE-1) {
+                    ++k;
+                } else {
+                    k = k==0 ? SIZE - 1 : SIZE;
+                }
+            }
+        }
+    }
+    
+    std::cout<<"Mesh contains:"<<g_vertex_buffer_data.size()<<"f, and has been build in: "<<clock.getElapsedTime().asMicroseconds()<<"us."<<std::endl;
+}
+
+void Chunk::buildCubeOnEdge(int x, int y, int z)
+{
+    if (_data[x][y][z] == AIR) return;
+    
+    if (y == SIZE-1){
+        if (u->_data[x][0][z] == AIR) {
+            buildSquare(x, y, z, UP);
+        }
+    } else {
+        if (_data[x][y+1][z] == AIR) {
+            buildSquare(x, y, z, UP);
+        }
+    }
+    
+    if (x == SIZE-1){
+        if (e->_data[0][y][z] == AIR) {
+            buildSquare(x, y, z, RIGHT);
+        }
+    } else {
+        if (_data[x+1][y][z] == AIR) {
+            buildSquare(x, y, z, RIGHT);
+        }
+    }
+    
+    if (z == SIZE-1){
+        if (n->_data[x][y][0] == AIR) {
+            buildSquare(x, y, z, BACKWARD);
+        }
+    } else {
+        if (_data[x][y][z+1] == AIR) {
+            buildSquare(x, y, z, BACKWARD);
+        }
+    }
+        
+    
+    if (y == 0){
+        if (d->_data[x][SIZE-1][z] == AIR) {
+            buildSquare(x, y, z, DOWN);
+        }
+    } else {
+        if (_data[x][y-1][z] == AIR) {
+            buildSquare(x, y, z, DOWN);
+        }
+    }
+    
+    if (x == 0){
+        if (w->_data[SIZE-1][y][z] == AIR) {
+            buildSquare(x, y, z, LEFT);
+        }
+    } else {
+        if (_data[x-1][y][z] == AIR) {
+            buildSquare(x, y, z, LEFT);
+        }
+    }
+    
+    if (z == 0){
+        if (s->_data[x][y][SIZE-1] == AIR) {
+            buildSquare(x, y, z, FORWARD);
+        }
+    } else {
+        if (_data[x][y][z-1] == AIR) {
+            buildSquare(x, y, z, FORWARD);
+        }
+    }
+    
+    //std::cout<<x<<":"<<y<<":"<<z<<std::endl;
 }
 
 void Chunk::buildCube(int x, int y, int z)

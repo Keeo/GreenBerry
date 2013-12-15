@@ -9,6 +9,7 @@
 #define	MAPNOISE_H
 
 #include "SimplexNoise.h"
+#include <iostream>
 
 /**
  * Decorative class for specific setting over noise generator
@@ -21,7 +22,11 @@ public:
     int getHeight(int x,int y);
     int* getHeightField(int x,int y);
 private:
-    double _scale = 16;
+
+    float lerp(float x, float y, float fraction);
+    
+    double _scale = 1;
+    double _smoothness = 16;
 };
 
 #endif	/* MAPNOISE_H */

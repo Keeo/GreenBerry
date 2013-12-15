@@ -7,8 +7,9 @@
 
 #include "ADrawable.h"
 
-ADrawable::ADrawable(sf::Vector3i pos, int size) : g_vertex_buffer_data(size)
+ADrawable::ADrawable(sf::Vector3i pos, int size) 
 {
+    g_vertex_buffer_data.reserve(size);
     _model = glm::translate(pos.x, pos.y, pos.z);
 }
 

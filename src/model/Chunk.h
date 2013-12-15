@@ -58,8 +58,9 @@ public:
     Chunk* s = 0;
     
     void buildMesh();
-    void buildCube(int, int, int);
-    void buildSquare(float, float, float, Direction);
+    inline void buildCube(int, int, int);
+    inline void buildCubeOnEdge(int, int, int);
+    inline void buildSquare(float, float, float, Direction);
     
     static std::string getChunkName(sf::Vector3i&);
 private:

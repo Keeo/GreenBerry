@@ -9,8 +9,19 @@
 
 int MapNoise::getHeight(int x, int y)
 {
-    double n = noise(x,y);
+    float xx = x / _smoothness;
+    float yy = y / _smoothness;
+
+    int u = (int)xx;
+    int v = (int)yy;
+    float fractionX = xx-u, fractionZ = yy-u;
+    
+    float n = lerp(lerp(noise(u, v), noise(u+1, v), fractionX),
+            lerp(noise(u, v+1), noise(u+1, v+1), fractionX),
+            fractionZ);
+    
     n *= _scale;
+    
     return (int)n;
 }
 
@@ -28,4 +39,7 @@ void MapNoise::setScale(double scale)
     //_scale = scale;
 }
 
-
+float MapNoise::lerp(float x, float y, float fraction)
+{
+	return x+(y-x)*fraction;
+}

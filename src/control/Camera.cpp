@@ -32,19 +32,19 @@ void Camera::draw()
 
 void Camera::rotate(float& delta)
 {
-    
-    static sf::Vector2i pos;
-    
-    float x = pos.x - sf::Mouse::getPosition().x;
-    float y = pos.y - sf::Mouse::getPosition().y;
-    pos = sf::Mouse::getPosition();
-    
-    float mouse_speed = 0.5f;
-    _horizontalAngle += x * mouse_speed * delta;
-    _verticalAngle += y * mouse_speed * delta;
-    updateDirection();
-    
-    _view = glm::lookAt(_position, _position + _direction, glm::vec3(0,1,0));
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
+
+        float x = sf::Mouse::getPosition().x-500;
+        float y = sf::Mouse::getPosition().y-500;
+        sf::Mouse::setPosition(sf::Vector2i(500,500));
+
+        float mouse_speed = 1.0f;
+        _horizontalAngle += x * mouse_speed * delta;
+        _verticalAngle += y * mouse_speed * delta;
+        updateDirection();
+
+        _view = glm::lookAt(_position, _position + _direction, glm::vec3(0,1,0));
+    }
 }
 
 void Camera::updateDirection()
