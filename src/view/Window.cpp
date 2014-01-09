@@ -39,7 +39,6 @@ Window::Window()
     //glEnable(GL_DEPTH_TEST);
     
     initShader();
-    
 
     _img.loadFromFile("D:\\_school\\s5\\BP\\GreenBerry\\cubes.png");
     _tex.loadFromImage(_img);

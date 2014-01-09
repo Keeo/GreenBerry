@@ -24,6 +24,9 @@ enum Events {
     eveChunkGet,
     eveChunkOnLoad,
     
+    // Delete cube
+    eveDeleteCube,
+    
     // this element has to be the last one, due to its use as a eventc counter
     EVENT_COUNT
 };

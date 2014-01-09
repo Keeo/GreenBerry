@@ -15,9 +15,6 @@ Map::Map(sf::Vector3i position) : grid(boost::extents[9][9][9])
             {
                 sf::Vector3i p = position + sf::Vector3i(i, j, k) - sf::Vector3i(4, 4, 4);
                 grid[i][j][k] = generateChunk(p);
-                /*Chunk* c = new Chunk(p);
-                c->dummyGenerate();
-                grid[i][j][k] = c;*/
             }
 
     for (int i=1; i!=8; ++i)
@@ -35,6 +32,31 @@ Map::Map(sf::Vector3i position) : grid(boost::extents[9][9][9])
                 grid[i][j][k]->moveToGpu();
                 std::cout<<" -- done"<<std::endl;
             }
+    
+    EventMessagingSystem::getInstance().Register(Events::eveDeleteCube, this, (Callback)&Map::deleteCube);
+}
+
+void Map::deleteCube(void* data)
+{
+    glm::vec3 **p = (glm::vec3**) data;
+    glm::vec3 position = *p[0];
+    std::cout<<"Input position: "<<glm::to_string(position)<<std::endl;
+
+    Chunk* c = getChunk(position);
+    Block b = c->placeBlock(position, Block::AIR);
+    if (b != Block::AIR) {
+        c->buildMesh();
+        c->moveToGpu();
+    }
+}
+
+Chunk* Map::getChunk(glm::vec3 position)
+{
+    int x = position.x / SIZE + 4;
+    int y = position.y / SIZE + 4;
+    int z = position.z / SIZE + 4 ;
+    std::cout<<"Chunk position: x:"<<x<<" y:"<<y<<" z:"<<z<<std::endl;
+    return grid[x][y][z];
 }
 
 Chunk* Map::generateChunk(sf::Vector3i position)

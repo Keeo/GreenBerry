@@ -21,6 +21,14 @@ void Camera::update(const sf::Time& time)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) _position -= _right * move_speed * delta;
     
     rotate(delta);
+    
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
+        glm::vec3 **p = new glm::vec3*[2];
+        p[0] = &_position;
+        p[1] = &_direction;
+        Post(Events::eveDeleteCube, p, 2);
+        delete[] p;
+    }
 }
 
 void Camera::draw()
@@ -28,6 +36,8 @@ void Camera::draw()
     //std::cout<<"Cam:"<<_position.x<<" "<<_position.y<<" "<<_position.z<<std::endl;
     glUniformMatrix4fv(3, 1, GL_FALSE, glm::value_ptr(_view));
     glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(_projection));
+    glUniform3fv(6,  1, glm::value_ptr(_position));
+    
 }
 
 void Camera::rotate(float& delta)

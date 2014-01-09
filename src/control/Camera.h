@@ -17,8 +17,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/Mouse.hpp>
+#include "../observer/IEventMessagingSystem.h"
 
-class Camera
+class Camera : IEventMessagingSystem
 {
     
 public:

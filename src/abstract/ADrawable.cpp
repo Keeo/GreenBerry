@@ -43,6 +43,7 @@ void ADrawable::draw()
 {
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
+    glEnableVertexAttribArray(5);
     assert(_vertexBufferID!=-1);
 
     glBindBuffer(GL_ARRAY_BUFFER, _vertexBufferID);
@@ -51,7 +52,7 @@ void ADrawable::draw()
        3,
        GL_FLOAT,
        GL_FALSE,
-       5 * sizeof(GLfloat),
+       8 * sizeof(GLfloat),
        (void*)0
     );
 
@@ -60,18 +61,26 @@ void ADrawable::draw()
         2,                 // number of elements per vertex
         GL_FLOAT,          // the type of each element
         GL_FALSE,          // take our values as-is
-        5 * sizeof(GLfloat),// no extra data between each position
+        8 * sizeof(GLfloat),// no extra data between each position
         (GLvoid*)(3*sizeof(GLfloat))// offset of first element
     );
     
+    glVertexAttribPointer(
+        5,                 // attribute
+        3,                 // number of elements per vertex
+        GL_FLOAT,          // the type of each element
+        GL_FALSE,          // take our values as-is
+        8 * sizeof(GLfloat),// no extra data between each position
+        (GLvoid*)(5*sizeof(GLfloat))// offset of first element
+    );
     
     //glUniform3fv(10, 1, glm::value_ptr(glm::vec3(1.f,0.f,1.f)));
     
     glUniformMatrix4fv(2, 1, GL_FALSE, glm::value_ptr(_model));
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
-        glDrawArrays(GL_TRIANGLES, 0, g_vertex_buffer_data.size() / 3);
-    } else {
         glDrawArrays(GL_LINES, 0, g_vertex_buffer_data.size() / 3 );
+    } else {
+        glDrawArrays(GL_TRIANGLES, 0, g_vertex_buffer_data.size() / 3);
     }
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(0);

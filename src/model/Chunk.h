@@ -39,8 +39,21 @@ public:
     Chunk                       ();
     virtual ~Chunk              ();
     
-    // place block on position, returns old one
+    /**
+     * 
+     * @param Local position
+     * @param AIR
+     * @return 
+     */
     Block placeBlock            (sf::Vector3i, Block AIR);
+    
+    /**
+     * 
+     * @param Global position
+     * @param AIR
+     * @return 
+     */
+    Block placeBlock            (glm::vec3, Block AIR);
     inline Block& getBlock      (sf::Vector3i);
     
     // Populate chunk with air and grass blocks
@@ -64,7 +77,7 @@ public:
     
     static std::string getChunkName(sf::Vector3i&);
 private:
-
+    inline void pushNormal(Direction);
 
     sf::Vector3i _pos;
     

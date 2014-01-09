@@ -12,14 +12,25 @@
 #include "Chunk.h"
 #include "../noise/MapNoise.h"
 #include <iostream>
-class Map
+#include "../observer/IEventMessagingSystem.h"
+#include "../observer/EventMessagingSystem.h"
+#include "glm/ext.hpp"
+#include <SFML/System.hpp>
+class Map : IEventMessagingSystem
 {
 public:
     Map(sf::Vector3i position);
     
     void draw();
     
+    /**
+     * Finds pointer to chunk
+     * @param pos Global coordinates
+     * @return 
+     */
+    Chunk* getChunk(glm::vec3 pos);
     
+    void deleteCube(void* data);
 private:
     
     typedef boost::multi_array<Chunk*, 3> array_type;
