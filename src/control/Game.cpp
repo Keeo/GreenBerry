@@ -9,6 +9,7 @@
 
 Game::Game()
 {
+    Register(Events::eveShutdown, this, (Callback)&Game::stopGame);
 }
 
 Game::Game(const Game& orig)
@@ -19,11 +20,16 @@ Game::~Game()
 {
 }
 
+void Game::stopGame()
+{
+    _running = false;
+}
+
 void Game::run()
 {
     sf::Clock clock;
     _camera.init();
-    while (true)
+    while (_running)
     {
         sf::Time elapsed = clock.restart();
         _camera.update(elapsed);

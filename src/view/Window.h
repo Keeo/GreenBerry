@@ -18,8 +18,10 @@
 #include "../abstract/ADrawable.h"
 #include "../model/Direction.h"
 #include "../model/Chunk.h"
+#include "../observer/IEventMessagingSystem.h"
 
-class Window {
+class Window : IEventMessagingSystem
+{
 public:
     Window();
     Window(const Window& orig);

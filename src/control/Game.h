@@ -11,8 +11,9 @@
 #include "../view/Window.h"
 #include "Camera.h"
 #include "../model/World.h"
+#include "../observer/IEventMessagingSystem.h"
 
-class Game
+class Game : IEventMessagingSystem
 {
     
 public:
@@ -22,7 +23,11 @@ public:
     Game(const Game& orig);
     virtual ~Game();
     
+    void stopGame();
+    
 private:
+    bool _running = true;
+    
     Window _window;
     Camera _camera;
     World _world;

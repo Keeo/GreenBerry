@@ -71,8 +71,10 @@ void Window::update()
     while (_window.pollEvent(event))
     {
         // "close requested" event: we close the window
-        if (event.type == sf::Event::Closed)
+        if (event.type == sf::Event::Closed) {
             _window.close();
+            Post(Events::eveShutdown, 0, 0);
+        }
     }
 }
 

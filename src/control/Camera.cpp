@@ -19,6 +19,7 @@ void Camera::update(const sf::Time& time)
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) _position -= _direction * move_speed * delta;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) _position += _right * move_speed * delta;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) _position -= _right * move_speed * delta;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) Post(Events::eveShutdown, 0, 0);
     
     rotate(delta);
     
@@ -49,11 +50,11 @@ void Camera::rotate(float& delta)
         sf::Mouse::setPosition(sf::Vector2i(500,500));
 
         float mouse_speed = 1.0f;
-        _horizontalAngle += x * mouse_speed * delta;
-        _verticalAngle += y * mouse_speed * delta;
+        _horizontalAngle -= x * mouse_speed * delta;
+        _verticalAngle -= y * mouse_speed * delta;
         updateDirection();
 
-        _view = glm::lookAt(_position, _position + _direction, glm::vec3(0,1,0));
+        _view = glm::lookAt(_position, _position + _direction, _up);
     }
 }
 
