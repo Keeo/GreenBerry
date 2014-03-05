@@ -8,6 +8,8 @@
 #ifndef IEVENTMESSAGINGSYSTEM_H
 #define	IEVENTMESSAGINGSYSTEM_H
 
+#include <iostream>
+#include "../Helper.h"
 #include <SFML/System.hpp>
 
 // none of events can be numeritize
@@ -26,6 +28,9 @@ enum Events {
     
     // Delete cube
     eveDeleteCube,
+    
+    // When player move and changes chunk
+    evePlayerChangedChunk,
     
     // this element has to be the last one, due to its use as a eventc counter
     EVENT_COUNT

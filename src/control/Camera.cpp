@@ -30,6 +30,14 @@ void Camera::update(const sf::Time& time)
         Post(Events::eveDeleteCube, p, 2);
         delete[] p;
     }
+    
+    sf::Vector3i sf_position(_position.x,_position.y,_position.z);
+    sf::Vector3i sf_position_last(_position_last.x,_position_last.y,_position_last.z);
+    if (Chunk::getChunkCoords(sf_position) != Chunk::getChunkCoords(sf_position_last)) {
+        sf::Vector3i t = sf_position - sf_position_last;
+        Post(Events::evePlayerChangedChunk, (void*)&t, 0);
+    }
+    _position_last = _position;
 }
 
 void Camera::draw()

@@ -16,6 +16,8 @@
 #include "../observer/EventMessagingSystem.h"
 #include "glm/ext.hpp"
 #include <SFML/System.hpp>
+#include "../Helper.h"
+
 class Map : IEventMessagingSystem
 {
 public:
@@ -30,6 +32,10 @@ public:
      */
     Chunk* getChunk(glm::vec3 pos);
     
+    void moveMap(void* data);
+    
+    void moveMapPointer(sf::Vector3i dir);
+    
     void deleteCube(void* data);
 private:
     
@@ -38,6 +44,8 @@ private:
     array_type grid;
     
     Chunk* core;
+    sf::Vector3i core;
+    
     
     Chunk* generateChunk(sf::Vector3i position);
     void connectChunk(sf::Vector3i pos);

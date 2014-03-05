@@ -76,6 +76,14 @@ public:
     inline void buildSquare(float, float, float, Direction);
     
     static std::string getChunkName(sf::Vector3i&);
+    
+    /**
+     * Get chunk's coords from global pos
+     * @param 
+     * @return 
+     */
+    static sf::Vector3i getChunkCoords(const sf::Vector3i pos) { return pos / SIZE; };
+    
 private:
     inline void pushNormal(Direction);
 

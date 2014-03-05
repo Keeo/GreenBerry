@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/77291535/Helper.o \
 	${OBJECTDIR}/_ext/883158912/ADrawable.o \
 	${OBJECTDIR}/_ext/1211055809/Camera.o \
 	${OBJECTDIR}/_ext/1211055809/Game.o \
@@ -82,6 +83,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/greenberry.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/greenberry ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/_ext/77291535/Helper.o: /D/_school/s5/BP/GreenBerry/src/Helper.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/77291535
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Helper.o /D/_school/s5/BP/GreenBerry/src/Helper.cpp
 
 ${OBJECTDIR}/_ext/883158912/ADrawable.o: /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/883158912
@@ -217,6 +223,19 @@ ${TESTDIR}/_ext/1262165778/TestMapNoiseTtrunner.o: /D/_school/s5/BP/GreenBerry/t
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/TestMapNoiseTtrunner.o /D/_school/s5/BP/GreenBerry/tests/TestMapNoiseTtrunner.cpp
 
+
+${OBJECTDIR}/_ext/77291535/Helper_nomain.o: ${OBJECTDIR}/_ext/77291535/Helper.o /D/_school/s5/BP/GreenBerry/src/Helper.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/77291535
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/77291535/Helper.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Helper_nomain.o /D/_school/s5/BP/GreenBerry/src/Helper.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/77291535/Helper.o ${OBJECTDIR}/_ext/77291535/Helper_nomain.o;\
+	fi
 
 ${OBJECTDIR}/_ext/883158912/ADrawable_nomain.o: ${OBJECTDIR}/_ext/883158912/ADrawable.o /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/883158912

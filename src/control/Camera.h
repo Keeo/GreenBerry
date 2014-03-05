@@ -17,7 +17,10 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/Mouse.hpp>
+
 #include "../observer/IEventMessagingSystem.h"
+#include "../model/Chunk.h"
+#include "../Helper.h"
 
 class Camera : IEventMessagingSystem
 {
@@ -36,6 +39,8 @@ private:
     glm::mat4 _view;
     
     glm::vec3 _position;
+    glm::vec3 _position_last;
+    
     glm::vec3 _direction;
     glm::vec3 _right;
     glm::vec3 _up;

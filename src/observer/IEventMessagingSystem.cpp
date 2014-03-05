@@ -32,6 +32,10 @@ void IEventMessagingSystem::UnRegister(Events eEvent, IEventMessagingSystem* pOb
 
 void IEventMessagingSystem::Post(Events eEvent, void* pData, unsigned int uiSize)
 {
+    switch (eEvent) {
+        case Events::evePlayerChangedChunk: std::cout<<"PlayerChangedChunk: ";
+        default: std::cout<<"Event fired";
+    }
     _ems.Post(eEvent,pData,uiSize);
 }
 
