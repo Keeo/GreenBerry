@@ -25,6 +25,7 @@ enum Events {
     // Chunk events
     eveChunkGet,
     eveChunkOnLoad,
+    eveLoadNewChunk,
     
     // Delete cube
     eveDeleteCube,
@@ -49,6 +50,7 @@ public:
 	void Register                   (Events eEvent, IEventMessagingSystem * pObj, Callback pFunc);
 	void UnRegister                 (Events eEvent, IEventMessagingSystem * pObj, Callback pFunc);
 	void Post			(Events eEvent, void * pData, unsigned int uiSize);
+	void Post			(Events eEvent, sf::Vector3i vector, unsigned int uiSize);
         void testFunction               (void* data);
 
 protected:

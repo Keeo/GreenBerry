@@ -9,6 +9,9 @@
 #define	CHUNKMODEL_H
 
 #include "Chunk.h"
+#include "../noise/MapNoise.h"
+#include "../observer/EventMessagingSystem.h"
+#include "../Helper.h"
 
 class ChunkModel : IEventMessagingSystem
 {
@@ -20,13 +23,17 @@ public:
     
     // saves chunk on disk and delete it
     void saveChunk(Chunk* chunk);
+    
+    // create and return new chunk in second argument and with return value
+    // Input values [sf::Vector3i, Chunk*]
+    Chunk* loadNewChunk(void * pData);
 private:
     
     std::string getFullChunkPath(sf::Vector3i);
     
     const sf::Vector3i _offset;
     std::string _location;
-    
+    MapNoise _mn;
 };
 
 #endif	/* CHUNKMODEL_H */

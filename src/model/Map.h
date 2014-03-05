@@ -17,6 +17,7 @@
 #include "glm/ext.hpp"
 #include <SFML/System.hpp>
 #include "../Helper.h"
+#include "../model/ChunkModel.h"
 
 class Map : IEventMessagingSystem
 {
@@ -44,7 +45,6 @@ private:
     array_type grid;
     
     Chunk* core;
-    sf::Vector3i core;
     
     
     Chunk* generateChunk(sf::Vector3i position);

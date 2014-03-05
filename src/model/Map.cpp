@@ -37,7 +37,7 @@ Map::Map(sf::Vector3i position) : grid(boost::extents[9][9][9])
             }
         }
     }
-
+    
     EventMessagingSystem::getInstance().Register(Events::eveDeleteCube, this, (Callback) & Map::deleteCube);
     EventMessagingSystem::getInstance().Register(Events::evePlayerChangedChunk, this, (Callback) & Map::moveMap);
 }
@@ -107,7 +107,7 @@ void Map::draw()
         for (int j = 1; j < 8; ++j) { //z
             for (int k = 1; k < 8; ++k) { //y
                 grid[i][j][k]->draw();
-            }
+}
         }
     }
 }

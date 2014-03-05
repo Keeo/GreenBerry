@@ -39,6 +39,11 @@ void IEventMessagingSystem::Post(Events eEvent, void* pData, unsigned int uiSize
     _ems.Post(eEvent,pData,uiSize);
 }
 
+void IEventMessagingSystem::Post(Events eEvent, sf::Vector3i pData, unsigned int uiSize)
+{
+    Post(eEvent, (void*) & pData, uiSize);
+}
+
 void IEventMessagingSystem::testFunction(void* data)
 {
     int* d = (int*)data;

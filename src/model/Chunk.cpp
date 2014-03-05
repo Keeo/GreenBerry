@@ -117,7 +117,6 @@ void Chunk::buildMesh()
             }
         }
     }
-    
     std::cout<<"Mesh contains:"<<g_vertex_buffer_data.size()<<"f, and has been build in: "<<clock.getElapsedTime().asMicroseconds()<<"us."<<std::endl;
 }
 
@@ -185,9 +184,7 @@ void Chunk::buildCubeOnEdge(int x, int y, int z)
             buildSquare(x, y, z, FORWARD);
         }
     }
-    
-    //std::cout<<x<<":"<<y<<":"<<z<<std::endl;
-}
+}    
 
 void Chunk::buildCube(int x, int y, int z)
 {
