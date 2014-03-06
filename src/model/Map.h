@@ -35,7 +35,7 @@ public:
     
     void moveMap(void* data);
     
-    void moveMapPointer(sf::Vector3i dir);
+    void moveCenter(sf::Vector3i dir);
     
     void deleteCube(void* data);
 private:
@@ -45,10 +45,12 @@ private:
     array_type grid;
     
     Chunk* core;
-    
+    sf::Vector3i _centerGrid;
+    sf::Vector3i _centerGlob;
     
     Chunk* generateChunk(sf::Vector3i position);
     void connectChunk(sf::Vector3i pos);
+    void _connectAll();
     
     MapNoise _mn;
 };

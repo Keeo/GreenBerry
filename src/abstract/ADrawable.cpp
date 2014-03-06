@@ -28,6 +28,8 @@ ADrawable::ADrawable(const ADrawable& orig)
 
 ADrawable::~ADrawable()
 {
+    glDeleteBuffers(1, &_vertexBufferID);
+    glDeleteVertexArrays(1, &_vertexArrayID);
 }
 
 void ADrawable::moveToGpu()

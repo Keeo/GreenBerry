@@ -85,9 +85,9 @@ void Camera::updateDirection()
 
 void Camera::init()
 {
-    _position = glm::vec3(4,3,-3);
-    _direction = glm::vec3(0,0,0);
-    _projection = glm::perspective(60.0f, 4.0f / 3.0f, 0.1f, 100.0f);
+    _position_last = _position = glm::vec3(0,40,0);
+    _direction = glm::vec3(1,40,0);
+    _projection = glm::perspective(100.0f, 4.0f / 3.0f, 0.1f, 400.0f);
     _view = glm::lookAt(_position, _direction, glm::vec3(0,1,0));
 }
 

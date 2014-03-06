@@ -14,7 +14,7 @@
 
 class Helper {
 public:
-    static void print(const sf::Vector3i);
+    static void print(const sf::Vector3i, std::string message = "Vector");
 };
 
 #endif	/* HELPER_H */

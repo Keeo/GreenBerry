@@ -7,6 +7,7 @@
 
 #include "Helper.h"
 
-void Helper::print(const sf::Vector3i vector) {
-    printf("V{x: %i, y:%i, z:%i}\n", vector.x, vector.y, vector.z);
+void Helper::print(const sf::Vector3i vector, std::string message) {
+    std::cout<<message;
+    printf(" {x: %i, y:%i, z:%i}\n", vector.x, vector.y, vector.z);
 }
