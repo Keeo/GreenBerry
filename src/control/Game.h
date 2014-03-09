@@ -12,6 +12,7 @@
 #include "Camera.h"
 #include "../model/World.h"
 #include "../observer/IEventMessagingSystem.h"
+#include "../model/Cube.h"
 
 class Game : IEventMessagingSystem
 {

@@ -28,6 +28,8 @@
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Chunk.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/ChunkModel.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/ChunkModel.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Cube.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Cube.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Map.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Map.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/World.cpp</itemPath>
@@ -193,6 +195,16 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/ChunkModel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/Cube.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/Cube.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -474,6 +486,16 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/ChunkModel.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/Cube.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/Cube.h"
             ex="false"
             tool="3"
             flavor2="0">

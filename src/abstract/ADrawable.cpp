@@ -79,7 +79,7 @@ void ADrawable::draw()
     //glUniform3fv(10, 1, glm::value_ptr(glm::vec3(1.f,0.f,1.f)));
     
     glUniformMatrix4fv(2, 1, GL_FALSE, glm::value_ptr(_model));
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) {
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q) || lines) {
         glDrawArrays(GL_LINES, 0, g_vertex_buffer_data.size() / 3 );
     } else {
         glDrawArrays(GL_TRIANGLES, 0, g_vertex_buffer_data.size() / 3);

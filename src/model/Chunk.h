@@ -23,6 +23,7 @@
 #include "../observer/IEventMessagingSystem.h"
 #include "Block.h"
 #include "Direction.h"
+#include "Cube.h"
 
 #define SIZE 32
 
@@ -83,7 +84,7 @@ public:
      * @return 
      */
     static sf::Vector3i getChunkCoords(const sf::Vector3i pos) { return pos / SIZE; };
-    
+    virtual void draw();
 private:
     inline void pushNormal(Direction);
 
@@ -91,7 +92,7 @@ private:
     
     Block _data[SIZE][SIZE][SIZE];
 
-    
+    Cube _cube;
     
     // BOOST SERIALIZE
     friend class boost::serialization::access;

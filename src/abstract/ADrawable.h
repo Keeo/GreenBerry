@@ -37,7 +37,8 @@ public:
 protected:
     
     std::vector<GLfloat> g_vertex_buffer_data;
-
+    bool lines = false;
+    
 private:
 
     glm::mat4 _model;

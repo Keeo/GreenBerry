@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1211055809/Game.o \
 	${OBJECTDIR}/_ext/39249803/Chunk.o \
 	${OBJECTDIR}/_ext/39249803/ChunkModel.o \
+	${OBJECTDIR}/_ext/39249803/Cube.o \
 	${OBJECTDIR}/_ext/39249803/Map.o \
 	${OBJECTDIR}/_ext/39249803/World.o \
 	${OBJECTDIR}/_ext/40178556/MapNoise.o \
@@ -113,6 +114,11 @@ ${OBJECTDIR}/_ext/39249803/ChunkModel.o: /D/_school/s5/BP/GreenBerry/src/model/C
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/ChunkModel.o /D/_school/s5/BP/GreenBerry/src/model/ChunkModel.cpp
+
+${OBJECTDIR}/_ext/39249803/Cube.o: /D/_school/s5/BP/GreenBerry/src/model/Cube.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Cube.o /D/_school/s5/BP/GreenBerry/src/model/Cube.cpp
 
 ${OBJECTDIR}/_ext/39249803/Map.o: /D/_school/s5/BP/GreenBerry/src/model/Map.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
@@ -300,6 +306,19 @@ ${OBJECTDIR}/_ext/39249803/ChunkModel_nomain.o: ${OBJECTDIR}/_ext/39249803/Chunk
 	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/ChunkModel_nomain.o /D/_school/s5/BP/GreenBerry/src/model/ChunkModel.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/39249803/ChunkModel.o ${OBJECTDIR}/_ext/39249803/ChunkModel_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/39249803/Cube_nomain.o: ${OBJECTDIR}/_ext/39249803/Cube.o /D/_school/s5/BP/GreenBerry/src/model/Cube.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/39249803/Cube.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Cube_nomain.o /D/_school/s5/BP/GreenBerry/src/model/Cube.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/39249803/Cube.o ${OBJECTDIR}/_ext/39249803/Cube_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/39249803/Map_nomain.o: ${OBJECTDIR}/_ext/39249803/Map.o /D/_school/s5/BP/GreenBerry/src/model/Map.cpp 
