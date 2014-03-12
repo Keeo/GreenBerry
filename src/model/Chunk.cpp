@@ -10,6 +10,7 @@
 
 Chunk::Chunk(sf::Vector3i position) : _pos(position), ADrawable(position * SIZE, 100000), _cube(position * SIZE)
 {
+    _fullAir = true;
     _cube.init();
     _cube.moveToGpu();
 }
@@ -22,8 +23,8 @@ Chunk::~Chunk()
 
 void Chunk::draw()
 {
-    ADrawable::draw();
-    _cube.draw();
+    if (!_fullAir) ADrawable::draw();
+    if (!_fullAir) _cube.draw();
 }
 
 Block& Chunk::getBlock(sf::Vector3i position)
@@ -43,6 +44,7 @@ void Chunk::dummyGenerate()
             }
         }
     }
+    _fullAir = false;
 }
 
 void Chunk::randGenerate()
@@ -57,6 +59,7 @@ void Chunk::randGenerate()
             }
         }
     }
+    _fullAir = false;
 }
 
 Block Chunk::placeBlock(glm::vec3 position, Block replacement)
@@ -70,6 +73,7 @@ Block Chunk::placeBlock(glm::vec3 position, Block replacement)
 
 Block Chunk::placeBlock(sf::Vector3i position, Block replacement)
 {
+    if (replacement != Block::AIR) _fullAir = false;
     Block& b = getBlock(position);
     Block ret = b;
     b = replacement;
@@ -96,6 +100,7 @@ std::string Chunk::getChunkName(sf::Vector3i& pos)
 void Chunk::buildMesh()
 {
     g_vertex_buffer_data.clear();
+    if (_fullAir) return;
     
     sf::Clock clock;
     #define EDGE 1

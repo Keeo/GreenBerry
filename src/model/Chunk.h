@@ -92,6 +92,7 @@ private:
     
     Block _data[SIZE][SIZE][SIZE];
 
+    bool _fullAir;
     Cube _cube;
     
     // BOOST SERIALIZE

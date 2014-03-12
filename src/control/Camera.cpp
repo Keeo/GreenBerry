@@ -62,9 +62,9 @@ void Camera::rotate(float& delta)
         float y = sf::Mouse::getPosition().y-500;
         sf::Mouse::setPosition(sf::Vector2i(500,500));
 
-        float mouse_speed = 1.0f;
-        _horizontalAngle -= x * mouse_speed * delta;
-        _verticalAngle -= y * mouse_speed * delta;
+        static float mouse_speed = .007f;
+        _horizontalAngle -= x * mouse_speed;// * delta;
+        _verticalAngle -= y * mouse_speed;// * delta;
         updateDirection();
 
         _view = glm::lookAt(_position, _position + _direction, _up);

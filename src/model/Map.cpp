@@ -7,6 +7,8 @@
 
 #include "Map.h"
 
+#define nmod(x) ((x % 9) + 9) % 9
+
 Map::Map(sf::Vector3i position) : grid(boost::extents[9][9][9]), _centerGlob(position), _centerGrid(4,4,4)
 {
     for (int i = 0; i != 9; ++i) {
@@ -20,9 +22,9 @@ Map::Map(sf::Vector3i position) : grid(boost::extents[9][9][9]), _centerGlob(pos
 
     _connectAll();
 
-    for (int i = 0; i != 9; ++i) {
-        for (int j = 0; j != 9; ++j) {
-            for (int k = 0; k != 9; ++k) {
+    for (int i = 1; i != 8; ++i) {
+        for (int j = 1; j != 8; ++j) {
+            for (int k = 1; k != 8; ++k) {
                 std::cout << "i:" << i << " j:" << j << " k:" << k;
                 grid[i][j][k]->buildMesh();
                 grid[i][j][k]->init();
@@ -50,12 +52,12 @@ void Map::deleteCube(void* data)
     }
 }
 
-Chunk* Map::getChunk(glm::vec3 position)
+Chunk* Map::getChunk(glm::vec3 posGlob)
 {
-    int x = position.x / SIZE + 4;
-    int y = position.y / SIZE + 4;
-    int z = position.z / SIZE + 4;
-    std::cout << "Chunk position: x:" << x << " y:" << y << " z:" << z << std::endl;
+    int x = nmod((int)(posGlob.x / SIZE + 4));
+    int y = nmod((int)(posGlob.y / SIZE + 4));
+    int z = nmod((int)(posGlob.z / SIZE + 4));
+    std::cout << "Chunk position " << Helper::toString(sf::Vector3i(x, y, z)) << std::endl;
     return grid[x][y][z];
 }
 
@@ -67,8 +69,8 @@ Chunk* Map::generateChunk(sf::Vector3i position)
     for (int i = 0; i < 32; ++i) {//x
         for (int j = 0; j < 32; ++j) {//z
             for (int k = 0; k < 32; ++k) { //y
-                //Block b = k + position.y * SIZE < field[i + j * 32] ? Block::GRASS : Block::AIR;
-                Block b = k + position.y * SIZE < 1 ? Block::GRASS : Block::AIR;
+                Block b = k + position.y * SIZE < field[i + j * 32] ? Block::GRASS : Block::AIR;
+                //Block b = k + position.y * SIZE < 1 ? Block::GRASS : Block::AIR;
                 sf::Vector3i p = sf::Vector3i(i, k, j);
                 chunk->placeBlock(p, b);
             }
@@ -77,7 +79,7 @@ Chunk* Map::generateChunk(sf::Vector3i position)
     delete[] field;
     return chunk;
 }
-#define nmod(x) ((x % 9) + 9) % 9
+
 void Map::connectChunk(sf::Vector3i gridPos)
 {
     const int x = nmod(gridPos.x);
@@ -98,9 +100,9 @@ void Map::connectChunk(sf::Vector3i gridPos)
 
 void Map::draw()
 {
-    for (int i = _centerGrid.x - 4; i <= _centerGrid.x + 4; ++i) {
-        for (int j = _centerGrid.y - 4; j <= _centerGrid.y + 4; ++j) {
-            for (int k = _centerGrid.z - 4; k <= _centerGrid.z + 4; ++k) {
+    for (int i = _centerGrid.x - 3; i <= _centerGrid.x + 3; ++i) {
+        for (int j = _centerGrid.y - 3; j <= _centerGrid.y + 3; ++j) {
+            for (int k = _centerGrid.z - 3; k <= _centerGrid.z + 3; ++k) {
                 grid[nmod(i)][nmod(j)][nmod(k)]->draw();
             }
         }
@@ -111,7 +113,7 @@ void Map::moveMap(void* data)
 {
     sf::Vector3i dir = *(sf::Vector3i*) data;
     Helper::print(dir, "Moved by: ");
-    if (dir.y !=0 ) return;
+    //if (dir.y !=0 ) return;
     
     Log::getInstance().info("chunk", "Posouvam center o " + Helper::toString(dir));
     for (int x = abs(dir.x); x != 0; --x) {
@@ -163,11 +165,11 @@ void Map::moveCenter(sf::Vector3i dir)
         _connectAll();
         
         std::cout<<"Meshing"<<std::endl;
-        for (int y = _centerGrid.y - 4; y <= _centerGrid.y + 4; y++) {
-            for (int z = _centerGrid.z - 4; z <= _centerGrid.z + 4; z++) {
-                grid[nmod(x)][nmod(y)][nmod(z)]->buildMesh();
-                grid[nmod(x)][nmod(y)][nmod(z)]->init();
-                grid[nmod(x)][nmod(y)][nmod(z)]->moveToGpu();
+        for (int y = _centerGrid.y - 3; y <= _centerGrid.y + 3; y++) {
+            for (int z = _centerGrid.z - 3; z <= _centerGrid.z + 3; z++) {
+                grid[nmod(x - dir.x)][nmod(y)][nmod(z)]->buildMesh();
+                grid[nmod(x - dir.x)][nmod(y)][nmod(z)]->init();
+                grid[nmod(x - dir.x)][nmod(y)][nmod(z)]->moveToGpu();
             }       
         }
         
@@ -197,9 +199,9 @@ void Map::moveCenter(sf::Vector3i dir)
         std::cout<<"Meshing"<<std::endl;
         for (int x = _centerGrid.x - 4; x <= _centerGrid.x + 4; x++) {
             for (int z = _centerGrid.z - 4; z <= _centerGrid.z + 4; z++) {
-                grid[nmod(x)][nmod(y)][nmod(z)]->buildMesh();
-                grid[nmod(x)][nmod(y)][nmod(z)]->init();
-                grid[nmod(x)][nmod(y)][nmod(z)]->moveToGpu();
+                grid[nmod(x)][nmod(y - dir.y)][nmod(z)]->buildMesh();
+                grid[nmod(x)][nmod(y - dir.y)][nmod(z)]->init();
+                grid[nmod(x)][nmod(y - dir.y)][nmod(z)]->moveToGpu();
             }       
         }
         std::cout<<std::endl;
@@ -229,9 +231,9 @@ void Map::moveCenter(sf::Vector3i dir)
         std::cout<<"Meshing"<<std::endl;
         for (int x = _centerGrid.x - 4; x <= _centerGrid.x + 4; x++) {
             for (int y = _centerGrid.y - 4; y <= _centerGrid.y + 4; y++) {
-                grid[nmod(x)][nmod(y)][nmod(z)]->buildMesh();
-                grid[nmod(x)][nmod(y)][nmod(z)]->init();
-                grid[nmod(x)][nmod(y)][nmod(z)]->moveToGpu();
+                grid[nmod(x)][nmod(y)][nmod(z - dir.z)]->buildMesh();
+                grid[nmod(x)][nmod(y)][nmod(z - dir.z)]->init();
+                grid[nmod(x)][nmod(y)][nmod(z - dir.z)]->moveToGpu();
             }       
         }
         
