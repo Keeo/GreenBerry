@@ -8,6 +8,7 @@
 #ifndef MAP_H
 #define	MAP_H
 
+#include <stdlib.h>
 #include "boost/multi_array.hpp"
 #include "Chunk.h"
 #include "../noise/MapNoise.h"
@@ -18,6 +19,7 @@
 #include <SFML/System.hpp>
 #include "../Helper.h"
 #include "../model/ChunkModel.h"
+#include "../Log.h"
 
 class Map : IEventMessagingSystem
 {
@@ -51,6 +53,7 @@ private:
     Chunk* generateChunk(sf::Vector3i position);
     void connectChunk(sf::Vector3i pos);
     void _connectAll();
+    bool _consistencyCheck();
     
     MapNoise _mn;
 };

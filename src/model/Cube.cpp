@@ -7,7 +7,7 @@
 
 #include "Cube.h"
 
-Cube::Cube(sf::Vector3i position, sf::Vector3i vertexes[]) : ADrawable(position * 32, 40)
+Cube::Cube(sf::Vector3i position, sf::Vector3i vertexes[]) : ADrawable(position * 32)
 {
     buildCube(vertexes);
 }

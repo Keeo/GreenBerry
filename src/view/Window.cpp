@@ -15,7 +15,7 @@ Window::Window()
     settings.antialiasingLevel = 4;
     settings.majorVersion = 3;
     settings.minorVersion = 3;
-    _window.create(sf::VideoMode(800, 600), "GreenBerryEngine", sf::Style::Default, settings);
+    _window.create(sf::VideoMode(1024, 768), "GreenBerryEngine", sf::Style::Default, settings);
     
     
     glewExperimental = GL_TRUE;

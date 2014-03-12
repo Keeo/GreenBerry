@@ -20,9 +20,9 @@ Map::Map(sf::Vector3i position) : grid(boost::extents[9][9][9]), _centerGlob(pos
 
     _connectAll();
 
-    for (int i = 1; i != 8; ++i) {
-        for (int j = 1; j != 8; ++j) {
-            for (int k = 1; k != 8; ++k) {
+    for (int i = 0; i != 9; ++i) {
+        for (int j = 0; j != 9; ++j) {
+            for (int k = 0; k != 9; ++k) {
                 std::cout << "i:" << i << " j:" << j << " k:" << k;
                 grid[i][j][k]->buildMesh();
                 grid[i][j][k]->init();
@@ -31,7 +31,7 @@ Map::Map(sf::Vector3i position) : grid(boost::extents[9][9][9]), _centerGlob(pos
             }
         }
     }
-    
+    _consistencyCheck();
     EventMessagingSystem::getInstance().Register(Events::eveDeleteCube, this, (Callback) & Map::deleteCube);
     EventMessagingSystem::getInstance().Register(Events::evePlayerChangedChunk, this, (Callback) & Map::moveMap);
 }
@@ -63,11 +63,12 @@ Chunk* Map::generateChunk(sf::Vector3i position)
 {
     Chunk* chunk = new Chunk(position);
     int* field = _mn.getHeightField(position.x, position.z);
-
+    //Log::getInstance().info("chunk", "Generuji chunk pro pozici: " + Helper::toString(position));
     for (int i = 0; i < 32; ++i) {//x
         for (int j = 0; j < 32; ++j) {//z
             for (int k = 0; k < 32; ++k) { //y
-                Block b = k + position.y * SIZE < field[i + j * 32] ? Block::GRASS : Block::AIR;
+                //Block b = k + position.y * SIZE < field[i + j * 32] ? Block::GRASS : Block::AIR;
+                Block b = k + position.y * SIZE < 1 ? Block::GRASS : Block::AIR;
                 sf::Vector3i p = sf::Vector3i(i, k, j);
                 chunk->placeBlock(p, b);
             }
@@ -97,9 +98,9 @@ void Map::connectChunk(sf::Vector3i gridPos)
 
 void Map::draw()
 {
-    for (int i = _centerGrid.x - 3; i <= _centerGrid.x + 3; ++i) {
-        for (int j = _centerGrid.y - 3; j <= _centerGrid.y + 3; ++j) {
-            for (int k = _centerGrid.z - 3; k <= _centerGrid.z + 3; ++k) {
+    for (int i = _centerGrid.x - 4; i <= _centerGrid.x + 4; ++i) {
+        for (int j = _centerGrid.y - 4; j <= _centerGrid.y + 4; ++j) {
+            for (int k = _centerGrid.z - 4; k <= _centerGrid.z + 4; ++k) {
                 grid[nmod(i)][nmod(j)][nmod(k)]->draw();
             }
         }
@@ -108,16 +109,34 @@ void Map::draw()
 
 void Map::moveMap(void* data)
 {
-    sf::Vector3i* dir = (sf::Vector3i*) data;
-    Helper::print(*dir, "Moved by: ");
-    //moveCenter(*dir);
-    //moveCenter(sf::Vector3i(-1,0,0));
+    sf::Vector3i dir = *(sf::Vector3i*) data;
+    Helper::print(dir, "Moved by: ");
+    if (dir.y !=0 ) return;
+    
+    Log::getInstance().info("chunk", "Posouvam center o " + Helper::toString(dir));
+    for (int x = abs(dir.x); x != 0; --x) {
+        sf::Vector3i t(Helper::sgn(dir.x), 0, 0);
+        Log::getInstance().info("chunk", "Krok o " + Helper::toString(t));
+        moveCenter(t);
+    }
+        
+    for (int y = abs(dir.y); y != 0; --y) {
+        sf::Vector3i t(0, Helper::sgn(dir.y), 0);
+        Log::getInstance().info("chunk", "Krok o " + Helper::toString(t));
+        moveCenter(t);
+    }
+    
+    for (int z = abs(dir.z); z != 0; --z) {
+        sf::Vector3i t(0, 0, Helper::sgn(dir.z));
+        Log::getInstance().info("chunk", "Krok o " + Helper::toString(t));
+        moveCenter(t);
+    }
 }
 
 void Map::moveCenter(sf::Vector3i dir)
 {
-    //if (dir.x == 0) return;
-    
+    Log::getInstance().infonl("chunk", "MoveCenter");
+    _consistencyCheck();
     std::cout<<"MoveCenter"<<std::endl;
     _centerGrid.x = nmod(_centerGrid.x + dir.x);
     _centerGrid.y = nmod(_centerGrid.y + dir.y);
@@ -127,10 +146,13 @@ void Map::moveCenter(sf::Vector3i dir)
     if (dir.x != 0){
         int x = nmod(_centerGrid.x + 4 * dir.x);
         std::cout<<"Generating"<<std::endl;
+        Log::getInstance().info("chunk", "Generuji...");
         for (int j = 0; j < 9; j++) {
             for (int k = 0; k < 9; k++) {
                 Chunk* td = grid[x][j][k];
-                grid[x][j][k] = generateChunk(_centerGlob + sf::Vector3i(4 * dir.x, (j-4), (k-4)));
+                sf::Vector3i newPosition = _centerGlob + sf::Vector3i(4 * dir.x, (j-4), (k-4));
+                grid[x][j][k] = generateChunk(newPosition);
+                Log::getInstance().info("chunk", "Generating chunk for gridPos "+ Helper::toString(sf::Vector3i(x, j, k)) +" globPos"+Helper::toString(newPosition));
                 delete td;
             }       
         }
@@ -138,11 +160,11 @@ void Map::moveCenter(sf::Vector3i dir)
         _connectAll();
         
         std::cout<<"Meshing"<<std::endl;
-        for (int y = _centerGrid.y - 3; y <= _centerGrid.y + 3; y++) {
-            for (int z = _centerGrid.z - 3; z <= _centerGrid.z + 3; z++) {
-                grid[nmod(x - dir.x)][nmod(y)][nmod(z)]->buildMesh();
-                grid[nmod(x - dir.x)][nmod(y)][nmod(z)]->init();
-                grid[nmod(x - dir.x)][nmod(y)][nmod(z)]->moveToGpu();
+        for (int y = _centerGrid.y - 4; y <= _centerGrid.y + 4; y++) {
+            for (int z = _centerGrid.z - 4; z <= _centerGrid.z + 4; z++) {
+                grid[nmod(x)][nmod(y)][nmod(z)]->buildMesh();
+                grid[nmod(x)][nmod(y)][nmod(z)]->init();
+                grid[nmod(x)][nmod(y)][nmod(z)]->moveToGpu();
             }       
         }
         
@@ -154,10 +176,13 @@ void Map::moveCenter(sf::Vector3i dir)
     if (dir.y != 0){
         int y = nmod(_centerGrid.y + 4 * dir.y);
         std::cout<<"Generating"<<std::endl;
+        Log::getInstance().info("chunk", "Generuji...");
         for (int i = 0; i < 9; i++) {
             for (int k = 0; k < 9; k++) {
                 Chunk* td = grid[i][y][k];
-                grid[i][y][k] = generateChunk(_centerGlob + sf::Vector3i((i-4), 4 * dir.y, (k-4)));
+                sf::Vector3i newPosition = _centerGlob + sf::Vector3i((i-4), 4 * dir.y, (k-4));
+                grid[i][y][k] = generateChunk(newPosition);
+                Log::getInstance().info("chunk","Generating chunk for gridPos "+ Helper::toString(sf::Vector3i(i, y, k)) +" globPos"+Helper::toString(newPosition));
                 delete td;
             }       
         }
@@ -165,11 +190,11 @@ void Map::moveCenter(sf::Vector3i dir)
         _connectAll();
         
         std::cout<<"Meshing"<<std::endl;
-        for (int x = _centerGrid.x - 3; x <= _centerGrid.x + 3; x++) {
-            for (int z = _centerGrid.z - 3; z <= _centerGrid.z + 3; z++) {
-                grid[nmod(x)][nmod(y - dir.y)][nmod(z)]->buildMesh();
-                grid[nmod(x)][nmod(y - dir.y)][nmod(z)]->init();
-                grid[nmod(x)][nmod(y - dir.y)][nmod(z)]->moveToGpu();
+        for (int x = _centerGrid.x - 4; x <= _centerGrid.x + 4; x++) {
+            for (int z = _centerGrid.z - 4; z <= _centerGrid.z + 4; z++) {
+                grid[nmod(x)][nmod(y)][nmod(z)]->buildMesh();
+                grid[nmod(x)][nmod(y)][nmod(z)]->init();
+                grid[nmod(x)][nmod(y)][nmod(z)]->moveToGpu();
             }       
         }
         std::cout<<std::endl;
@@ -181,10 +206,13 @@ void Map::moveCenter(sf::Vector3i dir)
     if (dir.z != 0){
         int z = nmod(_centerGrid.z + 4 * dir.z);
         std::cout<<"Generating"<<std::endl;
+        Log::getInstance().info("chunk", "Generuji...");
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 Chunk* td = grid[i][j][z];
-                grid[i][j][z] = generateChunk(_centerGlob + sf::Vector3i((i-4), (j-4), 4 * dir.z));
+                sf::Vector3i newPosition = _centerGlob + sf::Vector3i((i-4), (j-4), 4 * dir.z);
+                grid[i][j][z] = generateChunk(newPosition);
+                Log::getInstance().info("chunk","Generating chunk for gridPos "+ Helper::toString(sf::Vector3i(i, j, z)) +" globPos"+Helper::toString(newPosition));
                 delete td;
             }       
         }
@@ -192,11 +220,11 @@ void Map::moveCenter(sf::Vector3i dir)
         _connectAll();
         
         std::cout<<"Meshing"<<std::endl;
-        for (int x = _centerGrid.x - 3; x <= _centerGrid.x + 3; x++) {
-            for (int y = _centerGrid.y - 3; y <= _centerGrid.y + 3; y++) {
-                grid[nmod(x)][nmod(y)][nmod(z - dir.z)]->buildMesh();
-                grid[nmod(x)][nmod(y)][nmod(z - dir.z)]->init();
-                grid[nmod(x)][nmod(y)][nmod(z - dir.z)]->moveToGpu();
+        for (int x = _centerGrid.x - 4; x <= _centerGrid.x + 4; x++) {
+            for (int y = _centerGrid.y - 4; y <= _centerGrid.y + 4; y++) {
+                grid[nmod(x)][nmod(y)][nmod(z)]->buildMesh();
+                grid[nmod(x)][nmod(y)][nmod(z)]->init();
+                grid[nmod(x)][nmod(y)][nmod(z)]->moveToGpu();
             }       
         }
         
@@ -204,6 +232,8 @@ void Map::moveCenter(sf::Vector3i dir)
         Helper::print(_centerGlob, "CenterGlob");
         std::cout<<std::endl;
     }
+    _consistencyCheck();
+    Log::getInstance().info("chunk","//MoveCenter");
 }
 
 void Map::_connectAll()
@@ -216,4 +246,27 @@ void Map::_connectAll()
             }       
         }
     }
+}
+
+bool Map::_consistencyCheck()
+{
+    bool ret = true;
+    Log::getInstance().info("Map", "Consitentcy check begin");
+    for (int x = _centerGlob.x - 4; x <= _centerGlob.x + 4; x++) {
+        for (int y = _centerGlob.y - 4; y <= _centerGlob.y + 4; y++) {
+            for (int z = _centerGlob.z - 4; z <= _centerGlob.z + 4; z++) {
+                sf::Vector3i ex = sf::Vector3i(x, y, z);
+                sf::Vector3i centerGrid(nmod(x), nmod(y), nmod(z));
+                sf::Vector3i pos = grid[centerGrid.x][centerGrid.y][centerGrid.z]->getPosition();
+                
+                if (pos != ex) {
+                    Log::getInstance().info("chunk", "Consistency check failed Grid[" + Helper::toString(centerGrid) + "] Actual[" + Helper::toString(pos) + "] Expected[" + Helper::toString(ex) + "]");
+                    ret = false;
+                }
+            }
+        }
+    }
+    Log::getInstance().info("map", "Consitentcy check end");
+    std::cout<<"check return val:"<<ret<<std::endl;
+    return ret;
 }

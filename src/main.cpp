@@ -12,7 +12,7 @@
 #include "model/Map.h"
 #include "view/Window.h"
 #include "control/Game.h"
-
+#include "Log.h"
 /*
  * 
  */
@@ -23,8 +23,8 @@ int main(int argc, char** argv)
     Game g;
     g.run();
 
-    
-    
+
+
     return 0;
 }
 

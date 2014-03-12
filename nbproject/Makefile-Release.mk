@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/77291535/Helper.o \
+	${OBJECTDIR}/_ext/77291535/Log.o \
 	${OBJECTDIR}/_ext/883158912/ADrawable.o \
 	${OBJECTDIR}/_ext/1211055809/Camera.o \
 	${OBJECTDIR}/_ext/1211055809/Game.o \
@@ -89,6 +90,11 @@ ${OBJECTDIR}/_ext/77291535/Helper.o: /D/_school/s5/BP/GreenBerry/src/Helper.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/77291535
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Helper.o /D/_school/s5/BP/GreenBerry/src/Helper.cpp
+
+${OBJECTDIR}/_ext/77291535/Log.o: /D/_school/s5/BP/GreenBerry/src/Log.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/77291535
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Log.o /D/_school/s5/BP/GreenBerry/src/Log.cpp
 
 ${OBJECTDIR}/_ext/883158912/ADrawable.o: /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/883158912
@@ -241,6 +247,19 @@ ${OBJECTDIR}/_ext/77291535/Helper_nomain.o: ${OBJECTDIR}/_ext/77291535/Helper.o 
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Helper_nomain.o /D/_school/s5/BP/GreenBerry/src/Helper.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/77291535/Helper.o ${OBJECTDIR}/_ext/77291535/Helper_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/77291535/Log_nomain.o: ${OBJECTDIR}/_ext/77291535/Log.o /D/_school/s5/BP/GreenBerry/src/Log.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/77291535
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/77291535/Log.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Log_nomain.o /D/_school/s5/BP/GreenBerry/src/Log.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/77291535/Log.o ${OBJECTDIR}/_ext/77291535/Log_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/883158912/ADrawable_nomain.o: ${OBJECTDIR}/_ext/883158912/ADrawable.o /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp 

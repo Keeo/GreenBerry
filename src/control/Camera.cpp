@@ -14,7 +14,7 @@ Camera::Camera()
 void Camera::update(const sf::Time& time)
 {
     float delta = time.asSeconds();
-    float move_speed = 10.0f;
+    float move_speed = 50.0f;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) _position += _direction * move_speed * delta;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) _position -= _direction * move_speed * delta;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) _position += _right * move_speed * delta;
@@ -35,10 +35,15 @@ void Camera::update(const sf::Time& time)
     sf::Vector3i sf_position_last(_position_last.x,_position_last.y,_position_last.z);
     if (Chunk::getChunkCoords(sf_position) != Chunk::getChunkCoords(sf_position_last)) {
         sf::Vector3i t = sf_position - sf_position_last;
+        t.x = chunkilize(t.x);
+        t.y = chunkilize(t.y);
+        t.z = chunkilize(t.z);
         Post(Events::evePlayerChangedChunk, (void*)&t, 0);
     }
     _position_last = _position;
 }
+
+
 
 void Camera::draw()
 {

@@ -22,6 +22,8 @@
 #include "../model/Chunk.h"
 #include "../Helper.h"
 
+#define chunkilize(x) (int)( ((float)x / 32) > 0 ? ceil((float)x / 32) :  floor((float)x / 32) )
+
 class Camera : IEventMessagingSystem
 {
     

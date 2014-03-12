@@ -7,7 +7,7 @@
 
 #include "World.h"
 
-World::World() : _map(sf::Vector3i(0,0,0))
+World::World() : _map(sf::Vector3i(4,4,4))
 {
 }
 

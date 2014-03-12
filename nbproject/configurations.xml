@@ -52,6 +52,8 @@
         <itemPath>D:/_school/s5/BP/GreenBerry/src/view/Window.h</itemPath>
       </logicalFolder>
       <itemPath>D:/_school/s5/BP/GreenBerry/src/Helper.cpp</itemPath>
+      <itemPath>D:/_school/s5/BP/GreenBerry/src/Log.cpp</itemPath>
+      <itemPath>D:/_school/s5/BP/GreenBerry/src/Log.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -145,6 +147,16 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/Helper.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/Log.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/Log.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -436,6 +448,16 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/Helper.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/Log.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/Log.h"
             ex="false"
             tool="3"
             flavor2="0">

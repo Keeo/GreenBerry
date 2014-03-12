@@ -5,6 +5,8 @@ nbproject/Makefile-Debug.mk
 nbproject/Makefile-Release.mk
 build/
 
+Log-*.txt
+
 # Compiled Object files
 *.slo
 *.lo
