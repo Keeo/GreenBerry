@@ -135,13 +135,14 @@ void Map::moveMap(void* data)
 
 void Map::moveCenter(sf::Vector3i dir)
 {
-    Log::getInstance().infonl("chunk", "MoveCenter");
+    Log::getInstance().infonl("map", "MoveCenter Grid["+Helper::toString(_centerGrid)+"] Glob["+Helper::toString(_centerGlob)+"]");
     _consistencyCheck();
     std::cout<<"MoveCenter"<<std::endl;
     _centerGrid.x = nmod(_centerGrid.x + dir.x);
     _centerGrid.y = nmod(_centerGrid.y + dir.y);
     _centerGrid.z = nmod(_centerGrid.z + dir.z);
     _centerGlob += dir;
+    Log::getInstance().info("map", "Updated Grid["+Helper::toString(_centerGrid)+"] Glob["+Helper::toString(_centerGlob)+"]");
     
     if (dir.x != 0){
         int x = nmod(_centerGrid.x + 4 * dir.x);
@@ -149,10 +150,12 @@ void Map::moveCenter(sf::Vector3i dir)
         Log::getInstance().info("chunk", "Generuji...");
         for (int j = 0; j < 9; j++) {
             for (int k = 0; k < 9; k++) {
-                Chunk* td = grid[x][j][k];
+                int jj = nmod(_centerGrid.y + j - 4);
+                int kk = nmod(_centerGrid.z + k - 4);
+                Chunk* td = grid[x][jj][kk];
                 sf::Vector3i newPosition = _centerGlob + sf::Vector3i(4 * dir.x, (j-4), (k-4));
-                grid[x][j][k] = generateChunk(newPosition);
-                Log::getInstance().info("chunk", "Generating chunk for gridPos "+ Helper::toString(sf::Vector3i(x, j, k)) +" globPos"+Helper::toString(newPosition));
+                grid[x][jj][kk] = generateChunk(newPosition);
+                Log::getInstance().info("chunk", "Generating chunk for gridPos "+ Helper::toString(sf::Vector3i(x, jj, kk)) +" globPos"+Helper::toString(newPosition) + " oldGlobPos"+Helper::toString(td->getPosition()));
                 delete td;
             }       
         }
@@ -179,10 +182,12 @@ void Map::moveCenter(sf::Vector3i dir)
         Log::getInstance().info("chunk", "Generuji...");
         for (int i = 0; i < 9; i++) {
             for (int k = 0; k < 9; k++) {
-                Chunk* td = grid[i][y][k];
+                int ii = nmod(_centerGrid.x + i - 4);
+                int kk = nmod(_centerGrid.z + k - 4);
+                Chunk* td = grid[ii][y][kk];
                 sf::Vector3i newPosition = _centerGlob + sf::Vector3i((i-4), 4 * dir.y, (k-4));
-                grid[i][y][k] = generateChunk(newPosition);
-                Log::getInstance().info("chunk","Generating chunk for gridPos "+ Helper::toString(sf::Vector3i(i, y, k)) +" globPos"+Helper::toString(newPosition));
+                grid[ii][y][kk] = generateChunk(newPosition);
+                Log::getInstance().info("chunk","Generating chunk for gridPos "+ Helper::toString(sf::Vector3i(ii, y, kk)) +" globPos"+Helper::toString(newPosition) + " oldGlobPos"+Helper::toString(td->getPosition()));
                 delete td;
             }       
         }
@@ -209,10 +214,12 @@ void Map::moveCenter(sf::Vector3i dir)
         Log::getInstance().info("chunk", "Generuji...");
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                Chunk* td = grid[i][j][z];
+                int ii = nmod(_centerGrid.x + i - 4);
+                int jj = nmod(_centerGrid.y + j - 4);
+                Chunk* td = grid[ii][jj][z];
                 sf::Vector3i newPosition = _centerGlob + sf::Vector3i((i-4), (j-4), 4 * dir.z);
-                grid[i][j][z] = generateChunk(newPosition);
-                Log::getInstance().info("chunk","Generating chunk for gridPos "+ Helper::toString(sf::Vector3i(i, j, z)) +" globPos"+Helper::toString(newPosition));
+                grid[ii][jj][z] = generateChunk(newPosition);
+                Log::getInstance().info("chunk","Generating chunk for gridPos "+ Helper::toString(sf::Vector3i(ii, jj, z)) +" globPos"+Helper::toString(newPosition) + " oldGlobPos"+Helper::toString(td->getPosition()));
                 delete td;
             }       
         }
@@ -233,7 +240,7 @@ void Map::moveCenter(sf::Vector3i dir)
         std::cout<<std::endl;
     }
     _consistencyCheck();
-    Log::getInstance().info("chunk","//MoveCenter");
+    Log::getInstance().info("map","//MoveCenter");
 }
 
 void Map::_connectAll()

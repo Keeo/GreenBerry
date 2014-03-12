@@ -13,8 +13,8 @@ Log::Log()
     ss << time(0);
     string str = ss.str();
     
-    _logFile.open ("Log-" + str + ".txt");
-    _logFile << "Opening file for writing:\n";
+    _logFile.open ("logs/Log-" + str + ".txt");
+    _logFile << "[Greetings]\n\n";
 }
 
 Log::~Log()
