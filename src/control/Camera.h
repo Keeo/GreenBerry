@@ -20,7 +20,7 @@
 
 #include "../observer/IEventMessagingSystem.h"
 #include "../model/Chunk.h"
-#include "../Helper.h"
+#include "../util/Helper.h"
 
 #define chunkilize(x) (int)( ((float)x / 32) > 0 ? ceil((float)x / 32) :  floor((float)x / 32) )
 

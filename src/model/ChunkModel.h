@@ -11,7 +11,7 @@
 #include "Chunk.h"
 #include "../noise/MapNoise.h"
 #include "../observer/EventMessagingSystem.h"
-#include "../Helper.h"
+#include "../util/Helper.h"
 
 class ChunkModel : IEventMessagingSystem
 {

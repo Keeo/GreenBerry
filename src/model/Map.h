@@ -17,9 +17,10 @@
 #include "../observer/EventMessagingSystem.h"
 #include "glm/ext.hpp"
 #include <SFML/System.hpp>
-#include "../Helper.h"
+#include "../util/Helper.h"
 #include "../model/ChunkModel.h"
-#include "../Log.h"
+#include "../util/Log.h"
+#include "../util/Ddm.h"
 
 class Map : IEventMessagingSystem
 {

@@ -35,8 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/77291535/Helper.o \
-	${OBJECTDIR}/_ext/77291535/Log.o \
 	${OBJECTDIR}/_ext/883158912/ADrawable.o \
 	${OBJECTDIR}/_ext/1211055809/Camera.o \
 	${OBJECTDIR}/_ext/1211055809/Game.o \
@@ -49,6 +47,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/40178556/SimplexNoise.o \
 	${OBJECTDIR}/_ext/2027516724/EventMessagingSystem.o \
 	${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o \
+	${OBJECTDIR}/_ext/1941172064/Ddm.o \
+	${OBJECTDIR}/_ext/1941172064/Helper.o \
+	${OBJECTDIR}/_ext/1941172064/Log.o \
 	${OBJECTDIR}/_ext/1941191171/Window.o \
 	${OBJECTDIR}/src/main.o
 
@@ -85,16 +86,6 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/greenberry.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/greenberry ${OBJECTFILES} ${LDLIBSOPTIONS}
-
-${OBJECTDIR}/_ext/77291535/Helper.o: /D/_school/s5/BP/GreenBerry/src/Helper.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/77291535
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Helper.o /D/_school/s5/BP/GreenBerry/src/Helper.cpp
-
-${OBJECTDIR}/_ext/77291535/Log.o: /D/_school/s5/BP/GreenBerry/src/Log.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/77291535
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Log.o /D/_school/s5/BP/GreenBerry/src/Log.cpp
 
 ${OBJECTDIR}/_ext/883158912/ADrawable.o: /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/883158912
@@ -155,6 +146,21 @@ ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o: /D/_school/s5/BP/GreenBerr
 	${MKDIR} -p ${OBJECTDIR}/_ext/2027516724
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o /D/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp
+
+${OBJECTDIR}/_ext/1941172064/Ddm.o: /D/_school/s5/BP/GreenBerry/src/util/Ddm.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941172064
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941172064/Ddm.o /D/_school/s5/BP/GreenBerry/src/util/Ddm.cpp
+
+${OBJECTDIR}/_ext/1941172064/Helper.o: /D/_school/s5/BP/GreenBerry/src/util/Helper.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941172064
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941172064/Helper.o /D/_school/s5/BP/GreenBerry/src/util/Helper.cpp
+
+${OBJECTDIR}/_ext/1941172064/Log.o: /D/_school/s5/BP/GreenBerry/src/util/Log.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941172064
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941172064/Log.o /D/_school/s5/BP/GreenBerry/src/util/Log.cpp
 
 ${OBJECTDIR}/_ext/1941191171/Window.o: /D/_school/s5/BP/GreenBerry/src/view/Window.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1941191171
@@ -235,32 +241,6 @@ ${TESTDIR}/_ext/1262165778/TestMapNoiseTtrunner.o: /D/_school/s5/BP/GreenBerry/t
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/TestMapNoiseTtrunner.o /D/_school/s5/BP/GreenBerry/tests/TestMapNoiseTtrunner.cpp
 
-
-${OBJECTDIR}/_ext/77291535/Helper_nomain.o: ${OBJECTDIR}/_ext/77291535/Helper.o /D/_school/s5/BP/GreenBerry/src/Helper.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/77291535
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/77291535/Helper.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Helper_nomain.o /D/_school/s5/BP/GreenBerry/src/Helper.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/_ext/77291535/Helper.o ${OBJECTDIR}/_ext/77291535/Helper_nomain.o;\
-	fi
-
-${OBJECTDIR}/_ext/77291535/Log_nomain.o: ${OBJECTDIR}/_ext/77291535/Log.o /D/_school/s5/BP/GreenBerry/src/Log.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/77291535
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/77291535/Log.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Log_nomain.o /D/_school/s5/BP/GreenBerry/src/Log.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/_ext/77291535/Log.o ${OBJECTDIR}/_ext/77291535/Log_nomain.o;\
-	fi
 
 ${OBJECTDIR}/_ext/883158912/ADrawable_nomain.o: ${OBJECTDIR}/_ext/883158912/ADrawable.o /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/883158912
@@ -416,6 +396,45 @@ ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem_nomain.o: ${OBJECTDIR}/_ext/2
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem_nomain.o /D/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1941172064/Ddm_nomain.o: ${OBJECTDIR}/_ext/1941172064/Ddm.o /D/_school/s5/BP/GreenBerry/src/util/Ddm.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941172064
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1941172064/Ddm.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941172064/Ddm_nomain.o /D/_school/s5/BP/GreenBerry/src/util/Ddm.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1941172064/Ddm.o ${OBJECTDIR}/_ext/1941172064/Ddm_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1941172064/Helper_nomain.o: ${OBJECTDIR}/_ext/1941172064/Helper.o /D/_school/s5/BP/GreenBerry/src/util/Helper.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941172064
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1941172064/Helper.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941172064/Helper_nomain.o /D/_school/s5/BP/GreenBerry/src/util/Helper.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1941172064/Helper.o ${OBJECTDIR}/_ext/1941172064/Helper_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1941172064/Log_nomain.o: ${OBJECTDIR}/_ext/1941172064/Log.o /D/_school/s5/BP/GreenBerry/src/util/Log.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941172064
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1941172064/Log.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941172064/Log_nomain.o /D/_school/s5/BP/GreenBerry/src/util/Log.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1941172064/Log.o ${OBJECTDIR}/_ext/1941172064/Log_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/1941191171/Window_nomain.o: ${OBJECTDIR}/_ext/1941191171/Window.o /D/_school/s5/BP/GreenBerry/src/view/Window.cpp 

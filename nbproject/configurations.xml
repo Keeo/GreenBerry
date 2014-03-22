@@ -4,7 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>D:/_school/s5/BP/GreenBerry/src/Helper.h</itemPath>
+      <itemPath>D:/_school/s5/BP/GreenBerry/src/util/Helper.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -47,13 +47,17 @@
         <itemPath>D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f1" displayName="util" projectFiles="true">
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/util/Ddm.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/util/Ddm.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/util/Helper.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/util/Log.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/util/Log.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="view" displayName="view" projectFiles="true">
         <itemPath>D:/_school/s5/BP/GreenBerry/src/view/Window.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/view/Window.h</itemPath>
       </logicalFolder>
-      <itemPath>D:/_school/s5/BP/GreenBerry/src/Helper.cpp</itemPath>
-      <itemPath>D:/_school/s5/BP/GreenBerry/src/Log.cpp</itemPath>
-      <itemPath>D:/_school/s5/BP/GreenBerry/src/Log.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -114,21 +118,27 @@
       <compileType>
         <ccTool>
           <standard>8</standard>
+          <commandlineTool>g++</commandlineTool>
           <incDir>
             <pElem>C:/Frameworks/SFML/include</pElem>
             <pElem>C:/Frameworks/boost/include/boost-1_54</pElem>
             <pElem>C:/Frameworks/glm</pElem>
+            <pElem>C:/Program Files (x86)/Assimp/include</pElem>
           </incDir>
           <preprocessorList>
+            <Elem>ENABLE_BOOST_WORKAROUND</Elem>
             <Elem>GLEW_STATIC</Elem>
             <Elem>SFML_STATIC</Elem>
           </preprocessorList>
         </ccTool>
         <linkerTool>
+          <output>${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/greenberry</output>
           <linkerAddLib>
             <pElem>C:/Frameworks/SFML/lib</pElem>
             <pElem>C:/Frameworks/boost/lib</pElem>
             <pElem>C:/Frameworks/glew/glew-1.10.0/lib/Release/Win32</pElem>
+            <pElem>C:/Frameworks/assimp-src/build2/contrib/zlib</pElem>
+            <pElem>C:/Program Files (x86)/Assimp/lib</pElem>
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>sfml-graphics-s-d</linkerLibLibItem>
@@ -138,29 +148,11 @@
             <linkerLibLibItem>sfml-main-d</linkerLibLibItem>
             <linkerLibLibItem>sfml-network-s-d</linkerLibLibItem>
             <linkerLibLibItem>boost_serialization-mgw47-mt-d-1_54</linkerLibLibItem>
+            <linkerLibLibItem>zlib</linkerLibLibItem>
+            <linkerLibLibItem>assimp</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="D:/_school/s5/BP/GreenBerry/src/Helper.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/Helper.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/Log.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/Log.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp"
             ex="false"
             tool="1"
@@ -277,6 +269,36 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/util/Ddm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/util/Ddm.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/util/Helper.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/util/Helper.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/util/Log.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/util/Log.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -442,26 +464,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="D:/_school/s5/BP/GreenBerry/src/Helper.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/Helper.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/Log.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/Log.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp"
             ex="false"
             tool="1"
@@ -578,6 +580,36 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/util/Ddm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/util/Ddm.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/util/Helper.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/util/Helper.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/util/Log.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/util/Log.h"
             ex="false"
             tool="3"
             flavor2="0">

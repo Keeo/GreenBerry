@@ -35,8 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/77291535/Helper.o \
-	${OBJECTDIR}/_ext/77291535/Log.o \
 	${OBJECTDIR}/_ext/883158912/ADrawable.o \
 	${OBJECTDIR}/_ext/1211055809/Camera.o \
 	${OBJECTDIR}/_ext/1211055809/Game.o \
@@ -49,6 +47,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/40178556/SimplexNoise.o \
 	${OBJECTDIR}/_ext/2027516724/EventMessagingSystem.o \
 	${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o \
+	${OBJECTDIR}/_ext/1941172064/Ddm.o \
+	${OBJECTDIR}/_ext/1941172064/Helper.o \
+	${OBJECTDIR}/_ext/1941172064/Log.o \
 	${OBJECTDIR}/_ext/1941191171/Window.o \
 	${OBJECTDIR}/src/main.o
 
@@ -76,7 +77,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/C/Frameworks/SFML/lib -L/C/Frameworks/boost/lib -L/C/Frameworks/glew/glew-1.10.0/lib/Release/Win32 -lsfml-graphics-s-d -lsfml-window-s-d -lsfml-system-s-d -lsfml-audio-s-d -lsfml-main-d -lsfml-network-s-d -lboost_serialization-mgw47-mt-d-1_54
+LDLIBSOPTIONS=-L/C/Frameworks/SFML/lib -L/C/Frameworks/boost/lib -L/C/Frameworks/glew/glew-1.10.0/lib/Release/Win32 -L/C/Frameworks/assimp-src/build2/contrib/zlib -L/C/Program\ Files\ \(x86\)/Assimp/lib -lsfml-graphics-s-d -lsfml-window-s-d -lsfml-system-s-d -lsfml-audio-s-d -lsfml-main-d -lsfml-network-s-d -lboost_serialization-mgw47-mt-d-1_54 -lzlib -lassimp
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -86,85 +87,90 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/greenberry.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/greenberry ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/77291535/Helper.o: /D/_school/s5/BP/GreenBerry/src/Helper.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/77291535
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Helper.o /D/_school/s5/BP/GreenBerry/src/Helper.cpp
-
-${OBJECTDIR}/_ext/77291535/Log.o: /D/_school/s5/BP/GreenBerry/src/Log.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/77291535
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Log.o /D/_school/s5/BP/GreenBerry/src/Log.cpp
-
 ${OBJECTDIR}/_ext/883158912/ADrawable.o: /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/883158912
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/883158912/ADrawable.o /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/883158912/ADrawable.o /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp
 
 ${OBJECTDIR}/_ext/1211055809/Camera.o: /D/_school/s5/BP/GreenBerry/src/control/Camera.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1211055809
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/Camera.o /D/_school/s5/BP/GreenBerry/src/control/Camera.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/Camera.o /D/_school/s5/BP/GreenBerry/src/control/Camera.cpp
 
 ${OBJECTDIR}/_ext/1211055809/Game.o: /D/_school/s5/BP/GreenBerry/src/control/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1211055809
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/Game.o /D/_school/s5/BP/GreenBerry/src/control/Game.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/Game.o /D/_school/s5/BP/GreenBerry/src/control/Game.cpp
 
 ${OBJECTDIR}/_ext/39249803/Chunk.o: /D/_school/s5/BP/GreenBerry/src/model/Chunk.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Chunk.o /D/_school/s5/BP/GreenBerry/src/model/Chunk.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Chunk.o /D/_school/s5/BP/GreenBerry/src/model/Chunk.cpp
 
 ${OBJECTDIR}/_ext/39249803/ChunkModel.o: /D/_school/s5/BP/GreenBerry/src/model/ChunkModel.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/ChunkModel.o /D/_school/s5/BP/GreenBerry/src/model/ChunkModel.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/ChunkModel.o /D/_school/s5/BP/GreenBerry/src/model/ChunkModel.cpp
 
 ${OBJECTDIR}/_ext/39249803/Cube.o: /D/_school/s5/BP/GreenBerry/src/model/Cube.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Cube.o /D/_school/s5/BP/GreenBerry/src/model/Cube.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Cube.o /D/_school/s5/BP/GreenBerry/src/model/Cube.cpp
 
 ${OBJECTDIR}/_ext/39249803/Map.o: /D/_school/s5/BP/GreenBerry/src/model/Map.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Map.o /D/_school/s5/BP/GreenBerry/src/model/Map.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Map.o /D/_school/s5/BP/GreenBerry/src/model/Map.cpp
 
 ${OBJECTDIR}/_ext/39249803/World.o: /D/_school/s5/BP/GreenBerry/src/model/World.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/World.o /D/_school/s5/BP/GreenBerry/src/model/World.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/World.o /D/_school/s5/BP/GreenBerry/src/model/World.cpp
 
 ${OBJECTDIR}/_ext/40178556/MapNoise.o: /D/_school/s5/BP/GreenBerry/src/noise/MapNoise.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/40178556
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/40178556/MapNoise.o /D/_school/s5/BP/GreenBerry/src/noise/MapNoise.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/40178556/MapNoise.o /D/_school/s5/BP/GreenBerry/src/noise/MapNoise.cpp
 
 ${OBJECTDIR}/_ext/40178556/SimplexNoise.o: /D/_school/s5/BP/GreenBerry/src/noise/SimplexNoise.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/40178556
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/40178556/SimplexNoise.o /D/_school/s5/BP/GreenBerry/src/noise/SimplexNoise.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/40178556/SimplexNoise.o /D/_school/s5/BP/GreenBerry/src/noise/SimplexNoise.cpp
 
 ${OBJECTDIR}/_ext/2027516724/EventMessagingSystem.o: /D/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2027516724
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2027516724/EventMessagingSystem.o /D/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2027516724/EventMessagingSystem.o /D/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.cpp
 
 ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o: /D/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/2027516724
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o /D/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o /D/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp
+
+${OBJECTDIR}/_ext/1941172064/Ddm.o: /D/_school/s5/BP/GreenBerry/src/util/Ddm.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941172064
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941172064/Ddm.o /D/_school/s5/BP/GreenBerry/src/util/Ddm.cpp
+
+${OBJECTDIR}/_ext/1941172064/Helper.o: /D/_school/s5/BP/GreenBerry/src/util/Helper.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941172064
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941172064/Helper.o /D/_school/s5/BP/GreenBerry/src/util/Helper.cpp
+
+${OBJECTDIR}/_ext/1941172064/Log.o: /D/_school/s5/BP/GreenBerry/src/util/Log.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941172064
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941172064/Log.o /D/_school/s5/BP/GreenBerry/src/util/Log.cpp
 
 ${OBJECTDIR}/_ext/1941191171/Window.o: /D/_school/s5/BP/GreenBerry/src/view/Window.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1941191171
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941191171/Window.o /D/_school/s5/BP/GreenBerry/src/view/Window.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941191171/Window.o /D/_school/s5/BP/GreenBerry/src/view/Window.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -191,76 +197,50 @@ ${TESTDIR}/TestFiles/f4: ${TESTDIR}/_ext/1262165778/TestMapNoiseClass.o ${TESTDI
 ${TESTDIR}/_ext/1262165778/TestBoostSerializeClass.o: /D/_school/s5/BP/GreenBerry/tests/TestBoostSerializeClass.cpp 
 	${MKDIR} -p ${TESTDIR}/_ext/1262165778
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/TestBoostSerializeClass.o /D/_school/s5/BP/GreenBerry/tests/TestBoostSerializeClass.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/TestBoostSerializeClass.o /D/_school/s5/BP/GreenBerry/tests/TestBoostSerializeClass.cpp
 
 
 ${TESTDIR}/_ext/1262165778/TestBoostSerializeTrunner.o: /D/_school/s5/BP/GreenBerry/tests/TestBoostSerializeTrunner.cpp 
 	${MKDIR} -p ${TESTDIR}/_ext/1262165778
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/TestBoostSerializeTrunner.o /D/_school/s5/BP/GreenBerry/tests/TestBoostSerializeTrunner.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/TestBoostSerializeTrunner.o /D/_school/s5/BP/GreenBerry/tests/TestBoostSerializeTrunner.cpp
 
 
 ${TESTDIR}/_ext/1262165778/testChunkClass.o: /D/_school/s5/BP/GreenBerry/tests/testChunkClass.cpp 
 	${MKDIR} -p ${TESTDIR}/_ext/1262165778
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/testChunkClass.o /D/_school/s5/BP/GreenBerry/tests/testChunkClass.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/testChunkClass.o /D/_school/s5/BP/GreenBerry/tests/testChunkClass.cpp
 
 
 ${TESTDIR}/_ext/1262165778/testChunkRunner1.o: /D/_school/s5/BP/GreenBerry/tests/testChunkRunner1.cpp 
 	${MKDIR} -p ${TESTDIR}/_ext/1262165778
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/testChunkRunner1.o /D/_school/s5/BP/GreenBerry/tests/testChunkRunner1.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/testChunkRunner1.o /D/_school/s5/BP/GreenBerry/tests/testChunkRunner1.cpp
 
 
 ${TESTDIR}/_ext/1262165778/newtestclass.o: /D/_school/s5/BP/GreenBerry/tests/newtestclass.cpp 
 	${MKDIR} -p ${TESTDIR}/_ext/1262165778
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/newtestclass.o /D/_school/s5/BP/GreenBerry/tests/newtestclass.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/newtestclass.o /D/_school/s5/BP/GreenBerry/tests/newtestclass.cpp
 
 
 ${TESTDIR}/_ext/1262165778/newtestrunner.o: /D/_school/s5/BP/GreenBerry/tests/newtestrunner.cpp 
 	${MKDIR} -p ${TESTDIR}/_ext/1262165778
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/newtestrunner.o /D/_school/s5/BP/GreenBerry/tests/newtestrunner.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/newtestrunner.o /D/_school/s5/BP/GreenBerry/tests/newtestrunner.cpp
 
 
 ${TESTDIR}/_ext/1262165778/TestMapNoiseClass.o: /D/_school/s5/BP/GreenBerry/tests/TestMapNoiseClass.cpp 
 	${MKDIR} -p ${TESTDIR}/_ext/1262165778
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/TestMapNoiseClass.o /D/_school/s5/BP/GreenBerry/tests/TestMapNoiseClass.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/TestMapNoiseClass.o /D/_school/s5/BP/GreenBerry/tests/TestMapNoiseClass.cpp
 
 
 ${TESTDIR}/_ext/1262165778/TestMapNoiseTtrunner.o: /D/_school/s5/BP/GreenBerry/tests/TestMapNoiseTtrunner.cpp 
 	${MKDIR} -p ${TESTDIR}/_ext/1262165778
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/TestMapNoiseTtrunner.o /D/_school/s5/BP/GreenBerry/tests/TestMapNoiseTtrunner.cpp
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -I/C/MinGW/msys/1.0/local/include -std=c++11 `cppunit-config --cflags` -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/1262165778/TestMapNoiseTtrunner.o /D/_school/s5/BP/GreenBerry/tests/TestMapNoiseTtrunner.cpp
 
-
-${OBJECTDIR}/_ext/77291535/Helper_nomain.o: ${OBJECTDIR}/_ext/77291535/Helper.o /D/_school/s5/BP/GreenBerry/src/Helper.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/77291535
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/77291535/Helper.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Helper_nomain.o /D/_school/s5/BP/GreenBerry/src/Helper.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/_ext/77291535/Helper.o ${OBJECTDIR}/_ext/77291535/Helper_nomain.o;\
-	fi
-
-${OBJECTDIR}/_ext/77291535/Log_nomain.o: ${OBJECTDIR}/_ext/77291535/Log.o /D/_school/s5/BP/GreenBerry/src/Log.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/77291535
-	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/77291535/Log.o`; \
-	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
-	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
-	then  \
-	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/77291535/Log_nomain.o /D/_school/s5/BP/GreenBerry/src/Log.cpp;\
-	else  \
-	    ${CP} ${OBJECTDIR}/_ext/77291535/Log.o ${OBJECTDIR}/_ext/77291535/Log_nomain.o;\
-	fi
 
 ${OBJECTDIR}/_ext/883158912/ADrawable_nomain.o: ${OBJECTDIR}/_ext/883158912/ADrawable.o /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/883158912
@@ -270,7 +250,7 @@ ${OBJECTDIR}/_ext/883158912/ADrawable_nomain.o: ${OBJECTDIR}/_ext/883158912/ADra
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/883158912/ADrawable_nomain.o /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/883158912/ADrawable_nomain.o /D/_school/s5/BP/GreenBerry/src/abstract/ADrawable.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/883158912/ADrawable.o ${OBJECTDIR}/_ext/883158912/ADrawable_nomain.o;\
 	fi
@@ -283,7 +263,7 @@ ${OBJECTDIR}/_ext/1211055809/Camera_nomain.o: ${OBJECTDIR}/_ext/1211055809/Camer
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/Camera_nomain.o /D/_school/s5/BP/GreenBerry/src/control/Camera.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/Camera_nomain.o /D/_school/s5/BP/GreenBerry/src/control/Camera.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1211055809/Camera.o ${OBJECTDIR}/_ext/1211055809/Camera_nomain.o;\
 	fi
@@ -296,7 +276,7 @@ ${OBJECTDIR}/_ext/1211055809/Game_nomain.o: ${OBJECTDIR}/_ext/1211055809/Game.o 
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/Game_nomain.o /D/_school/s5/BP/GreenBerry/src/control/Game.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/Game_nomain.o /D/_school/s5/BP/GreenBerry/src/control/Game.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1211055809/Game.o ${OBJECTDIR}/_ext/1211055809/Game_nomain.o;\
 	fi
@@ -309,7 +289,7 @@ ${OBJECTDIR}/_ext/39249803/Chunk_nomain.o: ${OBJECTDIR}/_ext/39249803/Chunk.o /D
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Chunk_nomain.o /D/_school/s5/BP/GreenBerry/src/model/Chunk.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Chunk_nomain.o /D/_school/s5/BP/GreenBerry/src/model/Chunk.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/39249803/Chunk.o ${OBJECTDIR}/_ext/39249803/Chunk_nomain.o;\
 	fi
@@ -322,7 +302,7 @@ ${OBJECTDIR}/_ext/39249803/ChunkModel_nomain.o: ${OBJECTDIR}/_ext/39249803/Chunk
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/ChunkModel_nomain.o /D/_school/s5/BP/GreenBerry/src/model/ChunkModel.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/ChunkModel_nomain.o /D/_school/s5/BP/GreenBerry/src/model/ChunkModel.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/39249803/ChunkModel.o ${OBJECTDIR}/_ext/39249803/ChunkModel_nomain.o;\
 	fi
@@ -335,7 +315,7 @@ ${OBJECTDIR}/_ext/39249803/Cube_nomain.o: ${OBJECTDIR}/_ext/39249803/Cube.o /D/_
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Cube_nomain.o /D/_school/s5/BP/GreenBerry/src/model/Cube.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Cube_nomain.o /D/_school/s5/BP/GreenBerry/src/model/Cube.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/39249803/Cube.o ${OBJECTDIR}/_ext/39249803/Cube_nomain.o;\
 	fi
@@ -348,7 +328,7 @@ ${OBJECTDIR}/_ext/39249803/Map_nomain.o: ${OBJECTDIR}/_ext/39249803/Map.o /D/_sc
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Map_nomain.o /D/_school/s5/BP/GreenBerry/src/model/Map.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/Map_nomain.o /D/_school/s5/BP/GreenBerry/src/model/Map.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/39249803/Map.o ${OBJECTDIR}/_ext/39249803/Map_nomain.o;\
 	fi
@@ -361,7 +341,7 @@ ${OBJECTDIR}/_ext/39249803/World_nomain.o: ${OBJECTDIR}/_ext/39249803/World.o /D
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/World_nomain.o /D/_school/s5/BP/GreenBerry/src/model/World.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/39249803/World_nomain.o /D/_school/s5/BP/GreenBerry/src/model/World.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/39249803/World.o ${OBJECTDIR}/_ext/39249803/World_nomain.o;\
 	fi
@@ -374,7 +354,7 @@ ${OBJECTDIR}/_ext/40178556/MapNoise_nomain.o: ${OBJECTDIR}/_ext/40178556/MapNois
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/40178556/MapNoise_nomain.o /D/_school/s5/BP/GreenBerry/src/noise/MapNoise.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/40178556/MapNoise_nomain.o /D/_school/s5/BP/GreenBerry/src/noise/MapNoise.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/40178556/MapNoise.o ${OBJECTDIR}/_ext/40178556/MapNoise_nomain.o;\
 	fi
@@ -387,7 +367,7 @@ ${OBJECTDIR}/_ext/40178556/SimplexNoise_nomain.o: ${OBJECTDIR}/_ext/40178556/Sim
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/40178556/SimplexNoise_nomain.o /D/_school/s5/BP/GreenBerry/src/noise/SimplexNoise.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/40178556/SimplexNoise_nomain.o /D/_school/s5/BP/GreenBerry/src/noise/SimplexNoise.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/40178556/SimplexNoise.o ${OBJECTDIR}/_ext/40178556/SimplexNoise_nomain.o;\
 	fi
@@ -400,7 +380,7 @@ ${OBJECTDIR}/_ext/2027516724/EventMessagingSystem_nomain.o: ${OBJECTDIR}/_ext/20
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2027516724/EventMessagingSystem_nomain.o /D/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2027516724/EventMessagingSystem_nomain.o /D/_school/s5/BP/GreenBerry/src/observer/EventMessagingSystem.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/2027516724/EventMessagingSystem.o ${OBJECTDIR}/_ext/2027516724/EventMessagingSystem_nomain.o;\
 	fi
@@ -413,9 +393,48 @@ ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem_nomain.o: ${OBJECTDIR}/_ext/2
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem_nomain.o /D/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem_nomain.o /D/_school/s5/BP/GreenBerry/src/observer/IEventMessagingSystem.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem.o ${OBJECTDIR}/_ext/2027516724/IEventMessagingSystem_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1941172064/Ddm_nomain.o: ${OBJECTDIR}/_ext/1941172064/Ddm.o /D/_school/s5/BP/GreenBerry/src/util/Ddm.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941172064
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1941172064/Ddm.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941172064/Ddm_nomain.o /D/_school/s5/BP/GreenBerry/src/util/Ddm.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1941172064/Ddm.o ${OBJECTDIR}/_ext/1941172064/Ddm_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1941172064/Helper_nomain.o: ${OBJECTDIR}/_ext/1941172064/Helper.o /D/_school/s5/BP/GreenBerry/src/util/Helper.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941172064
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1941172064/Helper.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941172064/Helper_nomain.o /D/_school/s5/BP/GreenBerry/src/util/Helper.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1941172064/Helper.o ${OBJECTDIR}/_ext/1941172064/Helper_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1941172064/Log_nomain.o: ${OBJECTDIR}/_ext/1941172064/Log.o /D/_school/s5/BP/GreenBerry/src/util/Log.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1941172064
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1941172064/Log.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941172064/Log_nomain.o /D/_school/s5/BP/GreenBerry/src/util/Log.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1941172064/Log.o ${OBJECTDIR}/_ext/1941172064/Log_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/1941191171/Window_nomain.o: ${OBJECTDIR}/_ext/1941191171/Window.o /D/_school/s5/BP/GreenBerry/src/view/Window.cpp 
@@ -426,7 +445,7 @@ ${OBJECTDIR}/_ext/1941191171/Window_nomain.o: ${OBJECTDIR}/_ext/1941191171/Windo
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941191171/Window_nomain.o /D/_school/s5/BP/GreenBerry/src/view/Window.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941191171/Window_nomain.o /D/_school/s5/BP/GreenBerry/src/view/Window.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1941191171/Window.o ${OBJECTDIR}/_ext/1941191171/Window_nomain.o;\
 	fi
@@ -439,7 +458,7 @@ ${OBJECTDIR}/src/main_nomain.o: ${OBJECTDIR}/src/main.o src/main.cpp
 	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
 	then  \
 	    ${RM} "$@.d";\
-	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main_nomain.o src/main.cpp;\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main_nomain.o src/main.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/main_nomain.o;\
 	fi

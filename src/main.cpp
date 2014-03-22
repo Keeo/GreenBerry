@@ -12,7 +12,10 @@
 #include "model/Map.h"
 #include "view/Window.h"
 #include "control/Game.h"
-#include "Log.h"
+#include "util/Log.h"
+#include "util/Ddm.h"
+#include "glm/ext.hpp"
+#include <SFML/System.hpp>
 /*
  * 
  */
@@ -22,8 +25,15 @@ int main(int argc, char** argv)
     
     Game g;
     g.run();
-
-
+    
+    /*glm::vec3 pos(0.1, 0.1, 0.1);
+    glm::vec3 dir(0.001, -1, -1);
+    sf::Vector3i* p = Ddm::traverse(pos, dir);
+    std::cout<<std::endl;
+    for (int i=0;i<30;++i)
+    {
+        Helper::print(p[i]);
+    }*/
 
     return 0;
 }

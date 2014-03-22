@@ -9,7 +9,7 @@
 #define	IEVENTMESSAGINGSYSTEM_H
 
 #include <iostream>
-#include "../Helper.h"
+#include "../util/Helper.h"
 #include <SFML/System.hpp>
 
 // none of events can be numeritize

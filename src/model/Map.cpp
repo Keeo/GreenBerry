@@ -38,18 +38,22 @@ Map::Map(sf::Vector3i position) : grid(boost::extents[9][9][9]), _centerGlob(pos
     EventMessagingSystem::getInstance().Register(Events::evePlayerChangedChunk, this, (Callback) & Map::moveMap);
 }
 
-void Map::deleteCube(void* data)
+ void Map::deleteCube(void* data)
 {
     glm::vec3 **p = (glm::vec3**) data;
-    glm::vec3 position = *p[0];
-    std::cout << "Input position: " << glm::to_string(position) << std::endl;
-
-    Chunk* c = getChunk(position);
-    Block b = c->placeBlock(position, Block::AIR);
-    if (b != Block::AIR) {
-        c->buildMesh();
-        c->moveToGpu();
+    sf::Vector3i* path = Ddm::traverse(*p[0], *p[1], 100);
+    
+    for (int i=0; i<100; ++i){
+        Chunk* c = getChunk(Helper::sfToGlm(path[i]));
+        Block b = c->placeBlock(Helper::sfToGlm(path[i]), Block::AIR);
+        if (b != Block::AIR) {
+            c->buildMesh();
+            c->moveToGpu();
+            break;
+        }
+        //std::cout << "Input position: " << Helper::toString(path[i]) << std::endl;
     }
+    std::cout<<std::endl;
 }
 
 Chunk* Map::getChunk(glm::vec3 posGlob)
@@ -57,7 +61,7 @@ Chunk* Map::getChunk(glm::vec3 posGlob)
     int x = nmod((int)(posGlob.x / SIZE + 4));
     int y = nmod((int)(posGlob.y / SIZE + 4));
     int z = nmod((int)(posGlob.z / SIZE + 4));
-    std::cout << "Chunk position " << Helper::toString(sf::Vector3i(x, y, z)) << std::endl;
+    //std::cout << "Chunk position " << Helper::toString(sf::Vector3i(x, y, z)) << std::endl;
     return grid[x][y][z];
 }
 
