@@ -37,13 +37,6 @@ Window::Window()
     //glMatrixMode(GL_PROJECTION);
 
     //glEnable(GL_DEPTH_TEST);
-    
-    initShader();
-
-    _img.loadFromFile("D:\\_school\\s5\\BP\\GreenBerry\\cubes.png");
-    _tex.loadFromImage(_img);
-    _shader.setParameter("sampler", _tex);
-    _shader.bind();
 }
 
 Window::Window(const Window& orig)
@@ -70,16 +63,9 @@ void Window::update()
     sf::Event event;
     while (_window.pollEvent(event))
     {
-        // "close requested" event: we close the window
         if (event.type == sf::Event::Closed) {
             _window.close();
             Post(Events::eveShutdown, 0, 0);
         }
     }
-}
-
-void Window::initShader()
-{
-    bool ret = _shader.loadFromFile("D:/_school/s5/BP/GreenBerry/src/shaders/vertex.shader", "D:/_school/s5/BP/GreenBerry/src/shaders/fragment.shader");
-    assert(ret);
 }

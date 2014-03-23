@@ -58,6 +58,16 @@
         <itemPath>D:/_school/s5/BP/GreenBerry/src/view/Window.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/view/Window.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f2" displayName="weather" projectFiles="true">
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/Particle.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/Particle.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/RainParticle.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/RainParticle.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/WeatherManager.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/WeatherManager.h</itemPath>
+      </logicalFolder>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -309,6 +319,46 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/view/Window.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/Particle.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/Particle.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/RainParticle.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/RainParticle.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/WeatherManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/WeatherManager.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -620,6 +670,46 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/view/Window.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/Particle.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/Particle.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/RainParticle.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/RainParticle.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/WeatherManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/weather/WeatherManager.h"
             ex="false"
             tool="3"
             flavor2="0">

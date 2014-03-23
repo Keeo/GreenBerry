@@ -30,12 +30,8 @@ public:
     void update();
 private:
 
-    void initShader();
     sf::RenderWindow _window;
-    sf::Shader _shader;
-    
-    sf::Image _img;
-    sf::Texture _tex;
+
 };
 
 #endif	/* WINDOW_H */

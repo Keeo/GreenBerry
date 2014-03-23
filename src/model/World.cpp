@@ -7,11 +7,26 @@
 
 #include "World.h"
 
-World::World() : _map(sf::Vector3i(0, 0, 0))
+World::World() : map_(sf::Vector3i(0, 0, 0))
 {
+    bool ret = shader_.loadFromFile("D:/_school/s5/BP/GreenBerry/src/shaders/vertex.shader", "D:/_school/s5/BP/GreenBerry/src/shaders/fragment.shader");
+    assert(ret);
+
+    img_.loadFromFile("D:\\_school\\s5\\BP\\GreenBerry\\cubes.png");
+    tex_.loadFromImage(img_);
+    shader_.setParameter("sampler", tex_);
+    weatherManager_.initialize();
+}
+
+void World::update(const sf::Time& time)
+{
+    weatherManager_.update(time);
 }
 
 void World::draw()
 {
-    _map.draw();
+    shader_.bind();
+    Post(Events::eveCameraDrawWorld, NULL, 0);
+    map_.draw();
+    weatherManager_.draw();
 }

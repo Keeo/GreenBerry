@@ -9,18 +9,26 @@
 #define	WORLD_H
 
 #include "Map.h"
+#include "../weather/WeatherManager.h"
+#include "../observer/IEventMessagingSystem.h"
 
-class World
+class World : IEventMessagingSystem
 {
 
 public:
     World();
     
+    void update(const sf::Time&);
     void draw();
     
 private:
     
-    Map _map;
+    sf::Shader shader_;
+    sf::Image img_;
+    sf::Texture tex_;
+    
+    Map map_;
+    WeatherManager weatherManager_;
 };
 
 #endif	/* WORLD_H */

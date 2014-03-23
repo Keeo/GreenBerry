@@ -19,6 +19,7 @@
 #include <SFML/Window/Mouse.hpp>
 
 #include "../observer/IEventMessagingSystem.h"
+#include "../observer/EventMessagingSystem.h"
 #include "../model/Chunk.h"
 #include "../util/Helper.h"
 
@@ -34,7 +35,8 @@ public:
     
     void init();
     void update(const sf::Time&);
-    void draw();
+    void draw(void* data);
+    void drawWeather(void* data);
     
 private:
     glm::mat4 _projection;

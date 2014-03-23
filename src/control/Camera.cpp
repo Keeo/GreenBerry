@@ -41,17 +41,30 @@ void Camera::update(const sf::Time& time)
         Post(Events::evePlayerChangedChunk, (void*)&t, 0);
     }
     _position_last = _position;
+    
+    EventMessagingSystem::getInstance().Register(Events::eveCameraDrawWorld, this, (Callback) & Camera::draw);
+    EventMessagingSystem::getInstance().Register(Events::eveCameraDrawWeather, this, (Callback) & Camera::drawWeather);
 }
 
 
 
-void Camera::draw()
+void Camera::draw(void* data)
 {
+    assert(data == NULL);
     //std::cout<<"Cam:"<<_position.x<<" "<<_position.y<<" "<<_position.z<<std::endl;
     glUniformMatrix4fv(3, 1, GL_FALSE, glm::value_ptr(_view));
     glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(_projection));
     glUniform3fv(6,  1, glm::value_ptr(_position));
     
+}
+
+void Camera::drawWeather(void* data)
+{
+    assert(data == NULL);
+    //std::cout<<"Cam:"<<_position.x<<" "<<_position.y<<" "<<_position.z<<std::endl;
+    glUniform3fv(3,  1, glm::value_ptr(_right));
+    glUniform3fv(4,  1, glm::value_ptr(_up));
+    glUniformMatrix4fv(5, 1, GL_FALSE, glm::value_ptr(_projection * _view));
 }
 
 void Camera::rotate(float& delta)

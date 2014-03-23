@@ -33,6 +33,10 @@ enum Events {
     // When player move and changes chunk
     evePlayerChangedChunk,
     
+    // Put position, view and projection matrix into shader
+    eveCameraDrawWorld,
+    eveCameraDrawWeather,
+    
     // this element has to be the last one, due to its use as a eventc counter
     EVENT_COUNT
 };

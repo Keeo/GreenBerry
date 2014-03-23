@@ -34,8 +34,9 @@ void Game::run()
         sf::Time elapsed = clock.restart();
         _camera.update(elapsed);
         _window.update();
-        _camera.draw();
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        _world.update(elapsed);
+        
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Why am i clearing it here?
         _world.draw();
         _window.draw();
     }

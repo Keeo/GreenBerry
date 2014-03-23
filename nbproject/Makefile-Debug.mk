@@ -51,6 +51,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1941172064/Helper.o \
 	${OBJECTDIR}/_ext/1941172064/Log.o \
 	${OBJECTDIR}/_ext/1941191171/Window.o \
+	${OBJECTDIR}/_ext/939158570/Particle.o \
+	${OBJECTDIR}/_ext/939158570/RainParticle.o \
+	${OBJECTDIR}/_ext/939158570/WeatherChunk.o \
+	${OBJECTDIR}/_ext/939158570/WeatherManager.o \
 	${OBJECTDIR}/src/main.o
 
 # Test Directory
@@ -166,6 +170,26 @@ ${OBJECTDIR}/_ext/1941191171/Window.o: /D/_school/s5/BP/GreenBerry/src/view/Wind
 	${MKDIR} -p ${OBJECTDIR}/_ext/1941191171
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941191171/Window.o /D/_school/s5/BP/GreenBerry/src/view/Window.cpp
+
+${OBJECTDIR}/_ext/939158570/Particle.o: /D/_school/s5/BP/GreenBerry/src/weather/Particle.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/939158570
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/939158570/Particle.o /D/_school/s5/BP/GreenBerry/src/weather/Particle.cpp
+
+${OBJECTDIR}/_ext/939158570/RainParticle.o: /D/_school/s5/BP/GreenBerry/src/weather/RainParticle.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/939158570
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/939158570/RainParticle.o /D/_school/s5/BP/GreenBerry/src/weather/RainParticle.cpp
+
+${OBJECTDIR}/_ext/939158570/WeatherChunk.o: /D/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/939158570
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/939158570/WeatherChunk.o /D/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.cpp
+
+${OBJECTDIR}/_ext/939158570/WeatherManager.o: /D/_school/s5/BP/GreenBerry/src/weather/WeatherManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/939158570
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/939158570/WeatherManager.o /D/_school/s5/BP/GreenBerry/src/weather/WeatherManager.cpp
 
 ${OBJECTDIR}/src/main.o: src/main.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -448,6 +472,58 @@ ${OBJECTDIR}/_ext/1941191171/Window_nomain.o: ${OBJECTDIR}/_ext/1941191171/Windo
 	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1941191171/Window_nomain.o /D/_school/s5/BP/GreenBerry/src/view/Window.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1941191171/Window.o ${OBJECTDIR}/_ext/1941191171/Window_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/939158570/Particle_nomain.o: ${OBJECTDIR}/_ext/939158570/Particle.o /D/_school/s5/BP/GreenBerry/src/weather/Particle.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/939158570
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/939158570/Particle.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/939158570/Particle_nomain.o /D/_school/s5/BP/GreenBerry/src/weather/Particle.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/939158570/Particle.o ${OBJECTDIR}/_ext/939158570/Particle_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/939158570/RainParticle_nomain.o: ${OBJECTDIR}/_ext/939158570/RainParticle.o /D/_school/s5/BP/GreenBerry/src/weather/RainParticle.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/939158570
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/939158570/RainParticle.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/939158570/RainParticle_nomain.o /D/_school/s5/BP/GreenBerry/src/weather/RainParticle.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/939158570/RainParticle.o ${OBJECTDIR}/_ext/939158570/RainParticle_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/939158570/WeatherChunk_nomain.o: ${OBJECTDIR}/_ext/939158570/WeatherChunk.o /D/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/939158570
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/939158570/WeatherChunk.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/939158570/WeatherChunk_nomain.o /D/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/939158570/WeatherChunk.o ${OBJECTDIR}/_ext/939158570/WeatherChunk_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/939158570/WeatherManager_nomain.o: ${OBJECTDIR}/_ext/939158570/WeatherManager.o /D/_school/s5/BP/GreenBerry/src/weather/WeatherManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/939158570
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/939158570/WeatherManager.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -g -DGLEW_STATIC -DSFML_STATIC -DENABLE_BOOST_WORKAROUND -I/C/Frameworks/SFML/include -I/C/Frameworks/boost/include/boost-1_54 -I/C/Frameworks/glm -I/C/Program\ Files\ \(x86\)/Assimp/include -std=c++11 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/939158570/WeatherManager_nomain.o /D/_school/s5/BP/GreenBerry/src/weather/WeatherManager.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/939158570/WeatherManager.o ${OBJECTDIR}/_ext/939158570/WeatherManager_nomain.o;\
 	fi
 
 ${OBJECTDIR}/src/main_nomain.o: ${OBJECTDIR}/src/main.o src/main.cpp 
