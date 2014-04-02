@@ -24,11 +24,10 @@ void Camera::update(const sf::Time& time)
     rotate(delta);
     
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
-        glm::vec3 **p = new glm::vec3*[2];
+        glm::vec3 *p[2];
         p[0] = &_position;
         p[1] = &_direction;
         Post(Events::eveDeleteCube, p, 2);
-        delete[] p;
     }
     
     sf::Vector3i sf_position(_position.x,_position.y,_position.z);

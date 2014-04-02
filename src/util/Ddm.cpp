@@ -24,19 +24,19 @@ sf::Vector3i* Ddm::traverse(const glm::vec3& pos, const glm::vec3& dir, int leng
     tMax.x = (temp.x - pos.x) / ndir.x;
     tMax.y = (temp.y - pos.y) / ndir.y;
     tMax.z = (temp.z - pos.z) / ndir.z;
-    std::cout<<glm::to_string(tMax)<<std::endl;
+    //std::cout<<glm::to_string(tMax)<<std::endl;
     
     glm::vec3 tDelta;
     tDelta.x = abs(1 / ndir.x);
     tDelta.y = abs(1 / ndir.y);
     tDelta.z = abs(1 / ndir.z);
-    std::cout<<glm::to_string(tDelta)<<std::endl;
+    //std::cout<<glm::to_string(tDelta)<<std::endl;
     
     int x = (int)(pos.x);
     int y = (int)(pos.y);
     int z = (int)(pos.z);
     
-    for (int i=0;i<length;++i) {
+    for (int i=0; i<length; ++i) {
         if(tMax.x < tMax.y) {
             if(tMax.x < tMax.z) {
                 x = x + step.x;

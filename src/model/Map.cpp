@@ -63,7 +63,7 @@ void Map::getBlock(void* data)
         }
         //std::cout << "Input position: " << Helper::toString(path[i]) << std::endl;
     }
-    std::cout<<std::endl;
+    //std::cout<<std::endl;
 }
 
 Chunk* Map::getChunk(glm::vec3 posGlob)

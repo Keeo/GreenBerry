@@ -18,12 +18,6 @@ struct EveCall
     Callback pFunc;
 };
 
-struct EvePackage
-{
-    void* dataIn;
-    void* dataOut;
-};
-
 class EventMessagingSystem
 {
 public:
