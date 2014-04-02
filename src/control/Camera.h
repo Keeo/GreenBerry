@@ -39,18 +39,18 @@ public:
     void drawWeather(void* data);
     
 private:
-    glm::mat4 _projection;
-    glm::mat4 _view;
+    glm::mat4 projection_;
+    glm::mat4 view_;
     
-    glm::vec3 _position;
-    glm::vec3 _position_last;
+    glm::vec3 position_;
+    glm::vec3 positionLast_;
     
-    glm::vec3 _direction;
-    glm::vec3 _right;
-    glm::vec3 _up;
+    glm::vec3 direction_;
+    glm::vec3 right_;
+    glm::vec3 up_;
     
-    float _horizontalAngle = 0;
-    float _verticalAngle = 0;
+    float horizontalAngle_ = 0;
+    float verticalAngle_ = 0;
     
     void rotate(float&);
     void updateDirection();

@@ -9,29 +9,33 @@
 
 Camera::Camera()
 {
+        EventMessagingSystem::getInstance().Register(Events::eveCameraDrawWorld, this, (Callback) & Camera::draw);
+        EventMessagingSystem::getInstance().Register(Events::eveCameraDrawWeather, this, (Callback) & Camera::drawWeather);
+        EventMessagingSystem::getInstance().Register(Events::eveCameraGetPositionPointer, this, (Callback) & Camera::getPositionPointer);
 }
 
 void Camera::update(const sf::Time& time)
 {
     float delta = time.asSeconds();
     float move_speed = 50.0f;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) _position += _direction * move_speed * delta;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) _position -= _direction * move_speed * delta;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) _position += _right * move_speed * delta;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) _position -= _right * move_speed * delta;
+    sf::Vector3f nextPosition = position_;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) position_ += direction_ * move_speed * delta;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) position_ -= direction_ * move_speed * delta;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) position_ += right_ * move_speed * delta;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) position_ -= right_ * move_speed * delta;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) Post(Events::eveShutdown, 0, 0);
     
     rotate(delta);
     
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
         glm::vec3 *p[2];
-        p[0] = &_position;
-        p[1] = &_direction;
+        p[0] = &position_;
+        p[1] = &direction_;
         Post(Events::eveDeleteCube, p, 2);
     }
     
-    sf::Vector3i sf_position(_position.x,_position.y,_position.z);
-    sf::Vector3i sf_position_last(_position_last.x,_position_last.y,_position_last.z);
+    sf::Vector3i sf_position(position_.x,position_.y,position_.z);
+    sf::Vector3i sf_position_last(positionLast_.x,positionLast_.y,positionLast_.z);
     if (Chunk::getChunkCoords(sf_position) != Chunk::getChunkCoords(sf_position_last)) {
         sf::Vector3i t = sf_position - sf_position_last;
         t.x = chunkilize(t.x);
@@ -39,25 +43,21 @@ void Camera::update(const sf::Time& time)
         t.z = chunkilize(t.z);
         Post(Events::evePlayerChangedChunk, (void*)&t, 0);
     }
-    _position_last = _position;
-    
-    EventMessagingSystem::getInstance().Register(Events::eveCameraDrawWorld, this, (Callback) & Camera::draw);
-    EventMessagingSystem::getInstance().Register(Events::eveCameraDrawWeather, this, (Callback) & Camera::drawWeather);
-    EventMessagingSystem::getInstance().Register(Events::eveCameraGetPositionPointer, this, (Callback) & Camera::getPositionPointer);
+    positionLast_ = position_;
 }
 
 void Camera::getPositionPointer(void* data)
 {
-    *(glm::vec3**)data = (glm::vec3*)&_position;
+    *(glm::vec3**)data = (glm::vec3*)&position_;
 }
 
 void Camera::draw(void* data)
 {
     assert(data == NULL);
     //std::cout<<"Cam:"<<_position.x<<" "<<_position.y<<" "<<_position.z<<std::endl;
-    glUniformMatrix4fv(3, 1, GL_FALSE, glm::value_ptr(_view));
-    glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(_projection));
-    glUniform3fv(6,  1, glm::value_ptr(_position));
+    glUniformMatrix4fv(3, 1, GL_FALSE, glm::value_ptr(view_));
+    glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(projection_));
+    glUniform3fv(6,  1, glm::value_ptr(position_));
     
 }
 
@@ -65,9 +65,9 @@ void Camera::drawWeather(void* data)
 {
     assert(data == NULL);
     //std::cout<<"Cam:"<<_position.x<<" "<<_position.y<<" "<<_position.z<<std::endl;
-    glUniform3fv(3,  1, glm::value_ptr(_right));
-    glUniform3fv(4,  1, glm::value_ptr(_up));
-    glUniformMatrix4fv(5, 1, GL_FALSE, glm::value_ptr(_projection * _view));
+    glUniform3fv(3,  1, glm::value_ptr(right_));
+    glUniform3fv(4,  1, glm::value_ptr(up_));
+    glUniformMatrix4fv(5, 1, GL_FALSE, glm::value_ptr(projection_ * view_));
 }
 
 void Camera::rotate(float& delta)
@@ -79,37 +79,37 @@ void Camera::rotate(float& delta)
         sf::Mouse::setPosition(sf::Vector2i(500,500));
 
         static float mouse_speed = .007f;
-        _horizontalAngle -= x * mouse_speed;// * delta;
-        _verticalAngle -= y * mouse_speed;// * delta;
+        horizontalAngle_ -= x * mouse_speed;// * delta;
+        verticalAngle_ -= y * mouse_speed;// * delta;
         updateDirection();
 
-        _view = glm::lookAt(_position, _position + _direction, _up);
+        view_ = glm::lookAt(position_, position_ + direction_, up_);
     }
 }
 
 void Camera::updateDirection()
 {
-	_direction = glm::vec3(
-		cos(_verticalAngle) * sin(_horizontalAngle),
-		sin(_verticalAngle),
-		cos(_verticalAngle) * cos(_horizontalAngle)
+	direction_ = glm::vec3(
+		cos(verticalAngle_) * sin(horizontalAngle_),
+		sin(verticalAngle_),
+		cos(verticalAngle_) * cos(horizontalAngle_)
 	);
 
-	_right = glm::vec3(
-		sin(_horizontalAngle - 3.14f/2.0f),
+	right_ = glm::vec3(
+		sin(horizontalAngle_ - 3.14f/2.0f),
 		0,
-		cos(_horizontalAngle - 3.14f/2.0f)
+		cos(horizontalAngle_ - 3.14f/2.0f)
 	);
 
-	_up = glm::cross(_right, _direction);
+	up_ = glm::cross(right_, direction_);
 }
 
 void Camera::init()
 {
-    _position_last = _position = glm::vec3(0,40,0);
-    _direction = glm::vec3(1,40,0);
-    _projection = glm::perspective(100.0f, 4.0f / 3.0f, 0.1f, 400.0f);
-    _view = glm::lookAt(_position, _direction, glm::vec3(0,1,0));
+    positionLast_ = position_ = glm::vec3(0,40,0);
+    direction_ = glm::vec3(1,40,0);
+    projection_ = glm::perspective(100.0f, 4.0f / 3.0f, 0.1f, 400.0f);
+    view_ = glm::lookAt(position_, direction_, glm::vec3(0,1,0));
 }
 
 Camera::Camera(const Camera& orig)
