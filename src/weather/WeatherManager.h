@@ -24,7 +24,6 @@
 #include <glm/gtx/rotate_vector.hpp>
 
 #include "../observer/IEventMessagingSystem.h"
-#include "WeatherChunk.h"
 #include "Particle.h"
 
 #define frand() static_cast <float> (rand()) / static_cast <float> (RAND_MAX)
@@ -47,10 +46,6 @@ private:
     int particlesCount_ = 0;
     
     static const GLfloat g_vertex_buffer_data[];
-    
-    typedef boost::multi_array<WeatherChunk*, 2> array_type;
-    typedef array_type::index index;
-    array_type weatherChunks_;
     
     GLuint billboard_vertex_buffer;
     GLuint particles_position_buffer;

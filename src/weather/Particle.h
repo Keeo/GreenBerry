@@ -8,7 +8,6 @@
 #ifndef PARTICLE_H
 #define	PARTICLE_H
 
-#include "WeatherChunk.h"
 #include <SFML/System.hpp>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>

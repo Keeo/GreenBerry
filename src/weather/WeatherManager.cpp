@@ -15,14 +15,8 @@ const GLfloat WeatherManager::g_vertex_buffer_data[] = {
     0.5f, 0.5f, 0.0f,
 };
 
-WeatherManager::WeatherManager() : weatherChunks_(boost::extents[5][5])
+WeatherManager::WeatherManager()
 {
-    for (int i = 0; i < 5; ++i) {
-        for (int j = 0; j < 5; j++) {
-            weatherChunks_[i][j] = new WeatherChunk();
-        }
-    }
-    
     for (int i = 0; i< MAX_PARTICLES ; ++i) {
         new (&particles_[i]) SnowParticle();
         particles_[i].position = glm::vec3(rand() % 100 - 50,rand() % 100 - 50,rand() % 100 - 50);

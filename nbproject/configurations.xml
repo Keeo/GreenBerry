@@ -65,8 +65,6 @@
         <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/RainParticle.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/SnowParticle.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/SnowParticle.h</itemPath>
-        <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.cpp</itemPath>
-        <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/WeatherManager.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/WeatherManager.h</itemPath>
       </logicalFolder>
@@ -351,16 +349,6 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/weather/SnowParticle.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -712,16 +700,6 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/weather/SnowParticle.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="D:/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.h"
             ex="false"
             tool="3"
             flavor2="0">

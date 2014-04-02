@@ -8,11 +8,11 @@
 
 #include "Chunk.h"
 
-Chunk::Chunk(sf::Vector3i position) : _pos(position), ADrawable(position * SIZE, 100000), _cube(position * SIZE)
+Chunk::Chunk(sf::Vector3i position) : pos_(position), ADrawable(position * SIZE, 100000), cube_(position * SIZE)
 {
-    _fullAir = true;
-    _cube.init();
-    _cube.moveToGpu();
+    fullAir_ = true;
+    cube_.init();
+    cube_.moveToGpu();
 }
 
 Chunk::Chunk(){}
@@ -23,8 +23,8 @@ Chunk::~Chunk()
 
 void Chunk::draw()
 {
-    if (!_fullAir) ADrawable::draw();
-    if (!_fullAir) _cube.draw();
+    if (!fullAir_) ADrawable::draw();
+    if (!fullAir_) cube_.draw();
 }
 
 Block& Chunk::getBlock(const glm::vec3& pos)
@@ -34,7 +34,7 @@ Block& Chunk::getBlock(const glm::vec3& pos)
 
 Block& Chunk::getBlock(const sf::Vector3i& position)
 {
-    return _data[position.x][position.y][position.z];
+    return data_[position.x][position.y][position.z];
 }
 
 void Chunk::dummyGenerate()
@@ -45,11 +45,11 @@ void Chunk::dummyGenerate()
         {
             for (int k=0; k<SIZE; ++k )
             {
-                _data[i][j][k] = i + j + k < 16 ? GRASS : AIR;
+                data_[i][j][k] = i + j + k < 16 ? GRASS : AIR;
             }
         }
     }
-    _fullAir = false;
+    fullAir_ = false;
 }
 
 void Chunk::randGenerate()
@@ -60,11 +60,11 @@ void Chunk::randGenerate()
         {
             for (int k=0; k<SIZE; ++k )
             {
-                _data[i][j][k] = static_cast<Block>(rand() % 2);
+                data_[i][j][k] = static_cast<Block>(rand() % 2);
             }
         }
     }
-    _fullAir = false;
+    fullAir_ = false;
 }
 
 Block Chunk::placeBlock(glm::vec3 position, Block replacement)
@@ -74,7 +74,7 @@ Block Chunk::placeBlock(glm::vec3 position, Block replacement)
 
 Block Chunk::placeBlock(sf::Vector3i position, Block replacement)
 {
-    if (replacement != Block::AIR) _fullAir = false;
+    if (replacement != Block::AIR) fullAir_ = false;
     Block& b = getBlock(position);
     Block ret = b;
     b = replacement;
@@ -83,7 +83,7 @@ Block Chunk::placeBlock(sf::Vector3i position, Block replacement)
 
 const sf::Vector3i& Chunk::getPosition()
 {
-    return _pos;
+    return pos_;
 }
 
 std::string Chunk::getChunkName(sf::Vector3i& pos)
@@ -110,7 +110,7 @@ inline sf::Vector3i Chunk::globToLoc(const glm::vec3& position)
 void Chunk::buildMesh()
 {
     g_vertex_buffer_data.clear();
-    if (_fullAir) return;
+    if (fullAir_) return;
     
     sf::Clock clock;
     #define EDGE 1
@@ -140,70 +140,70 @@ void Chunk::buildMesh()
             }
         }
     }
-    //std::cout<<"Mesh contains:"<<g_vertex_buffer_data.size()<<"f, and has been build in: "<<clock.getElapsedTime().asMicroseconds()<<"us."<<std::endl;
+    //Log::getInstance().info("chunk", "Mesh contains:" + Helper::toString(g_vertex_buffer_data.size()) + "f, and has been build in: " + Helper::toString(clock.getElapsedTime().asMicroseconds()) + "us.");
 }
 
 void Chunk::buildCubeOnEdge(int x, int y, int z)
 {
-    if (_data[x][y][z] == AIR) return;
+    if (data_[x][y][z] == AIR) return;
     
     if (y == SIZE-1){
-        if (u->_data[x][0][z] == AIR) {
+        if (u->data_[x][0][z] == AIR) {
             buildSquare(x, y, z, UP);
         }
     } else {
-        if (_data[x][y+1][z] == AIR) {
+        if (data_[x][y+1][z] == AIR) {
             buildSquare(x, y, z, UP);
         }
     }
     
     if (x == SIZE-1){
-        if (e->_data[0][y][z] == AIR) {
+        if (e->data_[0][y][z] == AIR) {
             buildSquare(x, y, z, RIGHT);
         }
     } else {
-        if (_data[x+1][y][z] == AIR) {
+        if (data_[x+1][y][z] == AIR) {
             buildSquare(x, y, z, RIGHT);
         }
     }
     
     if (z == SIZE-1){
-        if (n->_data[x][y][0] == AIR) {
+        if (n->data_[x][y][0] == AIR) {
             buildSquare(x, y, z, BACKWARD);
         }
     } else {
-        if (_data[x][y][z+1] == AIR) {
+        if (data_[x][y][z+1] == AIR) {
             buildSquare(x, y, z, BACKWARD);
         }
     }
         
     
     if (y == 0){
-        if (d->_data[x][SIZE-1][z] == AIR) {
+        if (d->data_[x][SIZE-1][z] == AIR) {
             buildSquare(x, y, z, DOWN);
         }
     } else {
-        if (_data[x][y-1][z] == AIR) {
+        if (data_[x][y-1][z] == AIR) {
             buildSquare(x, y, z, DOWN);
         }
     }
     
     if (x == 0){
-        if (w->_data[SIZE-1][y][z] == AIR) {
+        if (w->data_[SIZE-1][y][z] == AIR) {
             buildSquare(x, y, z, LEFT);
         }
     } else {
-        if (_data[x-1][y][z] == AIR) {
+        if (data_[x-1][y][z] == AIR) {
             buildSquare(x, y, z, LEFT);
         }
     }
     
     if (z == 0){
-        if (s->_data[x][y][SIZE-1] == AIR) {
+        if (s->data_[x][y][SIZE-1] == AIR) {
             buildSquare(x, y, z, FORWARD);
         }
     } else {
-        if (_data[x][y][z-1] == AIR) {
+        if (data_[x][y][z-1] == AIR) {
             buildSquare(x, y, z, FORWARD);
         }
     }
@@ -211,34 +211,34 @@ void Chunk::buildCubeOnEdge(int x, int y, int z)
 
 void Chunk::buildCube(int x, int y, int z)
 {
-    if (_data[x][y][z] == AIR) return;
+    if (data_[x][y][z] == AIR) return;
     
-    if (_data[x][y+1][z] == AIR)
+    if (data_[x][y+1][z] == AIR)
     {
         buildSquare(x, y, z, UP);
     }
     
-    if (_data[x][y-1][z] == AIR)
+    if (data_[x][y-1][z] == AIR)
     {
         buildSquare(x, y, z, DOWN);
     }
     
-    if (_data[x-1][y][z] == AIR)
+    if (data_[x-1][y][z] == AIR)
     {
         buildSquare(x, y, z, LEFT);
     }
     
-    if (_data[x+1][y][z] == AIR)
+    if (data_[x+1][y][z] == AIR)
     {
         buildSquare(x, y, z, RIGHT);
     }
     
-    if (_data[x][y][z-1] == AIR)
+    if (data_[x][y][z-1] == AIR)
     {
         buildSquare(x, y, z, FORWARD);
     }
     
-    if (_data[x][y][z+1] == AIR)
+    if (data_[x][y][z+1] == AIR)
     {
         buildSquare(x, y, z, BACKWARD);
     }

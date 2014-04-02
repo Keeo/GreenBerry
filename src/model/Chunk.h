@@ -24,6 +24,8 @@
 #include "Block.h"
 #include "Direction.h"
 #include "Cube.h"
+#include "../util/Helper.h"
+#include "../util/Log.h"
 
 #define SIZE 32
 
@@ -90,20 +92,20 @@ private:
     inline void pushNormal(Direction);
     inline sf::Vector3i globToLoc(const glm::vec3&);
     
-    sf::Vector3i _pos;
+    sf::Vector3i pos_;
     
-    Block _data[SIZE][SIZE][SIZE];
+    Block data_[SIZE][SIZE][SIZE];
 
-    bool _fullAir;
-    Cube _cube;
+    bool fullAir_;
+    Cube cube_;
     
     // BOOST SERIALIZE
     friend class boost::serialization::access;
     template<class Archive>
     void serialize(Archive & ar, const unsigned int version)
     {
-        ar & _pos;
-        ar & _data;
+        ar & pos_;
+        ar & data_;
     }
 };
 

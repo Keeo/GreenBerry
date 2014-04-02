@@ -17,6 +17,13 @@ void Helper::print(const sf::Vector3f& vector, std::string message) {
     printf(" {x: %f, y:%f, z:%f}\n", vector.x, vector.y, vector.z);
 }
 
+template <typename T>
+std::string Helper::toString(const T& a)
+{
+    std::ostringstream ss;
+    ss << a;
+    return ss.str();
+}
 
 std::string Helper::toString(const sf::Vector3i& v)
 {
