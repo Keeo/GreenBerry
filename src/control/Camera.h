@@ -53,6 +53,7 @@ private:
     float verticalAngle_ = 0;
     
     void rotate(float&);
+    void move(float&);
     void updateDirection();
     
     void getPositionPointer(void* data);

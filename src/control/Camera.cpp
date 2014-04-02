@@ -17,14 +17,8 @@ Camera::Camera()
 void Camera::update(const sf::Time& time)
 {
     float delta = time.asSeconds();
-    float move_speed = 50.0f;
-    sf::Vector3f nextPosition = position_;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) position_ += direction_ * move_speed * delta;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) position_ -= direction_ * move_speed * delta;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) position_ += right_ * move_speed * delta;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) position_ -= right_ * move_speed * delta;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) Post(Events::eveShutdown, 0, 0);
-    
+
+    move(delta);
     rotate(delta);
     
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
@@ -43,8 +37,66 @@ void Camera::update(const sf::Time& time)
         t.z = chunkilize(t.z);
         Post(Events::evePlayerChangedChunk, (void*)&t, 0);
     }
+    
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) Post(Events::eveShutdown, 0, 0);
     positionLast_ = position_;
 }
+
+void Camera::move(float& delta)
+{
+    float move_speed = 50.0f;
+    float border_const = 0.2f;
+            
+    glm::vec3 axis(0, 0, 0);
+    glm::vec3 border;
+    glm::vec3 nextPosition = position_;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) axis += direction_ * move_speed * delta;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) axis -= direction_ * move_speed * delta;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) axis += right_ * move_speed * delta;
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) axis -= right_ * move_speed * delta;
+    
+    border.x = border_const * Helper::sgn(axis.x);
+    border.y = border_const * Helper::sgn(axis.y);
+    border.z = border_const * Helper::sgn(axis.z);
+    
+    nextPosition += axis + border;
+    
+    void* p[2];
+    Block block = Block::AIR;
+    p[0] = &nextPosition;
+    p[1] = &block;
+    Post(Events::eveGetBlock, p, 0);
+    if (block == Block::AIR) {
+        position_ += axis;
+    } else {
+        nextPosition = position_;
+
+        nextPosition.x += axis.x + border.x;
+        Post(Events::eveGetBlock, p, 0);
+        if (block == Block::AIR) {
+            position_.x += axis.x;
+        } else {
+            nextPosition.x = position_.x;
+        }
+        
+        nextPosition.y += axis.y + border.y;
+        Post(Events::eveGetBlock, p, 0);
+        if (block == Block::AIR) {
+            position_.y += axis.y;
+        } else {
+            nextPosition.y = position_.y;
+        }
+        
+        nextPosition.z += axis.z + border.z;
+        Post(Events::eveGetBlock, p, 0);
+        if (block == Block::AIR) {
+            position_.z += axis.z;
+        } else {
+            nextPosition.z = position_.z;
+        }
+    }
+}
+
 
 void Camera::getPositionPointer(void* data)
 {

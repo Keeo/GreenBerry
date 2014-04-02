@@ -39,7 +39,7 @@ void Particle::update(const sf::Time& gameTime, const glm::vec3& wind)
     p[0] = &position;
     p[1] = &block;
     Post(Events::eveGetBlock, p, 0);
-    if (block!=Block::AIR) {
+    if (block != Block::AIR) {
         position.y += RANGE * 2;
     }
     
