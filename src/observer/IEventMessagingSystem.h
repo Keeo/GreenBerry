@@ -38,6 +38,8 @@ enum Events {
     eveCameraDrawWeather,
     eveCameraGetPositionPointer, // gets camera pointer to position glm::vec3
     
+    getDirectionalLight, //gets directional light from daynight control
+    
     // return block in provided position {get vec3,ret block}
     eveGetBlock,
     

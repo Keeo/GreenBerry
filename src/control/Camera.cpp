@@ -111,6 +111,10 @@ void Camera::draw(void* data)
     glUniformMatrix4fv(4, 1, GL_FALSE, glm::value_ptr(projection_));
     glUniform3fv(6,  1, glm::value_ptr(position_));
     
+    
+    glm::vec3 color;
+    Post(Events::getDirectionalLight, (void*)&color, 0);
+    glUniform3fv(7,  1, glm::value_ptr(color));
 }
 
 void Camera::drawWeather(void* data)
@@ -120,6 +124,10 @@ void Camera::drawWeather(void* data)
     glUniform3fv(3,  1, glm::value_ptr(right_));
     glUniform3fv(4,  1, glm::value_ptr(up_));
     glUniformMatrix4fv(5, 1, GL_FALSE, glm::value_ptr(projection_ * view_));
+    
+    glm::vec3 color;
+    Post(Events::getDirectionalLight, (void*)&color, 0);
+    glUniform3fv(7,  1, glm::value_ptr(color));
 }
 
 void Camera::rotate(float& delta)

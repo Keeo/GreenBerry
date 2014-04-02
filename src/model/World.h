@@ -9,6 +9,7 @@
 #define	WORLD_H
 
 #include "Map.h"
+#include "../control/DayNightControl.h"
 #include "../weather/WeatherManager.h"
 #include "../observer/IEventMessagingSystem.h"
 
@@ -27,8 +28,11 @@ private:
     sf::Image img_;
     sf::Texture tex_;
     
+    DayNightControl dayNightControl_;
     Map map_;
     WeatherManager weatherManager_;
+    
+    void setDirectionalLight(void* data);
 };
 
 #endif	/* WORLD_H */

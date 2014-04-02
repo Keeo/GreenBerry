@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/_ext/883158912/ADrawable.o \
 	${OBJECTDIR}/_ext/1211055809/Camera.o \
+	${OBJECTDIR}/_ext/1211055809/DayNightControl.o \
 	${OBJECTDIR}/_ext/1211055809/Game.o \
 	${OBJECTDIR}/_ext/39249803/Chunk.o \
 	${OBJECTDIR}/_ext/39249803/ChunkModel.o \
@@ -100,6 +101,11 @@ ${OBJECTDIR}/_ext/1211055809/Camera.o: /D/_school/s5/BP/GreenBerry/src/control/C
 	${MKDIR} -p ${OBJECTDIR}/_ext/1211055809
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/Camera.o /D/_school/s5/BP/GreenBerry/src/control/Camera.cpp
+
+${OBJECTDIR}/_ext/1211055809/DayNightControl.o: /D/_school/s5/BP/GreenBerry/src/control/DayNightControl.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1211055809
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/DayNightControl.o /D/_school/s5/BP/GreenBerry/src/control/DayNightControl.cpp
 
 ${OBJECTDIR}/_ext/1211055809/Game.o: /D/_school/s5/BP/GreenBerry/src/control/Game.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/1211055809
@@ -290,6 +296,19 @@ ${OBJECTDIR}/_ext/1211055809/Camera_nomain.o: ${OBJECTDIR}/_ext/1211055809/Camer
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/Camera_nomain.o /D/_school/s5/BP/GreenBerry/src/control/Camera.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1211055809/Camera.o ${OBJECTDIR}/_ext/1211055809/Camera_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/1211055809/DayNightControl_nomain.o: ${OBJECTDIR}/_ext/1211055809/DayNightControl.o /D/_school/s5/BP/GreenBerry/src/control/DayNightControl.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1211055809
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/1211055809/DayNightControl.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/DayNightControl_nomain.o /D/_school/s5/BP/GreenBerry/src/control/DayNightControl.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/1211055809/DayNightControl.o ${OBJECTDIR}/_ext/1211055809/DayNightControl_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/1211055809/Game_nomain.o: ${OBJECTDIR}/_ext/1211055809/Game.o /D/_school/s5/BP/GreenBerry/src/control/Game.cpp 

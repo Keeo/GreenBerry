@@ -21,6 +21,7 @@ World::World() : map_(sf::Vector3i(0, 0, 0))
 void World::update(const sf::Time& time)
 {
     weatherManager_.update(time);
+    dayNightControl_.update(time);
 }
 
 void World::draw()
@@ -28,5 +29,9 @@ void World::draw()
     shader_.bind();
     Post(Events::eveCameraDrawWorld, NULL, 0);
     map_.draw();
+    
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     weatherManager_.draw();
+    glDisable(GL_BLEND);
 }

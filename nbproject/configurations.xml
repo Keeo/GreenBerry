@@ -19,6 +19,8 @@
       <logicalFolder name="control" displayName="control" projectFiles="true">
         <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Camera.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Camera.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/control/DayNightControl.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/control/DayNightControl.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Game.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Game.h</itemPath>
       </logicalFolder>
@@ -179,6 +181,16 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/control/Camera.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/DayNightControl.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/DayNightControl.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -530,6 +542,16 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/control/Camera.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/DayNightControl.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/DayNightControl.h"
             ex="false"
             tool="3"
             flavor2="0">

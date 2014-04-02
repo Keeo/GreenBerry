@@ -3,6 +3,7 @@
 #extension GL_ARB_explicit_uniform_location : require
 
 layout(location = 6) uniform vec3 light;
+layout(location = 7) uniform vec3 ambientLight;
 
 uniform sampler2D sampler;
 
@@ -33,5 +34,5 @@ void main()
     /// specular component
     lightColor += vec3(1,1,0.9) * pow(max(dot(R,V),0), 4) * 0.5;
 
-    color =  texture(sampler, uv).rgb * lightColor;// * vec3(uv.x, uv.y, 1.0);
+    color =  texture(sampler, uv).rgb * lightColor * ambientLight;// * vec3(uv.x, uv.y, 1.0);
 }
