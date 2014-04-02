@@ -44,9 +44,13 @@ void Camera::update(const sf::Time& time)
     
     EventMessagingSystem::getInstance().Register(Events::eveCameraDrawWorld, this, (Callback) & Camera::draw);
     EventMessagingSystem::getInstance().Register(Events::eveCameraDrawWeather, this, (Callback) & Camera::drawWeather);
+    EventMessagingSystem::getInstance().Register(Events::eveCameraGetPositionPointer, this, (Callback) & Camera::getPositionPointer);
 }
 
-
+void Camera::getPositionPointer(void* data)
+{
+    *(glm::vec3**)data = (glm::vec3*)&_position;
+}
 
 void Camera::draw(void* data)
 {

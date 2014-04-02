@@ -27,9 +27,6 @@ public:
     float ceil;
 private:
 
-    
-    sf::Vector3i position_;
-    
 };
 
 #endif	/* WEATHERCHUNK_H */

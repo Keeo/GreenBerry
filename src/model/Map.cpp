@@ -36,6 +36,16 @@ Map::Map(sf::Vector3i position) : grid(boost::extents[9][9][9]), _centerGlob(pos
     _consistencyCheck();
     EventMessagingSystem::getInstance().Register(Events::eveDeleteCube, this, (Callback) & Map::deleteCube);
     EventMessagingSystem::getInstance().Register(Events::evePlayerChangedChunk, this, (Callback) & Map::moveMap);
+    EventMessagingSystem::getInstance().Register(Events::eveGetBlock, this, (Callback) & Map::getBlock);
+}
+
+void Map::getBlock(void* data)
+{
+    void** d = (void**) data;
+    glm::vec3 *p = (glm::vec3*) d[0];
+    Block* h = (Block*) d[1];
+    Chunk* chunk = getChunk(*p);
+    *h = chunk->getBlock(*p);
 }
 
  void Map::deleteCube(void* data)

@@ -18,6 +18,7 @@ public:
     static void print(const sf::Vector3i&, std::string message = "Vector");
     static void print(const sf::Vector3f&, std::string message = "Vector");
     static std::string toString(const sf::Vector3i&);
+    static std::string toString(const glm::vec3&);
     static int sgn(int);
     static int sgn(float);
     static sf::Vector3i sgn(const glm::vec3&);

@@ -21,11 +21,13 @@
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/rotate_vector.hpp>
 
 #include "../observer/IEventMessagingSystem.h"
 #include "WeatherChunk.h"
 #include "Particle.h"
 
+#define frand() static_cast <float> (rand()) / static_cast <float> (RAND_MAX)
 
 class WeatherManager : IEventMessagingSystem
 {

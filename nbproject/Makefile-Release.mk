@@ -53,6 +53,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1941191171/Window.o \
 	${OBJECTDIR}/_ext/939158570/Particle.o \
 	${OBJECTDIR}/_ext/939158570/RainParticle.o \
+	${OBJECTDIR}/_ext/939158570/SnowParticle.o \
 	${OBJECTDIR}/_ext/939158570/WeatherChunk.o \
 	${OBJECTDIR}/_ext/939158570/WeatherManager.o \
 	${OBJECTDIR}/src/main.o
@@ -180,6 +181,11 @@ ${OBJECTDIR}/_ext/939158570/RainParticle.o: /D/_school/s5/BP/GreenBerry/src/weat
 	${MKDIR} -p ${OBJECTDIR}/_ext/939158570
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/939158570/RainParticle.o /D/_school/s5/BP/GreenBerry/src/weather/RainParticle.cpp
+
+${OBJECTDIR}/_ext/939158570/SnowParticle.o: /D/_school/s5/BP/GreenBerry/src/weather/SnowParticle.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/939158570
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/939158570/SnowParticle.o /D/_school/s5/BP/GreenBerry/src/weather/SnowParticle.cpp
 
 ${OBJECTDIR}/_ext/939158570/WeatherChunk.o: /D/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/939158570
@@ -498,6 +504,19 @@ ${OBJECTDIR}/_ext/939158570/RainParticle_nomain.o: ${OBJECTDIR}/_ext/939158570/R
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/939158570/RainParticle_nomain.o /D/_school/s5/BP/GreenBerry/src/weather/RainParticle.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/939158570/RainParticle.o ${OBJECTDIR}/_ext/939158570/RainParticle_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/939158570/SnowParticle_nomain.o: ${OBJECTDIR}/_ext/939158570/SnowParticle.o /D/_school/s5/BP/GreenBerry/src/weather/SnowParticle.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/939158570
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/939158570/SnowParticle.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/939158570/SnowParticle_nomain.o /D/_school/s5/BP/GreenBerry/src/weather/SnowParticle.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/939158570/SnowParticle.o ${OBJECTDIR}/_ext/939158570/SnowParticle_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/939158570/WeatherChunk_nomain.o: ${OBJECTDIR}/_ext/939158570/WeatherChunk.o /D/_school/s5/BP/GreenBerry/src/weather/WeatherChunk.cpp 

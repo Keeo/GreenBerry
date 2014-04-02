@@ -27,7 +27,12 @@ void Chunk::draw()
     if (!_fullAir) _cube.draw();
 }
 
-Block& Chunk::getBlock(sf::Vector3i position)
+Block& Chunk::getBlock(const glm::vec3& pos)
+{
+    return getBlock(globToLoc(pos));
+}
+
+Block& Chunk::getBlock(const sf::Vector3i& position)
 {
     return _data[position.x][position.y][position.z];
 }
@@ -64,11 +69,7 @@ void Chunk::randGenerate()
 
 Block Chunk::placeBlock(glm::vec3 position, Block replacement)
 {
-    sf::Vector3i l;
-    l.x = fmodf(fmodf(position.x, SIZE) + SIZE, SIZE);
-    l.y = fmodf(fmodf(position.y, SIZE) + SIZE, SIZE);
-    l.z = fmodf(fmodf(position.z, SIZE) + SIZE, SIZE);
-    return placeBlock(l, replacement);
+    return placeBlock(globToLoc(position), replacement);
 }
 
 Block Chunk::placeBlock(sf::Vector3i position, Block replacement)
@@ -95,6 +96,15 @@ std::string Chunk::getChunkName(sf::Vector3i& pos)
     ss << pos.z;
     ss << ".chunk";
     return ss.str();
+}
+
+inline sf::Vector3i Chunk::globToLoc(const glm::vec3& position)
+{
+    sf::Vector3i l;
+    l.x = fmodf(fmodf(position.x, SIZE) + SIZE, SIZE);
+    l.y = fmodf(fmodf(position.y, SIZE) + SIZE, SIZE);
+    l.z = fmodf(fmodf(position.z, SIZE) + SIZE, SIZE);
+    return l;
 }
 
 void Chunk::buildMesh()

@@ -41,6 +41,7 @@ public:
     void moveCenter(sf::Vector3i dir);
     
     void deleteCube(void* data);
+    void getBlock(void* data);
 private:
     
     typedef boost::multi_array<Chunk*, 3> array_type;

@@ -36,6 +36,10 @@ enum Events {
     // Put position, view and projection matrix into shader
     eveCameraDrawWorld,
     eveCameraDrawWeather,
+    eveCameraGetPositionPointer, // gets camera pointer to position glm::vec3
+    
+    // return block in provided position {get vec3,ret block}
+    eveGetBlock,
     
     // this element has to be the last one, due to its use as a eventc counter
     EVENT_COUNT

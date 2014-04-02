@@ -25,6 +25,11 @@ std::string Helper::toString(const sf::Vector3i& v)
     return ss.str();
 }
 
+std::string Helper::toString(const glm::vec3& v)
+{
+    return glm::to_string(v);
+}
+
 int Helper::sgn(int val) {
     return (0 < val) - (val < 0);
 }

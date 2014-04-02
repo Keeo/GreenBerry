@@ -55,7 +55,8 @@ public:
      * @return 
      */
     Block placeBlock            (glm::vec3, Block AIR);
-    inline Block& getBlock      (sf::Vector3i);
+    Block& getBlock             (const sf::Vector3i&);
+    Block& getBlock             (const glm::vec3&);
     
     // Populate chunk with air and grass blocks
     void dummyGenerate          ();
@@ -87,7 +88,8 @@ public:
     virtual void draw();
 private:
     inline void pushNormal(Direction);
-
+    inline sf::Vector3i globToLoc(const glm::vec3&);
+    
     sf::Vector3i _pos;
     
     Block _data[SIZE][SIZE][SIZE];

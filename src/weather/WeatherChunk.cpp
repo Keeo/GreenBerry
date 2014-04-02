@@ -22,7 +22,7 @@ WeatherChunk::~WeatherChunk()
 
 void WeatherChunk::setPosition(sf::Vector3i position)
 {
-    position_ = position;
+//    position_ = position;
 }
 
 void WeatherChunk::update(const sf::Time& time)

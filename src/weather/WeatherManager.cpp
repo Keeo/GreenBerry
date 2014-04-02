@@ -6,7 +6,7 @@
  */
 
 #include "WeatherManager.h"
-#include "Particle.h"
+#include "SnowParticle.h"
 
 const GLfloat WeatherManager::g_vertex_buffer_data[] = { 
     -0.5f, -0.5f, 0.0f,
@@ -24,9 +24,9 @@ WeatherManager::WeatherManager() : weatherChunks_(boost::extents[5][5])
     }
     
     for (int i = 0; i< MAX_PARTICLES ; ++i) {
-        new (&particles_[i]) Particle();
+        new (&particles_[i]) SnowParticle();
         particles_[i].position = glm::vec3(rand() % 100 - 50,rand() % 100 - 50,rand() % 100 - 50);
-        particles_[i].speed = glm::vec3(rand() % 2 - 1,rand() % 2 - 1,rand() % 2 - 1);
+        particles_[i].speed = glm::vec3(frand() * 2 - 1,-1 + frand() * 2 - 1,frand() * 2 - 1);
         ++particlesCount_;
     }
 }
@@ -41,9 +41,12 @@ WeatherManager::~WeatherManager()
 
 void WeatherManager::update(const sf::Time& time)
 {
+    static glm::vec3 wind(0, 0, 1);
+    
     for (int i = 0; i < MAX_PARTICLES; ++i) {
         Particle& p = particles_[i];
-        p.position += time.asSeconds() * p.speed;
+        //p.position += wind * time.asSeconds();
+        p.update(time, wind);
         
         g_particule_position_size_data[4*i+0] = p.position.x;
         g_particule_position_size_data[4*i+1] = p.position.y;
@@ -56,6 +59,8 @@ void WeatherManager::update(const sf::Time& time)
         g_particule_color_data[4*i+2] = 128;
         g_particule_color_data[4*i+3] = 50;
     }
+    float rot = 10.0 * time.asSeconds() * frand();
+    wind = glm::rotateY(wind, rot);
 }
 
 void WeatherManager::draw()

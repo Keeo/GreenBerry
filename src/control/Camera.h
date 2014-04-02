@@ -54,6 +54,8 @@ private:
     
     void rotate(float&);
     void updateDirection();
+    
+    void getPositionPointer(void* data);
 };
 
 #endif	/* CAMERA_H */
