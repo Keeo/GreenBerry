@@ -24,6 +24,14 @@
         <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Game.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Game.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f3" displayName="entity" projectFiles="true">
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/entity/Entity.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/entity/Entity.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/entity/EntityManager.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/entity/EntityManager.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/entity/Model.cpp</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/entity/Model.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="model" displayName="model" projectFiles="true">
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Chunk.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Chunk.h</itemPath>
@@ -70,6 +78,8 @@
         <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/WeatherManager.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/weather/WeatherManager.h</itemPath>
       </logicalFolder>
+      <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Block.h</itemPath>
+      <itemPath>D:/_school/s5/BP/GreenBerry/src/model/Direction.h</itemPath>
       <itemPath>src/main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -205,6 +215,41 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/entity/Entity.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/entity/Entity.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/entity/EntityManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/entity/EntityManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/entity/Model.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/entity/Model.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/Block.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/Chunk.cpp"
             ex="false"
             tool="1"
@@ -231,6 +276,11 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/Cube.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/Direction.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -566,6 +616,41 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/entity/Entity.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/entity/Entity.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/entity/EntityManager.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/entity/EntityManager.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/entity/Model.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/entity/Model.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/Block.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/Chunk.cpp"
             ex="false"
             tool="1"
@@ -592,6 +677,11 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/model/Cube.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/model/Direction.h"
             ex="false"
             tool="3"
             flavor2="0">

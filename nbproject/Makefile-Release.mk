@@ -39,6 +39,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/1211055809/Camera.o \
 	${OBJECTDIR}/_ext/1211055809/DayNightControl.o \
 	${OBJECTDIR}/_ext/1211055809/Game.o \
+	${OBJECTDIR}/_ext/987268033/Entity.o \
+	${OBJECTDIR}/_ext/987268033/EntityManager.o \
+	${OBJECTDIR}/_ext/987268033/Model.o \
 	${OBJECTDIR}/_ext/39249803/Chunk.o \
 	${OBJECTDIR}/_ext/39249803/ChunkModel.o \
 	${OBJECTDIR}/_ext/39249803/Cube.o \
@@ -111,6 +114,21 @@ ${OBJECTDIR}/_ext/1211055809/Game.o: /D/_school/s5/BP/GreenBerry/src/control/Gam
 	${MKDIR} -p ${OBJECTDIR}/_ext/1211055809
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/Game.o /D/_school/s5/BP/GreenBerry/src/control/Game.cpp
+
+${OBJECTDIR}/_ext/987268033/Entity.o: /D/_school/s5/BP/GreenBerry/src/entity/Entity.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/987268033
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/987268033/Entity.o /D/_school/s5/BP/GreenBerry/src/entity/Entity.cpp
+
+${OBJECTDIR}/_ext/987268033/EntityManager.o: /D/_school/s5/BP/GreenBerry/src/entity/EntityManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/987268033
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/987268033/EntityManager.o /D/_school/s5/BP/GreenBerry/src/entity/EntityManager.cpp
+
+${OBJECTDIR}/_ext/987268033/Model.o: /D/_school/s5/BP/GreenBerry/src/entity/Model.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/987268033
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/987268033/Model.o /D/_school/s5/BP/GreenBerry/src/entity/Model.cpp
 
 ${OBJECTDIR}/_ext/39249803/Chunk.o: /D/_school/s5/BP/GreenBerry/src/model/Chunk.cpp 
 	${MKDIR} -p ${OBJECTDIR}/_ext/39249803
@@ -322,6 +340,45 @@ ${OBJECTDIR}/_ext/1211055809/Game_nomain.o: ${OBJECTDIR}/_ext/1211055809/Game.o 
 	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1211055809/Game_nomain.o /D/_school/s5/BP/GreenBerry/src/control/Game.cpp;\
 	else  \
 	    ${CP} ${OBJECTDIR}/_ext/1211055809/Game.o ${OBJECTDIR}/_ext/1211055809/Game_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/987268033/Entity_nomain.o: ${OBJECTDIR}/_ext/987268033/Entity.o /D/_school/s5/BP/GreenBerry/src/entity/Entity.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/987268033
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/987268033/Entity.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/987268033/Entity_nomain.o /D/_school/s5/BP/GreenBerry/src/entity/Entity.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/987268033/Entity.o ${OBJECTDIR}/_ext/987268033/Entity_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/987268033/EntityManager_nomain.o: ${OBJECTDIR}/_ext/987268033/EntityManager.o /D/_school/s5/BP/GreenBerry/src/entity/EntityManager.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/987268033
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/987268033/EntityManager.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/987268033/EntityManager_nomain.o /D/_school/s5/BP/GreenBerry/src/entity/EntityManager.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/987268033/EntityManager.o ${OBJECTDIR}/_ext/987268033/EntityManager_nomain.o;\
+	fi
+
+${OBJECTDIR}/_ext/987268033/Model_nomain.o: ${OBJECTDIR}/_ext/987268033/Model.o /D/_school/s5/BP/GreenBerry/src/entity/Model.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/987268033
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/987268033/Model.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/987268033/Model_nomain.o /D/_school/s5/BP/GreenBerry/src/entity/Model.cpp;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/987268033/Model.o ${OBJECTDIR}/_ext/987268033/Model_nomain.o;\
 	fi
 
 ${OBJECTDIR}/_ext/39249803/Chunk_nomain.o: ${OBJECTDIR}/_ext/39249803/Chunk.o /D/_school/s5/BP/GreenBerry/src/model/Chunk.cpp 

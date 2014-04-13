@@ -7,9 +7,9 @@
 
 #include "World.h"
 
-World::World() : map_(sf::Vector3i(0, 0, 0))
+World::World() : map_(sf::Vector3i(0, 0, 0)), model_("D:/_school/s5/BP/model/sheep.obj")
 {
-    bool ret = shader_.loadFromFile("D:/_school/s5/BP/GreenBerry/src/shaders/vertex.shader", "D:/_school/s5/BP/GreenBerry/src/shaders/fragment.shader");
+    bool ret = shader_.loadFromFile("D:/_school/s5/BP/GreenBerry/src/shaders/world/vertex.shader", "D:/_school/s5/BP/GreenBerry/src/shaders/world/fragment.shader");
     assert(ret);
 
     img_.loadFromFile("D:\\_school\\s5\\BP\\GreenBerry\\cubes.png");
@@ -28,6 +28,7 @@ void World::draw()
 {
     shader_.bind();
     Post(Events::eveCameraDrawWorld, NULL, 0);
+    model_.draw();
     map_.draw();
     
     glEnable(GL_BLEND);

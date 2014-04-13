@@ -27,11 +27,11 @@ public:
     void stopGame();
     
 private:
-    bool _running = true;
+    bool running_ = true;
     
-    Window _window;
-    Camera _camera;
-    World _world;
+    Window window_;
+    Camera camera_;
+    World world_;
 };
 
 #endif	/* GAME_H */

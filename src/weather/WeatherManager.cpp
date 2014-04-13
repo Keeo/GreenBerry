@@ -129,7 +129,7 @@ void WeatherManager::draw()
 
 void WeatherManager::initialize()
 {
-    bool ret = shader_.loadFromFile("D:/_school/s5/BP/GreenBerry/src/weather/vertex.shader", "D:/_school/s5/BP/GreenBerry/src/weather/fragment.shader");
+    bool ret = shader_.loadFromFile("D:/_school/s5/BP/GreenBerry/src/shaders/particle/vertex.shader", "D:/_school/s5/BP/GreenBerry/src/shaders/particle/fragment.shader");
     assert(ret);
     
     shader_.bind();
