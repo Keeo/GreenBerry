@@ -24,18 +24,26 @@
 #include "../observer/EventMessagingSystem.h"
 #include "../util/Helper.h"
 #include "../util/Log.h"
+#include "../entity/Model.h"
 
 #include <assimp/Importer.hpp>      // C++ importer interface
 #include <assimp/scene.h>           // Output data structure
 #include <assimp/postprocess.h>     // Post processing flags
 
-class Entity {
+
+
+class Entity : IEventMessagingSystem {
 public:
-    Entity(std::string);
+    Entity();
     Entity(const Entity& orig);
+    
+    
+    void update(const sf::Time&);
+    void draw();
     virtual ~Entity();
 private:
-    
+    glm::mat4 transform_;
+    Model* model_;
 
 };
 

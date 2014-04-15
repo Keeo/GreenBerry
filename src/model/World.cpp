@@ -7,7 +7,7 @@
 
 #include "World.h"
 
-World::World() : map_(sf::Vector3i(0, 0, 0)), model_("D:/_school/s5/BP/model/sheep.obj")
+World::World() : map_(sf::Vector3i(0, 0, 0))
 {
     bool ret = shader_.loadFromFile("D:/_school/s5/BP/GreenBerry/src/shaders/world/vertex.shader", "D:/_school/s5/BP/GreenBerry/src/shaders/world/fragment.shader");
     assert(ret);
@@ -22,13 +22,14 @@ void World::update(const sf::Time& time)
 {
     weatherManager_.update(time);
     dayNightControl_.update(time);
+    entity_.update(time);
 }
 
 void World::draw()
 {
     shader_.bind();
     Post(Events::eveCameraDrawWorld, NULL, 0);
-    model_.draw();
+    entity_.draw();
     map_.draw();
     
     glEnable(GL_BLEND);

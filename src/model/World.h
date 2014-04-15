@@ -12,7 +12,7 @@
 #include "../control/DayNightControl.h"
 #include "../weather/WeatherManager.h"
 #include "../observer/IEventMessagingSystem.h"
-#include "../entity/Model.h"
+#include "../entity/Entity.h"
 
 class World : IEventMessagingSystem
 {
@@ -32,7 +32,7 @@ private:
     DayNightControl dayNightControl_;
     Map map_;
     WeatherManager weatherManager_;
-    Model model_;
+    Entity entity_;
     void setDirectionalLight(void* data);
 };
 

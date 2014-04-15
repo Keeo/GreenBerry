@@ -33,7 +33,7 @@ class Model {
 public:
     Model(std::string file);
     Model(const Model& orig);
-    void draw();
+    void draw(const glm::mat4&);
     virtual ~Model();
 private:
     const struct aiScene* scene_;
@@ -46,6 +46,8 @@ private:
     GLuint m_nVertices_moon;
     GLuint m_vertexBufferObject_moon, m_vertexArrayObject_moon;
     GLuint texture_moon_loc;
+    
+    glm::mat4 translate_;
 };
 
 #endif	/* MODEL_H */

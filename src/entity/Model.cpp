@@ -50,7 +50,7 @@ Model::Model(std::string file)
     
     delete[](data);
     
-
+    translate_ = glm::translate(translate_, glm::vec3(0, 1, 0));
     //CHECK_GL_ERROR();
 }
 
@@ -62,9 +62,10 @@ Model::~Model()
 {
 }
 
-void Model::draw()
+void Model::draw(const glm::mat4& transform)
 {
     glBindVertexArray(m_vertexArrayObject);
+    glUniformMatrix4fv(2, 1, GL_FALSE, glm::value_ptr(transform));
     glDrawArrays(GL_TRIANGLES, 0, m_nVertices);
     glBindVertexArray( 0 );
 }
