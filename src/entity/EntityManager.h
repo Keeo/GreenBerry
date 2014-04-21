@@ -22,8 +22,10 @@
 #include "../abstract/ADrawable.h"
 #include "../observer/IEventMessagingSystem.h"
 #include "../observer/EventMessagingSystem.h"
+#include "../control/GameTime.h"
 #include "../util/Helper.h"
 #include "../util/Log.h"
+#include "Entity.h"
 
 #include <assimp/Importer.hpp>      // C++ importer interface
 #include <assimp/scene.h>           // Output data structure
@@ -32,11 +34,16 @@
 class EntityManager : IEventMessagingSystem {
 public:
     EntityManager();
+    
     void initialize();
+    void update(const GameTime&);
+    void draw();
+    
     EntityManager(const EntityManager& orig);
     virtual ~EntityManager();
 private:
     sf::Shader shader_;
+    vector<Entity*> entities_;
 };
 
 #endif	/* ENTITYMANAGER_H */

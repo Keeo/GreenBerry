@@ -23,6 +23,7 @@
         <itemPath>D:/_school/s5/BP/GreenBerry/src/control/DayNightControl.h</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Game.cpp</itemPath>
         <itemPath>D:/_school/s5/BP/GreenBerry/src/control/Game.h</itemPath>
+        <itemPath>D:/_school/s5/BP/GreenBerry/src/control/GameTime.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="entity" projectFiles="true">
         <itemPath>D:/_school/s5/BP/GreenBerry/src/entity/Entity.cpp</itemPath>
@@ -211,6 +212,11 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/control/Game.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/GameTime.h"
             ex="false"
             tool="3"
             flavor2="0">
@@ -612,6 +618,11 @@
             flavor2="0">
       </item>
       <item path="D:/_school/s5/BP/GreenBerry/src/control/Game.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/_school/s5/BP/GreenBerry/src/control/GameTime.h"
             ex="false"
             tool="3"
             flavor2="0">

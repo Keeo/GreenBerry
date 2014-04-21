@@ -20,6 +20,7 @@
 
 #include "../observer/IEventMessagingSystem.h"
 #include "../observer/EventMessagingSystem.h"
+#include "../control/GameTime.h"
 #include "../model/Chunk.h"
 #include "../util/Helper.h"
 
@@ -34,7 +35,7 @@ public:
     virtual ~Camera();
     
     void init();
-    void update(const sf::Time&);
+    void update(const GameTime&);
     void draw(void* data);
     void drawWeather(void* data);
     

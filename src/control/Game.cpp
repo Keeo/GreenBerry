@@ -28,14 +28,17 @@ void Game::stopGame()
 void Game::run()
 {
     sf::Clock clock;
+    GameTime gameTime;
+    
     camera_.init();
     while (running_)
     {
-        sf::Time elapsed = clock.restart();
-        camera_.update(elapsed);
-        window_.update();
-        world_.update(elapsed);
+        gameTime.time = clock.restart();
         
+        camera_.update(gameTime);
+        window_.update();
+        world_.update(gameTime);
+
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Why am i clearing it here?
         world_.draw();
         window_.draw();

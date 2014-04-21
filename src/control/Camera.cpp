@@ -14,7 +14,7 @@ Camera::Camera()
         EventMessagingSystem::getInstance().Register(Events::eveCameraGetPositionPointer, this, (Callback) & Camera::getPositionPointer);
 }
 
-void Camera::update(const sf::Time& time)
+void Camera::update(const GameTime& time)
 {
     float delta = time.asSeconds();
 

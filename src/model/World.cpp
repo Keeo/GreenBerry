@@ -16,21 +16,24 @@ World::World() : map_(sf::Vector3i(0, 0, 0))
     tex_.loadFromImage(img_);
     shader_.setParameter("sampler", tex_);
     weatherManager_.initialize();
+    entityManager_.initialize();
 }
 
-void World::update(const sf::Time& time)
+void World::update(const GameTime& time)
 {
     weatherManager_.update(time);
     dayNightControl_.update(time);
-    entity_.update(time);
+    entityManager_.update(time);
 }
 
 void World::draw()
 {
     shader_.bind();
     Post(Events::eveCameraDrawWorld, NULL, 0);
-    entity_.draw();
+    
     map_.draw();
+    
+    entityManager_.draw();
     
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

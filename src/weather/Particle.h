@@ -14,6 +14,7 @@
 #include <glm/gtx/norm.hpp>
 #include "../observer/IEventMessagingSystem.h"
 #include "../model/Block.h"
+#include "../control/GameTime.h"
 
 class Particle : IEventMessagingSystem
 {
@@ -21,7 +22,7 @@ public:
     Particle();
     Particle(const Particle& orig);
     virtual ~Particle();
-    virtual void update(const sf::Time& gameTime, const glm::vec3& wind);
+    virtual void update(const GameTime& time, const glm::vec3& wind);
     
     bool operator<(const Particle& that);
     

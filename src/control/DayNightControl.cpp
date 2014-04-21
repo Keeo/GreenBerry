@@ -42,7 +42,7 @@ DayNightControl::~DayNightControl()
 {
 }
 
-void DayNightControl::update(const sf::Time& time)
+void DayNightControl::update(const GameTime& time)
 {
     currentCycleTime_ += time.asSeconds()*100;
 

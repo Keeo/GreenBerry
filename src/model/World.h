@@ -10,9 +10,12 @@
 
 #include "Map.h"
 #include "../control/DayNightControl.h"
+#include "../control/GameTime.h"
 #include "../weather/WeatherManager.h"
 #include "../observer/IEventMessagingSystem.h"
 #include "../entity/Entity.h"
+#include "../entity/EntityManager.h"
+
 
 class World : IEventMessagingSystem
 {
@@ -20,7 +23,7 @@ class World : IEventMessagingSystem
 public:
     World();
     
-    void update(const sf::Time&);
+    void update(const GameTime&);
     void draw();
     
 private:
@@ -32,7 +35,7 @@ private:
     DayNightControl dayNightControl_;
     Map map_;
     WeatherManager weatherManager_;
-    Entity entity_;
+    EntityManager entityManager_;
     void setDirectionalLight(void* data);
 };
 

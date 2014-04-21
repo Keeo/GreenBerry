@@ -10,8 +10,11 @@
 
 #include <iostream>
 #include <sstream>
+#include <gl/glew.h>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/OpenGL.hpp>
+#include <SFML/Graphics.hpp>
 
 #include "glm/ext.hpp"
 
@@ -36,6 +39,8 @@ public:
     static sf::Vector3f glmToSf(const glm::vec3&);
     static glm::vec3 sfToGlm(const sf::Vector3f&);
     static glm::vec3 sfToGlm(const sf::Vector3i&);
+    
+    static void gl(const std::string&, bool berbose = false);
 };
 
 #endif	/* HELPER_H */

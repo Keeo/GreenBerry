@@ -24,6 +24,7 @@
 #include <glm/gtx/rotate_vector.hpp>
 
 #include "../observer/IEventMessagingSystem.h"
+#include "../control/GameTime.h"
 #include "Particle.h"
 
 #define frand() static_cast <float> (rand()) / static_cast <float> (RAND_MAX)
@@ -37,7 +38,7 @@ public:
     
     void initialize();
     void draw();
-    void update(const sf::Time&);
+    void update(const GameTime&);
     
 private:
     

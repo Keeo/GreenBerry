@@ -13,6 +13,7 @@
 #include "../model/World.h"
 #include "../observer/IEventMessagingSystem.h"
 #include "../model/Cube.h"
+#include "../control/GameTime.h"
 
 class Game : IEventMessagingSystem
 {

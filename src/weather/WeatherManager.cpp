@@ -33,7 +33,7 @@ WeatherManager::~WeatherManager()
 {
 }
 
-void WeatherManager::update(const sf::Time& time)
+void WeatherManager::update(const GameTime& time)
 {
     static glm::vec3 wind(0, 0, 1);
     

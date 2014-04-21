@@ -64,3 +64,15 @@ glm::vec3 Helper::sfToGlm(const sf::Vector3i& v)
 {
     return glm::vec3(v.x, v.y, v.z);
 }
+
+void Helper::gl(const std::string& place, bool verbose)
+{
+    int err = glGetError();
+    if (err) {
+        std::cout<<"GLError on "<<place<<": "<<err<<std::endl;
+    } else {
+        if (verbose) { 
+                std::cout<<"GL OK on"<<place<<std::endl;
+        }
+    }
+}

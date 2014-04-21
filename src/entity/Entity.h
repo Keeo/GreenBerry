@@ -22,6 +22,7 @@
 #include "../abstract/ADrawable.h"
 #include "../observer/IEventMessagingSystem.h"
 #include "../observer/EventMessagingSystem.h"
+#include "../control/GameTime.h"
 #include "../util/Helper.h"
 #include "../util/Log.h"
 #include "../entity/Model.h"
@@ -38,7 +39,7 @@ public:
     Entity(const Entity& orig);
     
     
-    void update(const sf::Time&);
+    void update(const GameTime&);
     void draw();
     virtual ~Entity();
 private:

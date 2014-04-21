@@ -22,6 +22,7 @@
 #include "../abstract/ADrawable.h"
 #include "../observer/IEventMessagingSystem.h"
 #include "../observer/EventMessagingSystem.h"
+#include "GameTime.h"
 #include "../util/Helper.h"
 #include "../util/Log.h"
 enum DayPhase : unsigned char {
@@ -36,9 +37,7 @@ public:
     DayNightControl();
     DayNightControl(const DayNightControl& orig);
     
-    void update(const sf::Time&);
-    
-    
+    void update(const GameTime&);
     
     virtual ~DayNightControl();
 private:

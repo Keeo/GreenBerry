@@ -30,7 +30,7 @@ bool Particle::operator<(const Particle& that)
     return this->cameraDistance > that.cameraDistance;
 }
 
-void Particle::update(const sf::Time& gameTime, const glm::vec3& wind)
+void Particle::update(const GameTime& gameTime, const glm::vec3& wind)
 {
     position += (speed + wind) * gameTime.asSeconds();
     Block block;
