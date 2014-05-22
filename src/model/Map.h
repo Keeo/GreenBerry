@@ -56,7 +56,7 @@ private:
     void connectChunk(sf::Vector3i pos);
     void _connectAll();
     bool _consistencyCheck();
-    
+    void rebuildSequence(int, int, int);
     MapNoise _mn;
 };
 

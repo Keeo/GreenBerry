@@ -21,7 +21,7 @@ void Camera::update(const GameTime& time)
     move(delta);
     rotate(delta);
     
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E) || sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
         glm::vec3 *p[2];
         p[0] = &position_;
         p[1] = &direction_;
@@ -128,6 +128,7 @@ void Camera::drawWeather(void* data)
     glm::vec3 color;
     Post(Events::getDirectionalLight, (void*)&color, 0);
     glUniform3fv(7,  1, glm::value_ptr(color));
+    glUniform3fv(8,  1, glm::value_ptr(position_));
 }
 
 void Camera::rotate(float& delta)

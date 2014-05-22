@@ -10,6 +10,7 @@
 
 #include "SimplexNoise.h"
 #include <iostream>
+#include <math.h> 
 
 /**
  * Decorative class for specific setting over noise generator

@@ -18,7 +18,7 @@ Model::Model(std::string file, int nFrames, float animLength, int nFrameFileStep
         std::cout<<filename<<std::endl;
         Assimp::Importer importer;
         importer.SetPropertyInteger(AI_CONFIG_PP_PTV_NORMALIZE, 1);
-        scene_ = importer.ReadFile(filename, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_TransformUVCoords );
+        scene_ = importer.ReadFile(filename, aiProcess_GenSmoothNormals | aiProcess_TransformUVCoords );
 
         drawStruct.m_nVertices = scene_->mMeshes[0]->mNumVertices;
 
@@ -62,9 +62,8 @@ void Model::update(const GameTime& time)
     float window = fmod(secs, animLength_);
     float oneStepTime = animLength_ / nFrames_;
     framePosition_ = fmod(window, oneStepTime) * nFrames_;
-    floor_ = (int)floor(framePosition_);
-    ceil_ = (int)ceil(framePosition_);
-    //framePosition_ = fmod(framePosition_, 1);
+    floor_ = ((int)floor(window * nFrames_)) % nFrames_;
+    ceil_ =  ((int)ceil(window * nFrames_)) % nFrames_;
 }
 
 Model::Model(const Model& orig)

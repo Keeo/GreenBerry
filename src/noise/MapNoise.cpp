@@ -28,9 +28,11 @@ int MapNoise::getHeight(int x, int y)
 int* MapNoise::getHeightField(int x, int y)
 {
     int *array = new int[32 * 32];
-    for (int i=0;i<32;++i)
-        for (int j=0;j<32;++j)
+    for (int i=0;i<32;++i) {
+        for (int j=0;j<32;++j) {
             array[i + j * 32] = getHeight(i+(x*32), j+(y*32));
+        }
+    }
     return array;
 }
 
@@ -41,5 +43,5 @@ void MapNoise::setScale(double scale)
 
 float MapNoise::lerp(float x, float y, float fraction)
 {
-	return x+(y-x)*fraction;
+    return x+(y-x)*fraction;
 }

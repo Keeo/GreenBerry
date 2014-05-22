@@ -94,7 +94,8 @@ void DayNightControl::updateDaylight()
             ambientLight = fullLight_;
             break;
         case NIGHT:
-            ambientLight = fullDark_;
+            //ambientLight = fullDark_;
+            ambientLight = fullLight_;
             break;
     }
     

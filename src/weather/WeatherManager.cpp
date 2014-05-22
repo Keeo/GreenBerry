@@ -48,10 +48,10 @@ void WeatherManager::update(const GameTime& time)
 
         g_particule_position_size_data[4*i+3] = 1;
 
-        g_particule_color_data[4*i+0] = 128;
-        g_particule_color_data[4*i+1] = 0;
-        g_particule_color_data[4*i+2] = 128;
-        g_particule_color_data[4*i+3] = 50;
+        g_particule_color_data[4*i+0] = 200;
+        g_particule_color_data[4*i+1] = 200;
+        g_particule_color_data[4*i+2] = 220;
+        g_particule_color_data[4*i+3] = 100;
     }
     float rot = 10.0 * time.asSeconds() * frand();
     wind = glm::rotateY(wind, rot);

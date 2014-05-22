@@ -43,9 +43,13 @@ public:
     void draw();
     virtual ~Entity();
 private:
+    glm::vec3 position_;
+    glm::vec3 direction_;
+    
+    
     glm::mat4 transform_;
     Model* model_;
-
+    static glm::vec3* cameraPosition_;
 };
 
 #endif	/* ENTITY_H */

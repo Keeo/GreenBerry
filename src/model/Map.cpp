@@ -149,6 +149,12 @@ void Map::moveMap(void* data)
     }
 }
 
+void Map::rebuildSequence(int x, int y, int z) {
+    grid[x][y][z]->buildMesh();
+    grid[x][y][z]->init();
+    grid[x][y][z]->moveToGpu();
+}
+
 void Map::moveCenter(sf::Vector3i dir)
 {
     Log::getInstance().infonl("map", "MoveCenter Grid["+Helper::toString(_centerGrid)+"] Glob["+Helper::toString(_centerGlob)+"]");
@@ -181,9 +187,7 @@ void Map::moveCenter(sf::Vector3i dir)
         std::cout<<"Meshing"<<std::endl;
         for (int y = _centerGrid.y - 3; y <= _centerGrid.y + 3; y++) {
             for (int z = _centerGrid.z - 3; z <= _centerGrid.z + 3; z++) {
-                grid[nmod(x - dir.x)][nmod(y)][nmod(z)]->buildMesh();
-                grid[nmod(x - dir.x)][nmod(y)][nmod(z)]->init();
-                grid[nmod(x - dir.x)][nmod(y)][nmod(z)]->moveToGpu();
+                rebuildSequence(nmod(x - dir.x), nmod(y), nmod(z));
             }       
         }
         
@@ -213,11 +217,10 @@ void Map::moveCenter(sf::Vector3i dir)
         std::cout<<"Meshing"<<std::endl;
         for (int x = _centerGrid.x - 4; x <= _centerGrid.x + 4; x++) {
             for (int z = _centerGrid.z - 4; z <= _centerGrid.z + 4; z++) {
-                grid[nmod(x)][nmod(y - dir.y)][nmod(z)]->buildMesh();
-                grid[nmod(x)][nmod(y - dir.y)][nmod(z)]->init();
-                grid[nmod(x)][nmod(y - dir.y)][nmod(z)]->moveToGpu();
+                rebuildSequence(nmod(x), nmod(y - dir.y), nmod(z));
             }       
         }
+        
         std::cout<<std::endl;
         Helper::print(_centerGrid, "CenterGrid");
         Helper::print(_centerGlob, "CenterGlob");
@@ -245,9 +248,7 @@ void Map::moveCenter(sf::Vector3i dir)
         std::cout<<"Meshing"<<std::endl;
         for (int x = _centerGrid.x - 4; x <= _centerGrid.x + 4; x++) {
             for (int y = _centerGrid.y - 4; y <= _centerGrid.y + 4; y++) {
-                grid[nmod(x)][nmod(y)][nmod(z - dir.z)]->buildMesh();
-                grid[nmod(x)][nmod(y)][nmod(z - dir.z)]->init();
-                grid[nmod(x)][nmod(y)][nmod(z - dir.z)]->moveToGpu();
+                rebuildSequence(nmod(x), nmod(y), nmod(z - dir.z));
             }       
         }
         

@@ -35,4 +35,11 @@ void main()
     lightColor += vec3(1,1,0.9) * pow(max(dot(R,V),0), 4) * 0.5;
 
     color =  texture(sampler, uv).rgb * lightColor * ambientLight;// * vec3(uv.x, uv.y, 1.0);
+
+    /// calculate fog vactor
+    float distance = length(light - position);
+    float fog = exp2( -0.02 * 0.02 * distance * distance * 1.442695 );
+    fog = clamp(fog, 0.1, 1.0);
+    
+    color = mix(vec3(0.1,0.1,0.1), color, fog);
 }
